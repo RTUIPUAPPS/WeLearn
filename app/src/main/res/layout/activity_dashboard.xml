@@ -1,377 +1,386 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity.DashboardActivity">
+<layout>
 
-    <LinearLayout
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:background="@color/white"
-        android:orientation="vertical"
-        android:weightSum="100">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="0dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/_25sdp"
-            android:layout_marginBottom="@dimen/_15sdp"
-            android:layout_weight="5"
-            android:background="@color/color_tips"
-            android:scaleType="fitXY"
-            android:src="@drawable/cutest" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginBottom="@dimen/_15sdp"
-            android:layout_weight="28"
-            android:background="@color/color_tips"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_welearn" />
+        tools:context=".activity.DashboardActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="20"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:weightSum="100">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="0dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:layout_weight="5"
+                android:background="@color/color_tips"
+                android:scaleType="fitXY"
+                android:src="@drawable/cutest" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:layout_weight="28"
+                android:background="@color/color_tips"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_welearn" />
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/_20sdp"
-                android:layout_marginEnd="@dimen/_15sdp"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="20"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_rounded_blue_border"
+                        android:layout_height="match_parent"
                         android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="@dimen/_2sdp">
+                        android:orientation="vertical">
 
-
-                        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            card_view:cardCornerRadius="@dimen/_10sdp"
-                            card_view:cardElevation="0dp">
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_rounded_blue_border"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_2sdp">
 
-                            <androidx.appcompat.widget.AppCompatImageView
+
+                            <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                xmlns:card_view="http://schemas.android.com/apk/res-auto"
                                 android:layout_width="match_parent"
+                                android:id="@+id/cvAbout"
                                 android:layout_height="match_parent"
-                                android:background="@color/color_about"
-                                android:padding="@dimen/_12sdp"
-                                android:src="@drawable/ic_about" />
-                        </androidx.cardview.widget.CardView>
+                                card_view:cardCornerRadius="@dimen/_10sdp"
+                                card_view:cardElevation="0dp">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@color/color_about"
+                                    android:padding="@dimen/_12sdp"
+                                    android:src="@drawable/ic_about" />
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="About"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14ssp" />
                     </LinearLayout>
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:text="About"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_14ssp" />
                 </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_20sdp"
-                android:layout_weight="1"
-                android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_rounded_blue_border"
+                        android:layout_height="match_parent"
                         android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="@dimen/_2sdp">
+                        android:orientation="vertical">
 
-
-                        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            card_view:cardCornerRadius="@dimen/_10sdp"
-                            card_view:cardElevation="0dp">
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_rounded_blue_border"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_2sdp">
 
-                            <androidx.appcompat.widget.AppCompatImageView
+
+                            <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                xmlns:card_view="http://schemas.android.com/apk/res-auto"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@color/color_test"
-                                android:padding="@dimen/_12sdp"
-                                android:src="@drawable/ic_test" />
-                        </androidx.cardview.widget.CardView>
-                    </LinearLayout>
+                                android:id="@+id/cvTest"
+                                card_view:cardCornerRadius="@dimen/_10sdp"
+                                card_view:cardElevation="0dp">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:text="Test"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_14ssp" />
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@color/color_test"
+                                    android:padding="@dimen/_12sdp"
+                                    android:src="@drawable/ic_test" />
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="Test"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14ssp" />
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_weight="20"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_rounded_blue_border"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_2sdp">
+
+
+                            <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                card_view:cardCornerRadius="@dimen/_10sdp"
+                                android:id="@+id/cvPractice"
+                                card_view:cardElevation="0dp">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@color/color_practice"
+                                    android:padding="@dimen/_12sdp"
+                                    android:src="@drawable/ic_practice" />
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="Practice"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14ssp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_rounded_blue_border"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_2sdp">
+
+
+                            <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/cvMaterials"
+                                card_view:cardCornerRadius="@dimen/_10sdp"
+                                card_view:cardElevation="0dp">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@color/color_materials"
+                                    android:padding="@dimen/_12sdp"
+                                    android:src="@drawable/ic_materials" />
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="Materials"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14ssp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_weight="20"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_rounded_blue_border"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_2sdp">
+
+
+                            <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/cvVideo"
+                                card_view:cardCornerRadius="@dimen/_10sdp"
+                                card_view:cardElevation="0dp">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@color/color_video"
+                                    android:padding="@dimen/_12sdp"
+                                    android:src="@drawable/ic_video" />
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="Video"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14ssp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_rounded_blue_border"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_2sdp">
+
+
+                            <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/cvTips"
+                                card_view:cardCornerRadius="@dimen/_10sdp"
+                                card_view:cardElevation="0dp">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@color/color_tips"
+                                    android:padding="@dimen/_12sdp"
+                                    android:src="@drawable/ic_tips" />
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:text="Tips"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14ssp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="0dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_weight="7"
+                android:background="@color/color_tips"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_erasmus" />
+
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_weight="20"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/_20sdp"
-                android:layout_marginEnd="@dimen/_15sdp"
-
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_rounded_blue_border"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="@dimen/_2sdp">
-
-
-                        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            card_view:cardCornerRadius="@dimen/_10sdp"
-                            card_view:cardElevation="0dp">
-
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@color/color_practice"
-                                android:padding="@dimen/_12sdp"
-                                android:src="@drawable/ic_practice" />
-                        </androidx.cardview.widget.CardView>
-                    </LinearLayout>
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:text="Practice"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_14ssp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_20sdp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_rounded_blue_border"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="@dimen/_2sdp">
-
-
-                        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            card_view:cardCornerRadius="@dimen/_10sdp"
-                            card_view:cardElevation="0dp">
-
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@color/color_materials"
-                                android:padding="@dimen/_12sdp"
-                                android:src="@drawable/ic_materials" />
-                        </androidx.cardview.widget.CardView>
-                    </LinearLayout>
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:text="Materials"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_14ssp" />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_weight="20"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/_20sdp"
-                android:layout_marginEnd="@dimen/_15sdp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_rounded_blue_border"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="@dimen/_2sdp">
-
-
-                        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            card_view:cardCornerRadius="@dimen/_10sdp"
-                            card_view:cardElevation="0dp">
-
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@color/color_video"
-                                android:padding="@dimen/_12sdp"
-                                android:src="@drawable/ic_video" />
-                        </androidx.cardview.widget.CardView>
-                    </LinearLayout>
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:text="Video"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_14ssp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_20sdp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_rounded_blue_border"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="@dimen/_2sdp">
-
-
-                        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            card_view:cardCornerRadius="@dimen/_10sdp"
-                            card_view:cardElevation="0dp">
-
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@color/color_tips"
-                                android:padding="@dimen/_12sdp"
-                                android:src="@drawable/ic_tips" />
-                        </androidx.cardview.widget.CardView>
-                    </LinearLayout>
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:text="Tips"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_14ssp" />
-                </LinearLayout>
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:layout_weight="7"
-            android:background="@color/color_tips"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_erasmus" />
-
-    </LinearLayout>
-
-</RelativeLayout>
+    </RelativeLayout>
+</layout>
