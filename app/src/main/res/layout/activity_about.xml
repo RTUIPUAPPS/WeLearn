@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
+        android:orientation="vertical"
         android:layout_height="match_parent"
         android:background="@color/white"
+        android:paddingBottom="@dimen/_10sdp"
         tools:context=".activity.DashboardActivity">
 
         <ScrollView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -33,13 +36,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:text="WeLearn is a project that aims to find ways to support teachers and students in higher education to support neighbourness in their multicultural learning environments. We study neighbourness practices and create instructions for educators and students on how to embrace those practices to make the learning environments, digital and physical, better for all. The WeLearn has overall six European partners: Tampere University, Riga Technical University, Film University Babelsber, Aalborg University, Catholic University of Sacred Heart and Suleyman Demirel University. WeLearn project is led by Tampere University, while Riga Technical University is in charge of the technical development of the WeLearn application.
-
-\n \nThis project has been funded with support from the European Commission. The author is solely responsible for this publication (communication) and the Commission accepts no responsibility for any use may be made of the information contained therein.
-"
+                    android:text="@string/str_about"
+                    android:justificationMode="inter_word"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14ssp" />
             </LinearLayout>
         </ScrollView>
-    </RelativeLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/_127sdp"
+            android:layout_height="@dimen/_36sdp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+             android:background="@color/color_tips"
+            android:scaleType="fitXY"
+            android:src="@drawable/eu_flag_co_funded_pos" />
+
+    </LinearLayout>
 </layout>
