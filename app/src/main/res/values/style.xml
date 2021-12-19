@@ -8,7 +8,7 @@
     </style>
 
     <style name="StyleButton" >
-         <item name="android:background">@color/purple_500</item>
+         <item name="android:background">@drawable/bg_blue_rounded</item>
          <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/_12ssp</item>
     </style>

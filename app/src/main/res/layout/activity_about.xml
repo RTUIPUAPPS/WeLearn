@@ -33,10 +33,11 @@
                     android:textStyle="bold" />
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvAbout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:text="@string/str_about"
+                    tools:text="@string/str_about"
                     android:justificationMode="inter_word"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14ssp" />

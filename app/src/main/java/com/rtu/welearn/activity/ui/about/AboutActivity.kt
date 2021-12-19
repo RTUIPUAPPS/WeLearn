@@ -1,0 +1,45 @@
+package com.rtu.welearn.activity.ui.about
+
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import androidx.databinding.DataBindingUtil
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+import com.rtu.welearn.R
+import com.rtu.welearn.activity.BaseActivity
+import com.rtu.welearn.activity.WeLearnApp.Companion.mDatabase
+import com.rtu.welearn.activity.utils.Constants.Companion.ABOUT
+import com.rtu.welearn.databinding.ActivityAboutBinding
+
+class AboutActivity : BaseActivity() {
+
+    companion object {
+        fun getIntent(mContext: Context): Intent {
+            var intent = Intent(mContext, AboutActivity::class.java)
+            return intent
+        }
+    }
+
+    var binding: ActivityAboutBinding? = null
+    private var mCloudEndPoint: DatabaseReference? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_about)
+
+
+        mCloudEndPoint =  mDatabase?.child(ABOUT)
+        mCloudEndPoint?.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                binding?.tvAbout?.text = snapshot.value.toString()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })
+    }
+
+}

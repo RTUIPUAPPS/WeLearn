@@ -17,5 +17,6 @@
     <color name="color_transparent">#00000000</color>
     <color name="color_tips">#F2F2F2</color>
     <color name="color_blue_button">#BBD9F2</color>
+    <color name="color_blue">#FF3700B3</color>
 
 </resources>

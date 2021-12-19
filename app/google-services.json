@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "655993030551",
+    "project_id": "welearn-335114",
+    "storage_bucket": "welearn-335114.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:655993030551:android:4f8ec09b4541f4c1db66d2",
+        "android_client_info": {
+          "package_name": "com.rtu.welearn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "655993030551-163h3l9oe2e2gi1eudgmem5gbr36ish4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEEVg4wjrCAscIWfnRuywrRTnsSQKIRvE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "655993030551-163h3l9oe2e2gi1eudgmem5gbr36ish4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

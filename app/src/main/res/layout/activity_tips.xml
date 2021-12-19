@@ -7,8 +7,6 @@
         android:layout_height="match_parent"
         android:background="@color/white"
         tools:context=".activity.DashboardActivity">
-
-
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
@@ -20,6 +18,7 @@
             android:textSize="@dimen/_16ssp"
             android:textStyle="bold" />
 
+
         <LinearLayout
             android:layout_below="@+id/tvTitle"
             android:layout_width="match_parent"
@@ -27,33 +26,13 @@
             android:layout_alignParentBottom="true"
             android:background="@color/white"
             android:gravity="center"
-
             android:orientation="vertical"
             android:padding="@dimen/_10sdp">
-
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnOnline"
-                style="@style/StyleButton"
-                android:text="Online"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnOffline"
-                style="@style/StyleButton"
-                android:text="Offline"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnBoth"
-                style="@style/StyleButton"
-                android:text="Both"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvTips"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
+
     </RelativeLayout>
 </layout>
