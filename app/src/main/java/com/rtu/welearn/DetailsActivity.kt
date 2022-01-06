@@ -1,10 +1,9 @@
-package com.rtu.welearn.activity
+package com.rtu.welearn
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import com.rtu.welearn.R
 import com.rtu.welearn.databinding.ActivityDetailsBinding
 
 class DetailsActivity : BaseActivity() {

@@ -1,4 +1,4 @@
-package com.rtu.welearn.activity
+package com.rtu.welearn
 
 import android.app.Application
 import com.google.firebase.database.DatabaseReference
@@ -11,6 +11,6 @@ class WeLearnApp:Application() {
 
     override fun onCreate() {
         super.onCreate()
-        mDatabase= FirebaseDatabase.getInstance().reference;
+        mDatabase = FirebaseDatabase.getInstance().reference;
     }
 }

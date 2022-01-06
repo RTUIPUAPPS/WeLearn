@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/_10sdp"
+        android:padding="@dimen/_10sdp"
+        tools:context=".DashboardActivity">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnFinish"
+            style="@style/StyleButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="@string/next"
+            android:textColor="@color/white" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/btnFinish"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                       android:id="@+id/tvRemaining"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/purple_700"
+                        android:textSize="@dimen/_20ssp"
+                        tools:text="3/10"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPagerQuestions"
+                    android:layout_width="match_parent"
+                     android:layout_height="match_parent"/>
+<!--                <androidx.appcompat.widget.AppCompatTextView-->
+<!--                    android:id="@+id/tvQuestion"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="@dimen/_10sdp"-->
+<!--                    android:textColor="@color/purple_700"-->
+<!--                    android:textSize="@dimen/_12ssp"-->
+<!--                    tools:text="You are a student in film- and tv production, with a migrant background from Brazil. You overhear a fellow student making fun of your accent in an offline seminar. The next day, you find that they are part of the team you will be working with for the whole semester. How do you approach them?" />-->
+
+<!--                <RadioGroup-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_marginTop="@dimen/_20sdp"-->
+<!--                    android:layout_height="wrap_content">-->
+
+<!--                    <RadioButton-->
+<!--                        android:id="@+id/rvAns1"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content" />-->
+
+<!--                    <RadioButton-->
+<!--                        android:id="@+id/rvAns2"-->
+<!--                        android:layout_marginTop="@dimen/_10sdp"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content" />-->
+
+<!--                    <RadioButton-->
+<!--                        android:id="@+id/rvAns3"-->
+<!--                        android:layout_marginTop="@dimen/_10sdp"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content" />-->
+
+<!--                    <RadioButton-->
+<!--                        android:id="@+id/rvAns4"-->
+<!--                        android:layout_marginTop="@dimen/_10sdp"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content" />-->
+
+<!--                    <RadioButton-->
+<!--                        android:id="@+id/rvAns5"-->
+<!--                        android:layout_marginTop="@dimen/_10sdp"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content" />-->
+<!--                </RadioGroup>-->
+            </LinearLayout>
+
+
+    </RelativeLayout>
+</layout>

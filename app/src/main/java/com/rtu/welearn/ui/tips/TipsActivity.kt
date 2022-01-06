@@ -1,4 +1,4 @@
-package com.rtu.welearn.activity.ui.tips
+package com.rtu.welearn.ui.tips
 
 import android.content.Context
 import android.content.Intent
@@ -11,9 +11,9 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.rtu.welearn.R
-import com.rtu.welearn.activity.BaseActivity
-import com.rtu.welearn.activity.WeLearnApp.Companion.mDatabase
-import com.rtu.welearn.activity.utils.Constants
+import com.rtu.welearn.BaseActivity
+import com.rtu.welearn.WeLearnApp.Companion.mDatabase
+import com.rtu.welearn.utils.Constants
 import com.rtu.welearn.databinding.ActivityTipsBinding
 
 class TipsActivity : BaseActivity() {

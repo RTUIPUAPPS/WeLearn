@@ -1,4 +1,4 @@
-package com.rtu.welearn.activity.utils
+package com.rtu.welearn.utils
 
 import android.annotation.SuppressLint
 import android.content.Context

@@ -1,4 +1,4 @@
-package com.rtu.welearn.activity.ui.tips
+package com.rtu.welearn.ui.tips
 
 import androidx.annotation.Keep
 import androidx.databinding.adapters.Converters

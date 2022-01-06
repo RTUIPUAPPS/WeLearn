@@ -1,4 +1,4 @@
-package com.rtu.welearn.activity
+package com.rtu.welearn
 
 import android.content.Context
 import android.content.Intent

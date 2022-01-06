@@ -1,4 +1,4 @@
-package com.rtu.welearn.activity.ui.tips
+package com.rtu.welearn.ui.test
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,37 +7,38 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.rtu.welearn.R
+import kotlinx.android.synthetic.main.row_test.view.*
 import kotlinx.android.synthetic.main.row_tips.view.*
 
 
-class TipsAdapter :
-    RecyclerView.Adapter<TipsAdapter.ViewHolder>() {
+class TestAdapter( var listQuestions : ArrayList<ModelTestQuestion>) :
+    RecyclerView.Adapter<TestAdapter.ViewHolder>() {
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-    private val differCallback = object : DiffUtil.ItemCallback<TipsResponse>() {
+    private val differCallback = object : DiffUtil.ItemCallback<ModelTestQuestion>() {
 
         override fun areItemsTheSame(
-            oldItem: TipsResponse,
-            newItem: TipsResponse
+            oldItem: ModelTestQuestion,
+            newItem: ModelTestQuestion
         ): Boolean {
             return oldItem == newItem
         }
 
         override fun areContentsTheSame(
-            oldItem: TipsResponse,
-            newItem: TipsResponse
+            oldItem: ModelTestQuestion,
+            newItem: ModelTestQuestion
         ): Boolean {
             return oldItem == newItem
         }
     }
 
-    val differ = AsyncListDiffer(this, differCallback)
+//    val differ = AsyncListDiffer(this, differCallback)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         return ViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.row_tips,
+                R.layout.row_test,
                 parent,
                 false
             )
@@ -45,21 +46,24 @@ class TipsAdapter :
     }
 
     override fun getItemCount(): Int {
-        return differ.currentList.size
+        return listQuestions.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val tipsData: TipsResponse? = differ.currentList[position]
+        val questionData: ModelTestQuestion = listQuestions[position]
         holder.itemView.apply {
-            tipsData?.let { tips ->
-                btnOnline.text = tips.name
+            questionData?.let { question ->
+                tvQuestion.text = question.Question
+//                tvTitle.setOnClickListener {
+//                    onItemClickListener?.let { it(tipsData) }
+//                }
             }
         }
     }
 
-    private var onItemClickListener: ((TipsResponse) -> Unit)? = null
+    private var onItemClickListener: ((ModelTestQuestion) -> Unit)? = null
 
-    fun setOnItemClickListener(listener: (TipsResponse) -> Unit) {
+    fun setOnItemClickListener(listener: (ModelTestQuestion) -> Unit) {
         onItemClickListener = listener
     }
 

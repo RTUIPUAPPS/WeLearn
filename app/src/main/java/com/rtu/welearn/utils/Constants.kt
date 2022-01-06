@@ -1,4 +1,4 @@
-package com.rtu.welearn.activity.utils
+package com.rtu.welearn.utils
 
 class Constants {
     companion object{
@@ -9,6 +9,7 @@ class Constants {
         const val  INTERVAL_DEVICE_LOCATION=1000L
         const val  PREF_NAME="vehicle_pref"
         const val  ABOUT="about"
+        const val  TEST="test"
         const val  TIPS="tips"
         const val  TIPS_ONLINE="online"
         const val  TIPS_OFFLINE="offline"

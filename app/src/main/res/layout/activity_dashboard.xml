@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activity.DashboardActivity">
+        tools:context=".DashboardActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,6 +27,7 @@
                 android:src="@drawable/cutest" />
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivWeLearn"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_gravity="center_horizontal"
@@ -370,8 +371,8 @@
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="@dimen/_127sdp"
-                android:layout_height="0dp"
+                android:layout_width="@dimen/_147sdp"
+                android:layout_height="@dimen/_25sdp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_5sdp"

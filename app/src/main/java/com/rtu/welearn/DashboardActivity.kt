@@ -1,4 +1,4 @@
-package com.rtu.welearn.activity
+package com.rtu.welearn
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,12 +13,13 @@ import com.google.api.client.json.jackson2.JacksonFactory
 import com.google.api.services.sheets.v4.Sheets
 import com.google.api.services.sheets.v4.SheetsScopes
 import com.google.api.services.sheets.v4.model.Sheet
-import com.rtu.welearn.R
-import com.rtu.welearn.activity.ui.about.AboutActivity
-import com.rtu.welearn.activity.ui.tips.TipsActivity
-import com.rtu.welearn.activity.utils.AppUtils.isInternetAvailable
-import com.rtu.welearn.activity.utils.AppUtils.showToast
+import com.rtu.welearn.ui.about.AboutActivity
+import com.rtu.welearn.ui.tips.TipsActivity
+import com.rtu.welearn.utils.AppUtils.isInternetAvailable
+import com.rtu.welearn.utils.AppUtils.showToast
 import com.rtu.welearn.databinding.ActivityDashboardBinding
+import com.rtu.welearn.ui.firebase.FirebaseMainActivity
+import com.rtu.welearn.ui.test.TestActivity
 
 class DashboardActivity : BaseActivity() {
     companion object {
@@ -50,12 +51,15 @@ class DashboardActivity : BaseActivity() {
         binding?.cvTest?.setOnClickListener {
 
             if (isInternetAvailable(applicationContext)) {
-                launchActivity(DetailsActivity.getIntent(this))
+                launchActivity(TestActivity.getIntent(this))
             } else {
                 this.showToast(getString(R.string.please_check_device_internet_connection))
             }
         }
         binding?.cvVideo?.setOnClickListener { launchActivity(DetailsActivity.getIntent(this)) }
+        binding?.ivWeLearn?.setOnClickListener {
+            launchActivity(FirebaseMainActivity.getIntent(this))
+        }
 
 //        requestSignIn()
 //        val scopes = listOf(SheetsScopes.SPREADSHEETS)
