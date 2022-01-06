@@ -1,7 +1,9 @@
 package com.rtu.welearn.utils
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities
@@ -39,6 +41,20 @@ object AppUtils {
             // else return false
             else -> false
         }
+    }
+
+    fun showTipsDialog(strMessage:String,context:Context?){
+        var builder: AlertDialog.Builder = AlertDialog.Builder(context)
+        builder.setMessage(strMessage)
+        builder.setCancelable(false)
+        builder  .setPositiveButton("Dismiss"
+        ) { dialog, p1 ->    dialog.cancel();   }
+
+        val alert = builder.create()
+        //Setting the title manually
+        //Setting the title manually
+
+        alert.show()
     }
 
 }

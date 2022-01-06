@@ -8,4 +8,7 @@
     <string name="submit">Submit</string>
     <string name="next">Next</string>
     <string name="finish">Finish</string>
+    <string name="online">Online</string>
+    <string name="offline" >Offline</string>
+    <string name="both">Both</string>
 </resources>

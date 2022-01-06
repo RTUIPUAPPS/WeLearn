@@ -32,7 +32,7 @@ data class ModelTestQuestion (
     val Points4:String,
 
     @Key("Reply5")
-    val Reply5:String,
+    val Reply5:String?,
 
     @Key("Points5")
     val Points5:String)

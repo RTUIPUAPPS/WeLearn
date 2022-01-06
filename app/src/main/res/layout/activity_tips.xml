@@ -28,9 +28,36 @@
             android:gravity="center"
             android:orientation="vertical"
             android:padding="@dimen/_10sdp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnOnline"
+                style="@style/StyleButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/online"
+                android:textColor="@color/white" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnOffline"
+                style="@style/StyleButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/offline"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnBoth"
+                style="@style/StyleButton"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:text="@string/both"
+                android:textColor="@color/white" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvTips"
                 android:layout_width="match_parent"
+                android:visibility="gone"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
