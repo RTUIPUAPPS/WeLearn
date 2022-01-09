@@ -33,9 +33,9 @@ class TestActivity : BaseActivity() {
     private var listAllQuestions = ArrayList<ModelTestQuestion>()
     private var listAllQuestionsTemp = ArrayList<ModelTestQuestion>()
     private var listExamQuestions = ArrayList<ModelTestQuestion>()
-    private var currentPos = 1
+    private var currentPos = 0
     private var pointsCollected = 0
-    private var arrayAnswers = HashMap<Int,Int>()
+    private var arrayAnswers = HashMap<Int, Int>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_test)
@@ -66,6 +66,8 @@ class TestActivity : BaseActivity() {
 
     private fun initClick() {
         binding?.btnFinish?.setOnClickListener {
+
+
             if (currentPos == 9) {
                 var points = 0
                 arrayAnswers.forEach {
@@ -74,10 +76,9 @@ class TestActivity : BaseActivity() {
                 showToast(points.toString())
 
             } else {
-                currentPos += 1
-                binding?.viewPagerQuestions?.setCurrentItem(currentPos + 1, true)
-                binding?.rgAnswers?.clearCheck()
-//                showQuestion(currentPos)
+//                binding?.viewPagerQuestions?.setCurrentItem(currentPos + 1, true)
+                currentPos+=1
+                showQuestion(currentPos)
             }
         }
     }
@@ -88,6 +89,7 @@ class TestActivity : BaseActivity() {
 
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
+                binding?.progressBar?.progress = position+1
                 currentPos = position
                 binding?.tvRemaining?.text = "${currentPos + 1}/10"
 
@@ -107,27 +109,28 @@ class TestActivity : BaseActivity() {
             val randomElement = listAllQuestionsTemp[randomIndex]
             listExamQuestions.add(randomElement)
             listAllQuestionsTemp.remove(randomElement)
-            // here we can use the selected element to print it for example
-            println("#Random: " + randomElement.Question)
         }
 
-        val testAdapter = MyAdapter(mContext, listExamQuestions, object : interfaceAnswerSelected {
-            override fun onAnswerSelected(position: Int, ans: Int) {
-                arrayAnswers.put(position, ans)
-            }
-        })
-        binding?.viewPagerQuestions?.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-        binding?.viewPagerQuestions?.adapter = testAdapter
-        //showQuestion(0)
+//        val testAdapter = MyAdapter(mContext, listExamQuestions, object : interfaceAnswerSelected {
+//            override fun onAnswerSelected(position: Int, ans: Int) {
+//                arrayAnswers.put(position, ans)
+//            }
+//        })
+//        binding?.viewPagerQuestions?.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+//        binding?.viewPagerQuestions?.adapter = testAdapter
+
+        showQuestion(0)
 
     }
 
 
     private fun showQuestion(position: Int) {
+        binding?.rgAnswers?.clearCheck()
         if (listExamQuestions.size > 0) {
-            binding?.tvRemaining?.text = "$position/${listExamQuestions.size}"
-            val model = listExamQuestions[position]
 
+            binding?.tvRemaining?.text = "${position+1}/${listExamQuestions.size}"
+            binding?.progressBar?.progress = position+1
+            val model = listExamQuestions[position]
 
             binding?.tvQuestion?.text = model.Question
             binding?.rbAns1?.text = model.Reply1

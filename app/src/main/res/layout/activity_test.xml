@@ -41,9 +41,15 @@
                     tools:text="3/10" />
 
             </LinearLayout>
-
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:max="10"
+                android:progressTint="@color/purple_500"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_10sdp"
+                style="?android:attr/progressBarStyleHorizontal"/>
             <ScrollView
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -117,7 +123,7 @@
                 android:id="@+id/viewPagerQuestions"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="visible" />
+                android:visibility="gone" />
             <!--                <androidx.appcompat.widget.AppCompatTextView-->
             <!--                    android:id="@+id/tvQuestion"-->
             <!--                    android:layout_width="match_parent"-->
