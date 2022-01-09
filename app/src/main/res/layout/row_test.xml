@@ -4,7 +4,6 @@
     android:id="@+id/rlRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/custom_ripple_light_blue"
     android:clickable="true"
     android:focusable="true"
     android:orientation="vertical"
@@ -14,8 +13,10 @@
         android:id="@+id/tvQuestion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
         android:textColor="@color/purple_700"
-        android:textSize="@dimen/_12ssp"
+        android:textSize="@dimen/_14ssp"
+        android:textStyle="bold"
         tools:text="You are a student in film- and tv production, with a migrant background from Brazil. You overhear a fellow student making fun of your accent in an offline seminar. The next day, you find that they are part of the team you will be working with for the whole semester. How do you approach them?" />
 
     <RadioGroup
@@ -26,29 +27,45 @@
         <RadioButton
             android:id="@+id/rbAns1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:button="@drawable/custom_btn_radio"
+            android:textSize="@dimen/_14ssp" />
 
         <RadioButton
             android:id="@+id/rbAns2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:button="@drawable/custom_btn_radio"
+            android:textSize="@dimen/_14ssp" />
 
         <RadioButton
             android:id="@+id/rbAns3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:button="@drawable/custom_btn_radio"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_14ssp" />
 
         <RadioButton
             android:id="@+id/rbAns4"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:button="@drawable/custom_btn_radio"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_14ssp" />
 
         <RadioButton
             android:id="@+id/rbAns5"
-            android:visibility="gone"
-            tools:visibility="visible"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:button="@drawable/custom_btn_radio"
+            android:textSize="@dimen/_14ssp"
+            android:visibility="gone"
+            tools:visibility="visible" />
     </RadioGroup>
+
 
 </LinearLayout>

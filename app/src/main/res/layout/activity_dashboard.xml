@@ -371,7 +371,7 @@
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="@dimen/_147sdp"
+                android:layout_width="@dimen/_200sdp"
                 android:layout_height="@dimen/_25sdp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/_10sdp"
@@ -379,7 +379,7 @@
                 android:layout_weight="7"
                 android:background="@color/color_tips"
                 android:scaleType="fitXY"
-                android:src="@drawable/eu_flag_co_funded_pos" />
+                android:src="@drawable/eu_flag_co_funded_pos_rgb_right" />
 
         </LinearLayout>
 

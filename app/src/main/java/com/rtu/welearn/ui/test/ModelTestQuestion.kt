@@ -2,37 +2,40 @@ package com.rtu.welearn.ui.test
 
 import com.google.api.client.util.Key
 
-data class ModelTestQuestion (
+data class ModelTestQuestion(
     @Key("Question")
-    val Question:String,
+    val Question: String,
 
     @Key("Reply1")
-    val Reply1:String,
+    val Reply1: String,
 
     @Key("Points1")
-    val Points1:String,
+    val Points1: String,
 
     @Key("Reply2")
-    val Reply2:String,
+    val Reply2: String,
 
 
     @Key("Points2")
-    val Points2:String,
+    val Points2: String,
 
     @Key("Reply3")
-    val Reply3:String,
+    val Reply3: String,
 
     @Key("Points3")
-    val Points3:String,
+    val Points3: String,
 
     @Key("Reply4")
-    val Reply4:String,
+    val Reply4: String,
 
     @Key("Points4")
-    val Points4:String,
+    val Points4: String,
 
     @Key("Reply5")
-    val Reply5:String?,
+    val Reply5: String?,
 
     @Key("Points5")
-    val Points5:String)
+    val Points5: String,
+    var selectedAnswerPosition: Int
+)
+

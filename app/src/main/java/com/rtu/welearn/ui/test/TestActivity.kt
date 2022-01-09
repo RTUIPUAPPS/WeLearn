@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.viewpager2.widget.ViewPager2
 import com.google.firebase.database.DataSnapshot
@@ -36,7 +35,7 @@ class TestActivity : BaseActivity() {
     private var listExamQuestions = ArrayList<ModelTestQuestion>()
     private var currentPos = 1
     private var pointsCollected = 0
-    private var arrayAnswers = ArrayList<Int>()
+    private var arrayAnswers = HashMap<Int,Int>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_test)
@@ -52,10 +51,7 @@ class TestActivity : BaseActivity() {
                     listAllQuestions.add(model)
                     listAllQuestionsTemp.add(model)
                 }
-
-
                 selectRandomQuestions()
-
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -71,15 +67,17 @@ class TestActivity : BaseActivity() {
     private fun initClick() {
         binding?.btnFinish?.setOnClickListener {
             if (currentPos == 9) {
-
                 var points = 0
                 arrayAnswers.forEach {
-                    points += it
+                    points += it.value
                 }
                 showToast(points.toString())
 
             } else {
+                currentPos += 1
                 binding?.viewPagerQuestions?.setCurrentItem(currentPos + 1, true)
+                binding?.rgAnswers?.clearCheck()
+//                showQuestion(currentPos)
             }
         }
     }
@@ -98,13 +96,11 @@ class TestActivity : BaseActivity() {
                 }
 
             }
-
         })
     }
 
 
     private fun selectRandomQuestions() {
-
 
         for (i in 0..9) {
             val randomIndex = kotlin.random.Random.nextInt(listAllQuestionsTemp.size)
@@ -117,13 +113,29 @@ class TestActivity : BaseActivity() {
 
         val testAdapter = MyAdapter(mContext, listExamQuestions, object : interfaceAnswerSelected {
             override fun onAnswerSelected(position: Int, ans: Int) {
-                arrayAnswers.add(position, ans)
+                arrayAnswers.put(position, ans)
             }
-
         })
         binding?.viewPagerQuestions?.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         binding?.viewPagerQuestions?.adapter = testAdapter
+        //showQuestion(0)
 
     }
 
+
+    private fun showQuestion(position: Int) {
+        if (listExamQuestions.size > 0) {
+            binding?.tvRemaining?.text = "$position/${listExamQuestions.size}"
+            val model = listExamQuestions[position]
+
+
+            binding?.tvQuestion?.text = model.Question
+            binding?.rbAns1?.text = model.Reply1
+            binding?.rbAns2?.text = model.Reply2
+            binding?.rbAns3?.text = model.Reply3
+            binding?.rbAns4?.text = model.Reply4
+            binding?.rbAns5?.text = model.Reply5
+
+        }
+    }
 }
