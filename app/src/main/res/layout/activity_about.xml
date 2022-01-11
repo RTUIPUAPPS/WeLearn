@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="@color/color_white"
         android:paddingBottom="@dimen/_10sdp"
         tools:context=".DashboardActivity">
 
@@ -19,7 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentBottom="true"
-                android:background="@color/white"
+                android:background="@color/color_white"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:padding="@dimen/_10sdp">
@@ -39,7 +39,7 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     tools:text="@string/str_about"
                     android:justificationMode="inter_word"
-                    android:textColor="@color/black"
+                    android:textColor="@color/color_black"
                     android:textSize="@dimen/_14ssp" />
             </LinearLayout>
         </ScrollView>

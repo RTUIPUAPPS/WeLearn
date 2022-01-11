@@ -11,4 +11,9 @@
     <string name="online">Online</string>
     <string name="offline" >Offline</string>
     <string name="both">Both</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="tips_online">Tips: Online</string>
+    <string name="tips_offline">Tips: Offline</string>
+    <string name="tips_online_offline">Tips: Online / Offline</string>
+    <string name="test_result">Test Result</string>
 </resources>

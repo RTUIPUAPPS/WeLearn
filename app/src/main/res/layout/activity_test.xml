@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="@color/color_white"
         android:orientation="vertical"
         android:padding="@dimen/_10sdp"
         android:paddingBottom="@dimen/_10sdp"
@@ -18,13 +18,16 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:text="@string/next"
-            android:textColor="@color/white" />
+            android:textColor="@color/color_white" />
 
         <LinearLayout
+            android:id="@+id/llTest"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/btnFinish"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -41,17 +44,19 @@
                     tools:text="3/10" />
 
             </LinearLayout>
+
             <ProgressBar
                 android:id="@+id/progressBar"
-                android:max="10"
-                android:progressTint="@color/purple_500"
+                style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_10sdp"
-                style="?android:attr/progressBarStyleHorizontal"/>
+                android:max="10"
+                android:progressTint="@color/purple_500" />
+
             <ScrollView
-                android:visibility="visible"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -80,10 +85,15 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:button="@drawable/custom_btn_radio"
+                            android:drawablePadding="@dimen/_20sdp"
+                             android:paddingStart="@dimen/_10sdp"
+                            android:paddingLeft="@dimen/_10sdp"
                             android:textSize="@dimen/_14ssp" />
 
                         <RadioButton
                             android:id="@+id/rbAns2"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingLeft="@dimen/_10sdp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
@@ -92,22 +102,28 @@
 
                         <RadioButton
                             android:id="@+id/rbAns3"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingLeft="@dimen/_10sdp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:button="@drawable/custom_btn_radio"
                             android:layout_marginTop="@dimen/_10sdp"
+                            android:button="@drawable/custom_btn_radio"
                             android:textSize="@dimen/_14ssp" />
 
                         <RadioButton
                             android:id="@+id/rbAns4"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingLeft="@dimen/_10sdp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:button="@drawable/custom_btn_radio"
                             android:layout_marginTop="@dimen/_10sdp"
+                            android:button="@drawable/custom_btn_radio"
                             android:textSize="@dimen/_14ssp" />
 
                         <RadioButton
                             android:id="@+id/rbAns5"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingLeft="@dimen/_10sdp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
@@ -169,6 +185,12 @@
             <!--                </RadioGroup>-->
         </LinearLayout>
 
+        <ProgressBar
+            android:id="@+id/progressBarCircle"
+            android:layout_width="wrap_content"
+            android:visibility="visible"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 </layout>

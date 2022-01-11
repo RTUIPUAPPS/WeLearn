@@ -9,7 +9,7 @@
 
     <style name="StyleButton" >
          <item name="android:background">@drawable/bg_blue_rounded</item>
-         <item name="android:textColor">@color/white</item>
+         <item name="android:textColor">@color/color_white</item>
         <item name="android:textSize">@dimen/_12ssp</item>
     </style>
 </resources>

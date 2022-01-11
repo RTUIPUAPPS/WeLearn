@@ -43,18 +43,18 @@ object AppUtils {
         }
     }
 
-    fun showTipsDialog(strMessage:String,context:Context?){
-        var builder: AlertDialog.Builder = AlertDialog.Builder(context)
-        builder.setMessage(strMessage)
-        builder.setCancelable(false)
-        builder  .setPositiveButton("Dismiss"
-        ) { dialog, p1 ->    dialog.cancel();   }
-
-        val alert = builder.create()
-        //Setting the title manually
-        //Setting the title manually
-
-        alert.show()
-    }
+//    fun showTipsDialog(strMessage:String,context:Context?){
+//        var builder: AlertDialog.Builder = AlertDialog.Builder(context)
+//        builder.setMessage(strMessage)
+//        builder.setCancelable(false)
+//        builder  .setPositiveButton("Dismiss"
+//        ) { dialog, p1 ->    dialog.cancel();   }
+//
+//        val alert = builder.create()
+//        //Setting the title manually
+//        //Setting the title manually
+//
+//        alert.show()
+//    }
 
 }

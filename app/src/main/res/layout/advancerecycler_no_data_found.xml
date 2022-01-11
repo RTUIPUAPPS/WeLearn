@@ -6,4 +6,4 @@
     android:gravity="center"
     android:orientation="vertical"
     android:textAlignment="center"
-    android:textColor="@color/black" />
+    android:textColor="@color/color_black" />
