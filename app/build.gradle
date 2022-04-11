@@ -88,4 +88,7 @@ dependencies {
 
     //ViewPager
     implementation 'androidx.viewpager2:viewpager2:1.1.0-beta01'
+
+    //Expandable View
+    implementation 'com.github.cachapa:ExpandableLayout:2.9.2'
 }

@@ -1,0 +1,764 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_white"
+            android:padding="@dimen/_10sdp"
+            tools:context=".DashboardActivity">
+
+            <LinearLayout
+                android:id="@+id/llToolOne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_blue_rounded"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_weight="8"
+                    android:background="@color/color_transparent"
+                    android:clickable="false"
+                    android:text="@string/tools_title1"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/_9ssp" />
+
+                <View
+                    android:layout_width="@dimen/_1sdp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_white" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvToolDesc1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text=">"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/_18ssp" />
+            </LinearLayout>
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/expandable_layout_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/llToolOne"
+                android:background="@color/purple_500"
+                app:el_duration="1000"
+                app:el_expanded="false"
+                app:el_parallax="0.5">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/purple_300"
+                    android:padding="@dimen/_10sdp"
+                    android:text="TOOL IMPLEMENTATION
+\n \n 1. The teacher decides on the topic of interest and the methodology.
+\n \n2. Students are divided into small groups, preferably a mix of foreign and local students.
+\n \n3. Students could adopt either a joint desk-based research, individual interviews to research
+the topic provided by the teacher.
+\n \n 4. Students can then present either video or Powerpoint presentations of their findings and
+what new things they have learned about the culture investigated. The presentation is
+made to other groups of students, who also share what they learn from the presentations
+made.
+\n \n 5. The students are then asked to write a report on their experience."
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_white"
+                    android:visibility="visible" />
+
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
+            <LinearLayout
+                android:id="@+id/llToolTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/expandable_layout_1"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/bg_blue_rounded"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_weight="8"
+                    android:background="@color/color_transparent"
+                    android:clickable="false"
+                    android:text="@string/tools_title2"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/_9ssp" />
+
+                <View
+                    android:layout_width="@dimen/_1sdp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_white" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:id="@+id/tvToolDesc2"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text=">"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/_18ssp" />
+            </LinearLayout>
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/expandable_layout_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/llToolTwo"
+                android:background="@color/purple_500"
+                app:el_duration="1000"
+                app:el_expanded="false"
+                app:el_parallax="0.5">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/purple_300"
+                    android:padding="@dimen/_10sdp"
+                    android:text="TOOL IMPLEMENTATION \n
+The students were asked to read and reflect on the book, “feeling Italian”. The reflection
+process is guided by a list of 10 questions. The overall number of words that constitute their
+answers is limited to 5000 characters-including spaces. The students.
+Questions
+\n \n 1. By reading the Feeling Italian book, did you learn anything new or surprising about the
+Italians today?
+\n \n 2. What aspect(s) in the book make you particularly reflect on your identity and/or country
+of origin?
+32
+\n \n 3. Think of the groups you feel you belong to. How are they important in defining the person
+you are today?
+\n \n 4. How and why did your membership in these groups contribute to you being the person
+you are today?
+\n \n 5. Think of the culture(s) you feel you have a sense of belonging. What are the traditional
+elements of that culture/s you feel attached to?
+\n \n 6. Think of the culture(s) you feel you have a sense of belonging. What are the innovative
+or diverse elements you bring to them, if any?
+\n \n 7. How do these groups’ membership contribute to developing your professional identity?
+\n \n 8. Have you ever thought about yourself as a citizen of the world? How did the Feeling
+Italian book affect your representation as a global citizen?
+\n \n 9. Are there any social or global challenges that are relevant to you or you feel particularly
+committed to?
+\n \n 10. As a future manager is there anything you think you could do to contribute to solving
+these challenges."
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_white"
+                    android:visibility="visible" />
+
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
+            <LinearLayout
+                android:id="@+id/llToolThree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/expandable_layout_2"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/bg_blue_rounded"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_weight="8"
+                    android:background="@color/color_transparent"
+                    android:clickable="false"
+                    android:text="@string/tools_title3"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/_9ssp" />
+
+                <View
+                    android:layout_width="@dimen/_1sdp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_white" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text=">"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/_18ssp" />
+            </LinearLayout>
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/expandable_layout_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/llToolThree"
+                android:background="@color/purple_500"
+                app:el_duration="1000"
+                app:el_expanded="false"
+                app:el_parallax="0.5">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/purple_300"
+                    android:padding="@dimen/_10sdp"
+                    android:text="TOOL IMPLEMENTATION
+\n \n 1. The teacher decides on the topic of interest and the methodology.
+\n \n 2. Students are divided into small groups, preferably a mix of foreign and local students.
+\n \n 3. Students could adopt either a joint desk-based research, individual interviews to research
+the topic provided by the teacher.
+\n \n 4. Students can then present either video or Powerpoint presentations of their findings and
+what new things they have learned about the culture investigated. The presentation is
+made to other groups of students, who also share what they learn from the presentations
+made.
+\n \n 5. The students are then asked to write a report on their experience.
+\n \n They can be encouraged to complete desk-based background research on a suggested topic
+(e.g., reading books and conducting research on the internet), and then interview people with
+expertise on the specific subject they are investigating."
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_white"
+                    android:visibility="visible" />
+
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
+            <LinearLayout
+                android:id="@+id/llToolFour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/expandable_layout_3"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/bg_blue_rounded"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_weight="8"
+                    android:background="@color/color_transparent"
+                    android:clickable="false"
+                    android:text="@string/tools_title4"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/_9ssp" />
+
+                <View
+                    android:layout_width="@dimen/_1sdp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_white" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:id="@+id/tvToolDesc4"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text=">"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/_18ssp" />
+            </LinearLayout>
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/expandable_layout_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/llToolFour"
+                android:background="@color/purple_500"
+                app:el_duration="1000"
+                app:el_expanded="false"
+                app:el_parallax="0.5">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/purple_300"
+                    android:padding="@dimen/_10sdp"
+                    android:text="TOOL IMPLEMENTATION
+\n \n 1. Step 1: Identification of stereotypes.
+\n \n The teacher randomly reads our list consisting of ethnic last name, skin color, cultural
+accent, disability, sexual preference, religion, nationality etc.
+The student lists what they feel and what comes to mind when they encounter anything
+read in the list.
+\n \n 2. Step 2: Looking for Consistency.
+35
+The student reflects on their feelings. The reflection is aimed at finding out if their feeling
+for the listed items are consistent to a certain group of people or to just individuals. These
+questions guide the reflection process:
+o Is my reaction consistent each time I encounter a member of a given group?
+o Do my reactions occur before or after I have the opportunity to know the
+individual?
+o The teacher then reveals to the student that the reaction is the basis for the
+negative reaction that occurs before they are acquainted with the individual.
+\n \n 3. Step 3: Developing anti-stereotype consciousness:
+The teacher then instructs the student on how to become conscious of his/her stereotypes.
+The teacher reminds the student to:
+\n \n Judge an individual’s character, skills and personality not based on the group
+they belong to on the individual’s merit.
+\n \n Become aware that the automatic responses they identified are stereotypes, which
+are no accurate indicators of an individual’s character, skill or personality.
+4. Step 4: Push Stereotypes Aside: Finally, after they have identified their stereotypes, they
+have to consciously learn to shove them aside long enough to see individuals for who
+they are during encounters. To help the students in pushing their stereotypes aside, the
+teacher can conscientize the students using this quote from Howard Ross:
+\n \n According to Howard Ross, “Stereotyping is a habit. Just as it is learned through
+repetition, it can be unlearned through practice. Each time a thought you have identified
+as a stereotype appears, push it aside” (source:
+https://culturalmisconceptions.wordpress.com/2013/03/22/overcoming-culturalstereotypes/
+)"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_white"
+                    android:visibility="visible" />
+
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
+            <LinearLayout
+                android:id="@+id/llToolFive"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/expandable_layout_4"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/bg_blue_rounded"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_weight="8"
+                    android:background="@color/color_transparent"
+                    android:clickable="false"
+                    android:text="@string/tools_title5"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/_9ssp" />
+
+                <View
+                    android:layout_width="@dimen/_1sdp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_white" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:id="@+id/tvToolDesc5"
+                    android:gravity="center"
+                    android:text=">"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/_18ssp" />
+            </LinearLayout>
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/expandable_layout_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/llToolFive"
+                android:background="@color/purple_500"
+                app:el_duration="1000"
+                app:el_expanded="false"
+                app:el_parallax="0.5">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/purple_300"
+                    android:padding="@dimen/_10sdp"
+                    android:text="TOOL IMPLEMENTATION
+\n \n The instructions for the activities are as follows:
+\n \n 1. The students are placed in pairs and given the following instructions:
+\n \n ● You will be given one small book to read together. You should complete the book in
+three minutes. Only start reading when I say so.
+\n \n o Read the book silently and do not communicate with your partner for the
+duration of the three minutes. Do go through every page.
+\n \n o When you are done reading the book, close it and wait for your partner to
+complete theirs as well.
+\n \n 2. Allow the students to read the book in pairs. (Two students can share one book!) Give
+them 3 minutes.
+\n \n 3. After three minutes, you do give the chance for the students who have not finished the
+book to do so.
+\n \n 4. When all students are done reading the book, ask the students to share their thoughts in
+pairs for about 5 minutes.
+
+\n \n 5. Ask the pairs to select a word that best describes the book and to share that word with the
+big group.
+\n \n 6. Ask the pairs to select one picture in the book that they both like.
+\n \n 7. Ask them to reveal to each other what they “see, hear, smell, taste and feel” (“what they
+feel with their body/hands but also in their hearts”).
+\n \n 8. Use the phrase: “Once upon a time…” and construct a story with the help of the sentences
+inspired in the chosen picture selected in stage 6.
+\n \n 9. Now instruct each pair of students to sit together with another pair and to narrate to each
+other the stories you have constructed. Talk about new words.
+\n \n 10. Discuss the following questions in the new groups of four:
+ “Are you familiar with these places?”
+ “Do they remind you of something? (Places you have visited, people you have met,
+feelings that you have felt?)”
+\n \n 11. Provide each student with laminated pages from the book. The students should not show
+their page to anyone else.
+\n \n 12. Ask them to mingle in the room and ask each other this question:
+\n \n  “What do you see in your picture?”
+Based on the information given they will place themselves in the right order so when
+everybody reveals their picture, every page comes in the right order.
+\n \n “If there are less participants than pages of the book, just use a part of the book,
+maybe the beginning, the end or a part in the middle somewhere”. (Source:
+www.listen.bupnet.eu)
+\n \n “The students can continue working with the book, e.g.: • drama/theatre and make
+up/improvise short dialogues or happenings inspired by the pictures in the book. • write
+dialogues, stories inspired by the pictures in the book • add music to the pictures • talk about
+their own experiences from life inspired by the pictures in the book. Think about/discuss: If
+you think about your own life right now and “zoom in”, what will you find? And what if you
+“zoom out”?” (Source: www.listen.bupnet.eu)"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_white"
+                    android:visibility="visible" />
+
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
+            <LinearLayout
+                android:id="@+id/llToolSix"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/expandable_layout_5"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/bg_blue_rounded"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_weight="8"
+                    android:background="@color/color_transparent"
+                    android:clickable="false"
+                    android:text="@string/tools_title6"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/_9ssp" />
+
+                <View
+                    android:layout_width="@dimen/_1sdp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_white" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text=">"
+                    android:id="@+id/tvToolDesc6"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/_18ssp" />
+            </LinearLayout>
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/expandable_layout_6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/llToolSix"
+                android:background="@color/purple_500"
+                app:el_duration="1000"
+                app:el_expanded="false"
+                app:el_parallax="0.5">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/purple_300"
+                    android:padding="@dimen/_10sdp"
+                    android:text="@string/selection_of_content_n_n_the_teacher_describes_a_critical_incident_critical_incidents_are_tools_for_increasing_our_awareness_and_understanding_of_human_attitudes_expectations_behaviours_and_interactions_apedaile_schill_2008_the_critical_incident_could_range_from_not_being_time_conscious_respect_towards_authority_being_able_to_speak_one_s_mind_etc_one_way_of_identifying_such_incidents_as_proposed_by_the_developers_of_the_tool_fiedler_mitchell_triandis_1971_is_to_ask_the_students_about_intercultural_occurrences_or_events_that_highlighted_differences_in_attitude_or_behaviour_towards_members_of_other_cultures_such_events_could_be_pleasant_unpleasant_or_non_understandable_occurrences_this_is_an_example_of_a_critical_incident_as_described_by_the_developers_of_the_tool_this_example_was_posed_by_an_american_student_studying_in_thailand_the_student_indicated_that_he_had_had_a_number_of_appointments_with_thai_teachers_and_that_one_thing_that_bothered_him_considerably_was_the_lack_of_punctuality_of_the_thai_professors_he_asked_some_of_his_fellow_thai_students_if_they_were_angry_or_disturbed_over_the_tardiness_of_their_teachers_and_they_indicated_that_this_happened_rather_frequently_and_that_yes_it_disturbed_them_very_much_the_american_thought_about_saying_something_to_the_teacher_but_decided_against_it_when_the_thai_students_said_very_strongly_that_although_they_were_disturbed_they_would_never_show_their_feelings_to_their_professor_fiedler_mitchell_triandis_1971_n_n_use_the_content_to_simulate_an_encounter_n_n_the_next_step_is_for_the_teacher_to_contextualize_the_critical_incident_in_such_a_way_that_it_provides_the_answer_the_student_needs_the_developers_of_the_tool_describe_an_example_of_such_contextualization_one_day_a_thai_administrator_of_middle_academic_rank_kept_two_of_his_assistants_waiting_about_an_hour_for_an_appointment_the_assistants_although_very_angry_did_not_show_it_while_they_waited_when_the_administrator_walked_in_at_last_he_acted_as_if_he_were_not_late_he_made_no_apology_or_explanation_after_he_was_settled_in_his_office_he_called_his_assistants_in_and_they_all_began_working_on_the_business_for_which_the_administrator_had_set_the_meeting_source_fiedler_mitchell_triandis_1971_the_contextualization_reveals_the_cultural_response_of_locals_to_the_critical_incident_inorder_to_simulate_and_contextualize_critical_incidents_the_teacher_ought_to_be_conversant_with_the_culture_in_question_the_teacher_can_educate_his_herself_by_either_reading_or_watching_tv_documentaries_about_that_culture_n_n_provide_possible_feedback_and_alternatives_n_n_the_third_step_involves_the_teacher_leading_the_student_in_a_reflection_process_the_reflection_process_is_aimed_at_enabling_students_foreign_to_the_contextualized_culture_to_understand_the_cultural_basis_behind_the_critical_incident_it_also_enables_such_students_to_compare_their_culture_to_the_culture_being_contextualized_the_reflection_process_also_enables_the_students_to_correct_their_ethnocentric_errors_the_teacher_provides_a_set_of_one_correct_two_plausible_and_one_wrong_answers_to_assist_in_the_reflection_process_an_example_used_by_the_developers_on_the_tool_to_deal_with_the_american_student_s_dilemma_is_as_follows_n_n_o_the_thai_assistants_were_extremely_skillful_at_concealing_their_true_feelings_not_entirely_correct_n_n_o_the_thai_administrator_obviously_was_unaware_of_the_fact_that_he_was_an_hour_late_for_the_appointment_poor_choice_n_n_o_in_thailand_subordinates_are_required_to_be_polite_to_their_superiors_no_matter_what_happens_nor_what_their_rank_may_be_correct_n_n_o_clearly_since_no_one_commented_on_it_the_behavior_indicated_nothing_of_any_unusual_significance_to_any_of_the_thais_wrong_n_n_the_source_of_the_example_is_fiedler_mitchell_triandis_1971_students_are_given_time_to_reflect_and_provide_their_answers_the_teacher_then_provides_the_correct_answer_while_explaining_why_the_other_answers_were_either_not_totally_correct_or_wrong"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_white"
+                    android:visibility="visible" />
+
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
+            <LinearLayout
+                android:id="@+id/llToolSeven"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/expandable_layout_6"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/bg_blue_rounded"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_weight="8"
+                    android:background="@color/color_transparent"
+                    android:clickable="false"
+                    android:text="@string/tools_title7"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/_9ssp" />
+
+                <View
+                    android:layout_width="@dimen/_1sdp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_white" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text=">"
+                    android:id="@+id/tvToolDesc7"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/_18ssp" />
+            </LinearLayout>
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/expandable_layout_7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/llToolSeven"
+                android:background="@color/purple_500"
+                app:el_duration="1000"
+                app:el_expanded="false"
+                app:el_parallax="0.5">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/purple_300"
+                    android:padding="@dimen/_10sdp"
+                    android:text="@string/tool_implementation_n_n_described_is_the_implementation_process_as_extracted_from_sarah_apedaile_and_lenina_schill_2008_n_n_activity_1_imagining_prejudice_n_n_step_1_ask_a_student_to_draw_an_alien_face_on_the_board_or_flip_chart_n_n_step_2_you_can_also_draw_the_alien_face_yourself_n_n_step_3_invite_students_to_describe_what_had_been_drawn_on_the_board_or_flip_chart_n_n_step_4_once_all_students_have_described_what_they_see_the_teacher_then_asks_the_following_questions_n_n_how_do_we_know_all_this_when_we_have_never_seen_the_character_before_apedaile_schill_2008_or_how_do_we_know_all_this_when_we_have_never_met_this_character_before_apedaile_schill_2008_n_n_then_ask_what_are_we_doing_apedaile_schill_2008_it_is_likely_that_a_student_will_identify_their_action_as_prejudice_if_no_student_provides_the_correct_answer_the_teacher_then_reveals_the_action_as_prejudice_n_n_step_5_the_teacher_then_explains_prejudice_by_exploring_its_latin_root_praejudicium_praejudicium_means_an_opinion_or_judgement_formed_without_due_examination_apedaile_schill_2008_the_teacher_then_asks_the_participants_n_n_has_anyone_ever_thought_or_said_something_about_you_that_was_not_true_apedaile_schill_2008_n_n_have_you_ever_thought_or_said_something_about_someone_else_that_wasn_t_true_based_on_the_person_s_appearance_origin_sexual_orientation_apedaile_schill_2008_n_n_activity_2_imagining_stereotyping_n_n_step_1_the_teacher_then_asks_the_participants_to_think_about_the_character_s_neighbourhood_or_planet_pretend_that_everyone_in_the_neighbourhood_is_exactly_the_same_and_share_their_thoughts_on_what_they_think_about_the_imaginary_neighbourhood_n_n_step_2_after_students_share_their_thoughts_the_teacher_then_ask_this_question_based_on_the_thoughts_shared_by_the_students_n_n_what_are_we_doing_when_we_say_this_being_one_of_the_answers_given_by_the_student_it_is_likely_that_a_student_will_identify_their_action_as_stereotyping_if_no_student_provides_the_correct_answer_the_teacher_then_reveals_the_action_as_stereotyping_the_teacher_explains_what_stereotyping_is_and_proceeds_to_ask_the_participants_about_their_experience_with_stereotyping_they_could_be_the_stereotyping_they_experienced_or_that_which_was_directed_at_a_group_of_people_or_individuals_from_a_particular_culture_n_n_activity_3_imagining_discrimination_n_n_step_1_the_teacher_asks_the_participants_to_imagine_that_the_character_drawn_on_the_flip_chart_or_board_comes_into_class_and_the_students_refuse_access_to_the_character_as_a_result_of_their_culture_race_or_religion_the_teacher_then_asks_what_is_that_it_is_likely_that_a_student_will_identify_their_action_as_discrimination_if_not_student_provides_the_correct_answer_the_teacher_then_reveals_the_action_as_discrimination_the_teacher_explains_what_discreamination_means_and_proceeds_to_ask_the_participants_about_their_experience_with_discrimination_they_could_be_the_stereotyping_they_experienced_or_that_which_was_directed_at_a_group_of_people_or_individuals_from_a_particular_culture_n_n_activity_4_exchange_of_experience_n_n_step_1_as_a_facilitator_share_stories_of_prejudice_discrimination_and_stereotyping_that_you_have_experienced_and_how_you_felt_this_is_necessary_to_enable_the_students_to_open_up_to_share_their_experience_n_n_step_2_ask_the_students_to_share_their_own_stories_of_prejudice_discrimination_and_stereotyping_and_how_the_felt_during_the_experience_this_should_not_be_a_shaming_experience_for_any_student_n_n_step_3_a_good_way_of_wrapping_up_the_session_is_to_read_the_local_charter_of_rights_and_freedoms_to_the_students_it_is_good_practice_to_ensure_they_have_a_copy_n_n_it_is_important_that_the_teacher_is_conversant_with_the_level_of_language_proficiency_needed_by_their_learners_in_order_to_gain_the_most_benefit_from_this_activity_apedaile_schill_2008"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_white"
+                    android:visibility="visible" />
+
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
+            <LinearLayout
+                android:id="@+id/llToolEight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/expandable_layout_7"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/bg_blue_rounded"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_weight="8"
+                    android:background="@color/color_transparent"
+                    android:clickable="false"
+                    android:text="@string/tools_title8"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/_9ssp" />
+
+                <View
+                    android:layout_width="@dimen/_1sdp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_white" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text=">"
+                    android:id="@+id/tvToolDesc8"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/_18ssp" />
+            </LinearLayout>
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/expandable_layout_8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/llToolEight"
+                android:background="@color/purple_500"
+                app:el_duration="1000"
+                app:el_expanded="false"
+                app:el_parallax="0.5">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/purple_300"
+                    android:padding="@dimen/_10sdp"
+                    android:text="@string/tool_implementation_n_n_activity_1_preparation_process_n_n_step_1_the_teacher_inscribes_the_quote_cards_with_non_verbal_behavior_that_often_results_in_misunderstanding_the_teacher_can_take_inspiration_for_the_non_verbal_behaviours_from_critical_incidents_the_teacher_can_then_inscribe_these_critical_incidents_in_the_quotecards_n_n_step_2_the_quote_cards_should_consist_of_non_verbal_behaviours_from_the_different_cultures_represented_in_that_multicultural_classroom_n_n_step_3_the_teacher_then_divides_the_students_into_small_groups_with_each_grouprepresenting_students_from_different_cultures_n_n_step_4_the_teacher_introduces_the_students_to_the_concept_of_the_iceberg_metaphor_apa_2021_n_n_activity_2_knowledge_acquisition_process_n_n_step_1_the_teacher_shares_the_quote_cards_to_the_individual_small_groups_n_n_step_2_the_students_are_instructed_to_read_the_cards_and_sort_them_into_categories_of_their_choosing_n_n_step_3_once_sorted_each_group_must_then_name_the_categories_as_either_acceptable_behaviour_or_non_acceptable_behaviour_explain_the_reasoning_behind_their_choice_n_n_the_teacher_points_out_how_the_categories_fit_within_the_iceberg_in_the_explanation_the_teacher_explains_how_nob_verbal_behavior_attitude_is_hidden_underneath_the_iceberg_and_the_verbal_behavior_is_above_the_iceberg_and_why_it_is_hidden_n_n_activity_2_helps_the_students_to_become_sensitive_and_aware_of_acceptable_and_nonacceptable_non_verbal_behaviours_from_different_cultural_perspectives_a_possible_outcome_is_that_some_students_might_develop_empathy_towards_their_colleagues_from_other_cultures_this_opens_up_the_possibility_for_behavior_modification_apedaile_schill_2008_n_n_activity_3_behaviour_modification_process_students_are_provided_with_conscious_behavior_modification_tips_by_the_teacher_such_tips_include_n_n_conscious_relay_of_non_verbal_communication_apedaile_and_schill_2008_suggest_telling_the_student_thus_be_aware_of_your_own_non_verbal_communication_apedaile_schill_2008_this_enables_the_student_to_understand_that_others_may_neither_understand_nor_be_aware_of_the_non_verbal_behaviour_he_or_she_exhibits_hence_polite_verbal_communication_might_serve_a_better_purpose_than_non_verbal_communication_that_others_do_not_understand_n_n_selective_judgement_of_non_verbal_communication_apedaile_and_schill_2008_suggest_telling_the_student_thus_be_aware_of_others_behaviours_and_how_these_affect_you_unexpected_and_unfamiliar_non_verbal_behaviours_can_cause_strong_responses_at_an_emotional_level_resist_the_temptation_to_make_hasty_judgmental_evaluations_apedaile_schill_2008_this_helps_the_student_not_to_be_alert_in_always_trying_to_interpret_allnon_verbal_communications_n_n_conscious_behaviour_modification_apedaile_and_schill_2008_suggest_telling_the_student_thus_try_to_match_your_behaviour_to_those_of_the_culture_you_are_interacting_with_this_involves_the_integration_of_the_foreign_student_to_the_culture_of_the_host_country_the_teacher_should_also_inform_the_student_thus_changing_how_you_behave_and_how_you_understand_others_non_verbal_communication_is_the_key_to_successful_non_verbal_communication_across_cultures_apedaile_schill_2008_n_n_do_note_that_the_onus_for_behaviour_modification_is_on_the_student_the_teacher_only_raises_awareness"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_white"
+                    android:visibility="visible" />
+
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
+            <LinearLayout
+                android:id="@+id/llToolNine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/expandable_layout_8"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/bg_blue_rounded"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_weight="8"
+                    android:background="@color/color_transparent"
+                    android:clickable="false"
+                    android:text="@string/tools_title9"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/_9ssp" />
+
+                <View
+                    android:layout_width="@dimen/_1sdp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_white" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text=">"
+                    android:id="@+id/tvToolDesc9"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/_18ssp" />
+            </LinearLayout>
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/expandable_layout_9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/llToolNine"
+                android:background="@color/purple_500"
+                app:el_duration="1000"
+                app:el_expanded="false"
+                app:el_parallax="0.5">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/tvToolDesc3"
+                    android:layout_height="wrap_content"
+                    android:background="@color/purple_300"
+                    android:padding="@dimen/_10sdp"
+                    android:text="@string/tool_implementation_n_n_step_1_the_teacher_makes_the_choice_of_the_topic_of_discussion_for_the_student_a_critical_incident_that_has_cultural_undertones_is_a_good_choice_for_a_topic_n_n_step_2_the_teacher_divides_the_students_into_small_groups_of_at_least_2_students_n_n_step_3_the_teacher_instructs_the_students_on_the_following_rules_of_engagement_the_rules_stated_below_are_as_proposed_by_dresdner_2021_n_n_o_listen_with_openness_suspend_your_judgments_and_biases_and_listen_for_those_things_with_which_you_agree_as_well_as_those_you_might_challenge_n_n_o_listen_with_curiosity_engage_your_desire_to_learn_rather_than_to_try_to_fix_anything_n_n_o_listen_without_asking_questions_that_interrupt_the_speaker_jot_down_your_questions_and_save_them_for_later_n_n_o_listen_for_patterns_and_for_what_is_not_being_said_and_finally_q_n_n_o_listen_with_intention_what_do_you_intend_to_learn_or_do_with_the_information_you_ll_learn_n_n_source_of_quotes_dresdner_2021_things_to_note_for_the_students_as_proposed_by_dresdner_n_n_o_each_person_must_speak_once_before_anyone_can_speak_a_second_or_third_time_n_n_o_if_someone_asks_a_question_someone_else_must_answer_it_before_another_comment_can_be_made_n_n_source_of_quotes_dresdner_2021_n_n_step_4_the_teacher_should_identify_a_group_leader_who_will_ensure_that_the_rules_are_followed_n_n_step_5_as_one_student_in_the_group_speaks_on_a_topic_the_others_have_to_listen_attentively_and_intentionally_n_n_step_6_when_the_first_student_is_done_speaking_another_can_ask_a_follow_up_question_or_raise_comments_about_what_s_he_heard_n_n_step_7_steps_5_and_6_are_repeated_until_every_student_in_the_group_has_spoken_at_least_twice_or_for_a_specific_amount_of_time_n_n_step_8_the_group_leader_appointed_by_the_teacher_earlier_with_assistance_from_the_group_members_summarizes_the_conversation_and_identifies_patterns_or_insights_that_emerged_and_developed_in_the_course_of_the_dialogue_n_n_dresdner_2021_notes_that_teachers_should_not_be_alarmed_if_students_find_it_difficult_to_repeat_what_they_heard_in_context_from_their_peers_here_the_teacher_serves_as_a_bridge_to_help_the_student_pinpoint_what_they_misunderstood_furthermore_this_activity_should_be_practiced_continuously_to_help_the_student_perfect_their_active_listening_skills"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_white"
+                    android:visibility="visible" />
+
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
+            <LinearLayout
+                android:id="@+id/llToolTen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/expandable_layout_9"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/bg_blue_rounded"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_weight="8"
+                    android:background="@color/color_transparent"
+                    android:clickable="false"
+                    android:text="@string/tools_title10"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/_9ssp" />
+
+                <View
+                    android:layout_width="@dimen/_1sdp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_white" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:id="@+id/tvToolDesc10"
+                    android:gravity="center"
+                    android:text=">"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/_18ssp" />
+            </LinearLayout>
+
+<!--            <net.cachapa.expandablelayout.ExpandableLayout-->
+<!--                android:id="@+id/expandable_layout_10"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/llToolTen"-->
+<!--                android:background="@color/purple_500"-->
+<!--                app:el_duration="1000"-->
+<!--                app:el_expanded="false"-->
+<!--                app:el_parallax="0.5">-->
+
+
+<!--                <androidx.appcompat.widget.AppCompatTextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@color/purple_300"-->
+<!--                    android:padding="@dimen/_10sdp"-->
+<!--                    android:text="TOOL IMPLEMENTATION-->
+<!--\n \n SIS uses a structured and guided reflection during Intercultural Reflection Seminars. All-->
+<!--students enrolled at SIS take the reflective writing class. The class meets once a week during-->
+<!--which the students submit weekly entries concerning their studies and their overall-->
+<!--experience/service and share them with their peers. Class is led by the reflective writing-->
+<!--instructor who serves as a bridge between the two cultures by facilitating the students’ process-->
+<!--of decoding and encoding all cultural signs. Students are stimulated to reflect on every single-->
+<!--intercultural encounter they have, for instance the surrounding environment, historic-->
+<!--testimony, the host family, relationships between men/women, his/her peers, service, and so-->
+<!--on. Reflective writing is the student’s personal tool to create his/her own personal identity,-->
+<!--and intercultural understanding and knowledge. This tool can be adopted in any multicultural-->
+<!--classroom situation."-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:textColor="@color/color_white"-->
+<!--                    android:visibility="visible" />-->
+
+<!--            </net.cachapa.expandablelayout.ExpandableLayout>-->
+
+        </RelativeLayout>
+    </ScrollView>
+</layout>
