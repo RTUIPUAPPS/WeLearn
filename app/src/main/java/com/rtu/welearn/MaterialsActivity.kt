@@ -4,9 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.Html
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rtu.welearn.databinding.ActivityMaterialsBinding
+import com.rtu.welearn.utils.AppUtils.openUrl
 
 class MaterialsActivity : BaseActivity() {
 
@@ -33,12 +35,17 @@ class MaterialsActivity : BaseActivity() {
         
         var materialsAdapter = MaterialsAdapter(listMaterials,object:MaterialsAdapter.OnToolDescriptionClick{
             override fun onClick(position: Int) {
-                val i = Intent(Intent.ACTION_VIEW)
-                i.data = Uri.parse(listMaterialUrls[position])
-                startActivity(i)
+                openUrl(mContext,listMaterialUrls[position])
                 //launchActivity(ToolDescriptionActivity.getIntent(baseContext, position))
+
             }
         })
+
+        binding?.tvWeLearnWebsite?.text= Html.fromHtml(resources.getString(R.string.welearn_website))
+       binding?.tvWeLearnWebsite?.setOnClickListener {
+           openUrl(mContext,"http://welearn-project.eu/results.php")
+       }
+
         binding?.rvMaterials?.layoutManager = LinearLayoutManager(this)
         binding?.rvMaterials?.adapter = materialsAdapter
     }

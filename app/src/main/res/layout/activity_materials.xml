@@ -6,17 +6,33 @@
     <!--    <ScrollView-->
     <!--        android:layout_height="match_parent"-->
     <!--        android:layout_width="match_parent">-->
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/_10sdp"
+        android:gravity="center"
         tools:context=".DashboardActivity">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:elevation="@dimen/_6sdp"
+            android:id="@+id/tvWeLearnWebsite"
+            android:padding="@dimen/_16sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:foreground="?selectableItemBackground"
+            android:background="@color/color_transparent"
+            android:clickable="false"
+            android:text="@string/welearn_website"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textColor="@color/purple_green"
+            android:textSize="@dimen/_18ssp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvMaterials"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"/>
+            android:layout_height="wrap_content" />
 
-    </RelativeLayout>
+    </LinearLayout>
 </layout>
