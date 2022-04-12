@@ -19,7 +19,7 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="@string/tools_title1"
+                    tools:text="@string/offline_tools_title1"
                     android:textColor="@color/purple_green"
                     android:textStyle="bold"
                     android:id="@+id/tvTolsTitle"

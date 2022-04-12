@@ -18,7 +18,8 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.WeLearn">
+        android:theme="@style/Theme.WeLearn"
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".DashboardActivity"
             android:exported="true"
@@ -56,12 +57,22 @@
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
-            android:name=".PracticeActivity"
+            android:name=".ToolkitsActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
             android:name=".ToolDescriptionActivity"
             android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+        <activity
+            android:name=".VideoPlayerActivity"
+            android:exported="true"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+        <activity
+            android:name=".MaterialsActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
     </application>
 

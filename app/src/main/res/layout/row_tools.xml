@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_5sdp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/llToolOne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_blue_rounded"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:weightSum="10">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="➩"
+            android:rotation="90"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/_18ssp" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:elevation="@dimen/_6sdp"
+            android:id="@+id/tvToolTitle"
+            android:padding="@dimen/_16sdp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:foreground="?selectableItemBackground"
+            android:layout_weight="7"
+            android:background="@color/color_transparent"
+            android:clickable="false"
+            android:text="@string/offline_tools_title1"
+            android:textAllCaps="false"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/_12ssp" />
+
+        <View
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="match_parent"
+            android:background="@color/color_white" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTolsDescription"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text=">"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/_18ssp" />
+    </LinearLayout>
+
+
+    <net.cachapa.expandablelayout.ExpandableLayout
+        android:id="@+id/expandable_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:el_duration="300"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:background="@color/purple_500"
+        app:el_expanded="false">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvToolImplementation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/_4sdp"
+            android:padding="@dimen/_16sdp"
+            android:textSize="@dimen/_12ssp"
+            android:justificationMode="inter_word"
+            android:textColor="@color/color_white" />
+
+    </net.cachapa.expandablelayout.ExpandableLayout>
+
+</LinearLayout>

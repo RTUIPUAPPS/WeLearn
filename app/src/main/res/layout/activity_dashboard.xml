@@ -200,7 +200,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_5sdp"
-                            android:text="Practice"
+                            android:text="Toolkits"
                             android:textColor="@color/color_black"
                             android:textSize="@dimen/_14ssp" />
                     </LinearLayout>

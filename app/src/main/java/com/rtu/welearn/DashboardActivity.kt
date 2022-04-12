@@ -18,7 +18,6 @@ import com.rtu.welearn.ui.tips.TipsActivity
 import com.rtu.welearn.utils.AppUtils.isInternetAvailable
 import com.rtu.welearn.utils.AppUtils.showToast
 import com.rtu.welearn.databinding.ActivityDashboardBinding
-import com.rtu.welearn.ui.camera.CameraActivity
 import com.rtu.welearn.ui.firebase.FirebaseMainActivity
 import com.rtu.welearn.ui.test.TestActivity
 
@@ -40,7 +39,7 @@ class DashboardActivity : BaseActivity() {
                 this.showToast(getString(R.string.please_check_device_internet_connection))
             }
         }
-        binding?.cvMaterials?.setOnClickListener { launchActivity(DetailsActivity.getIntent(this)) }
+        binding?.cvMaterials?.setOnClickListener { launchActivity(MaterialsActivity.getIntent(this)) }
         binding?.cvTips?.setOnClickListener {
             if (isInternetAvailable(applicationContext)) {
                 launchActivity(TipsActivity.getIntent(this))
@@ -48,7 +47,7 @@ class DashboardActivity : BaseActivity() {
                 this.showToast(getString(R.string.please_check_device_internet_connection))
             }
         }
-        binding?.cvPractice?.setOnClickListener { launchActivity(PracticeActivity.getIntent(this)) }
+        binding?.cvPractice?.setOnClickListener { launchActivity(ToolkitsActivity.getIntent(this)) }
         binding?.cvTest?.setOnClickListener {
 
             if (isInternetAvailable(applicationContext)) {
@@ -57,7 +56,7 @@ class DashboardActivity : BaseActivity() {
                 this.showToast(getString(R.string.please_check_device_internet_connection))
             }
         }
-        binding?.cvVideo?.setOnClickListener { launchActivity(CameraActivity.getIntent(this)) }
+        binding?.cvVideo?.setOnClickListener { launchActivity(VideoPlayerActivity.getIntent(this)) }
         binding?.ivWeLearn?.setOnClickListener {
             launchActivity(FirebaseMainActivity.getIntent(this))
         }

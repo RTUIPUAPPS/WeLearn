@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/_5sdp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/llToolOne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_rounded_blue_border_materials"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:elevation="@dimen/_6sdp"
+            android:id="@+id/tvTitle"
+            android:padding="@dimen/_16sdp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:foreground="?selectableItemBackground"
+            android:layout_weight="8"
+            android:background="@color/color_transparent"
+            android:clickable="false"
+            tools:text="@string/offline_tools_title1"
+            android:textAllCaps="false"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/_14ssp" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
