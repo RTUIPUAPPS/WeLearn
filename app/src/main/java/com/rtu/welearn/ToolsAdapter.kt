@@ -7,6 +7,7 @@ import android.view.animation.OvershootInterpolator
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import net.cachapa.expandablelayout.ExpandableLayout
+import net.cachapa.expandablelayout.util.FastOutSlowInInterpolator
 
 
 class ToolsAdapter(
@@ -66,12 +67,12 @@ class ToolsAdapter(
             tvTolsDescription = itemView.findViewById(R.id.tvTolsDescription)
             tvToolImplementation = itemView.findViewById(R.id.tvToolImplementation)
             expandableLayout = itemView.findViewById(R.id.expandable_layout)
-            expandableLayout?.setInterpolator(OvershootInterpolator())
+            expandableLayout?.setInterpolator(FastOutSlowInInterpolator())
             expandableLayout?.setOnExpansionUpdateListener(this)
             tvToolTitle?.setOnClickListener(this)
 
 
-            tvToolTitle!!.text = "$position. Tap to expand"
+//            tvToolTitle!!.text = "$position. Tap to expand"
             tvToolTitle!!.isSelected = isSelected
             expandableLayout!!.setExpanded(isSelected, false)
 
