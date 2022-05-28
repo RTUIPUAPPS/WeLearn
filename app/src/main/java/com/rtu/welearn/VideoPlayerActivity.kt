@@ -31,7 +31,8 @@ class VideoPlayerActivity : BaseActivity() {
         player = ExoPlayer.Builder(this).build()
         binding?.playerView?.player = player
         val mediaItem: MediaItem = MediaItem.Builder()
-            .setUri(Uri.parse("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"))
+//            .setUri(Uri.parse("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"))
+            .setUri(Uri.parse("https://www.youtube.com/watch?v=uGRAl0qjRy0"))
 //            .setMediaId(mediaId) //http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4
 //            .setTag(metadata)
             .build()
