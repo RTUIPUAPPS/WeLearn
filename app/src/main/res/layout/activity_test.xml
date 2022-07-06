@@ -79,57 +79,60 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
-                        <RadioButton
+                        <androidx.appcompat.widget.AppCompatRadioButton
                             android:id="@+id/rbAns1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_10sdp"
                             android:button="@drawable/custom_btn_radio"
-                            android:drawablePadding="@dimen/_20sdp"
-                             android:paddingStart="@dimen/_10sdp"
-                            android:paddingLeft="@dimen/_10sdp"
-                            android:textSize="@dimen/_14ssp" />
+                            android:drawablePadding="@dimen/_50sdp"
+                            android:padding="@dimen/_10sdp"
+                            android:textSize="@dimen/_14ssp"
+                            tools:text="@string/bottom_sheet_behavior" />
 
                         <RadioButton
                             android:id="@+id/rbAns2"
-                            android:paddingStart="@dimen/_10sdp"
-                            android:paddingLeft="@dimen/_10sdp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:button="@drawable/custom_btn_radio"
-                            android:textSize="@dimen/_14ssp" />
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingLeft="@dimen/_10sdp"
+                            android:textSize="@dimen/_14ssp"
+                            tools:text="@string/bottom_sheet_behavior" />
 
                         <RadioButton
                             android:id="@+id/rbAns3"
-                            android:paddingStart="@dimen/_10sdp"
-                            android:paddingLeft="@dimen/_10sdp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:button="@drawable/custom_btn_radio"
-                            android:textSize="@dimen/_14ssp" />
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingLeft="@dimen/_10sdp"
+                            android:textSize="@dimen/_14ssp"
+                            tools:text="@string/bottom_sheet_behavior" />
 
                         <RadioButton
                             android:id="@+id/rbAns4"
-                            android:paddingStart="@dimen/_10sdp"
-                            android:paddingLeft="@dimen/_10sdp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:button="@drawable/custom_btn_radio"
-                            android:textSize="@dimen/_14ssp" />
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingLeft="@dimen/_10sdp"
+                            android:textSize="@dimen/_14ssp"
+                            tools:text="@string/bottom_sheet_behavior" />
 
                         <RadioButton
                             android:id="@+id/rbAns5"
-                            android:paddingStart="@dimen/_10sdp"
-                            android:paddingLeft="@dimen/_10sdp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:button="@drawable/custom_btn_radio"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingLeft="@dimen/_10sdp"
                             android:textSize="@dimen/_14ssp"
                             android:visibility="gone"
+                            tools:text="@string/bottom_sheet_behavior"
                             tools:visibility="visible" />
                     </RadioGroup>
                 </LinearLayout>
@@ -188,9 +191,9 @@
         <ProgressBar
             android:id="@+id/progressBarCircle"
             android:layout_width="wrap_content"
-            android:visibility="visible"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:visibility="visible" />
 
     </RelativeLayout>
 </layout>
