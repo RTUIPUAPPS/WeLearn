@@ -18,6 +18,9 @@ object AppUtils {
     fun Context.showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
+    fun Context.showToastShort(msg: String) {
+        Toast.makeText(this, msg,  Toast.LENGTH_SHORT).show()
+    }
 
     fun openUrl(mContext:Context?,url:String){
         val i = Intent(Intent.ACTION_VIEW)

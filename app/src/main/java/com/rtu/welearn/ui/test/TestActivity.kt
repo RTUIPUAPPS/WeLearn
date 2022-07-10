@@ -17,6 +17,8 @@ import com.rtu.welearn.BaseActivity
 import com.rtu.welearn.R
 import com.rtu.welearn.WeLearnApp.Companion.mDatabase
 import com.rtu.welearn.databinding.ActivityTestBinding
+import com.rtu.welearn.utils.AppUtils.showToast
+import com.rtu.welearn.utils.AppUtils.showToastShort
 import com.rtu.welearn.utils.Constants.Companion.TEST
 import com.rtu.welearn.utils.showMessageDialog
 
@@ -66,6 +68,9 @@ class TestActivity : BaseActivity() {
 
     }
 
+    /*Domino - to prevent domestic violence
+RTU IPU
+*/
     private fun initClick() {
         binding?.btnFinish?.setOnClickListener {
 
@@ -76,22 +81,18 @@ class TestActivity : BaseActivity() {
                 }
 
                 var message = ""
-                when {
-                    points < 10 -> {
+                when (points) {
+                    in 0..10 -> {
                         message =
-                            "Room for improvement! Please click back and check the other WeLearn app functions. You can also study Neighbornes material on our website at: http://welearn-project.eu/ After getting familiar with the material and topic, please re-take the test."
+                            "Good! You know the basics but there is still a lot of room for improvement. To improve your knowledge about neighbornes, we highly recommend you to check other WeLearn app functions and to visit our website at: http://welearn-project.eu/"
                     }
-                    points in 10..19 -> {
+                    in 11..25 -> {
                         message =
-                            "Well! You know the basics but there is still a lot of room for improvement. To improve your knowledge about neighbornes, we highly recommend you to check other WeLearn app functions and to visit our website at: http://welearn-project.eu/"
+                            "Very well! You have sufficient knowledge about intercultural learning environment, but there is still room for improvement. Click back and find ways to improve your knowledge. You can also gain more info form our website: http://welearn-project.eu/"
                     }
-                    points in 20..39 -> {
+                    in 26..30 -> {
                         message =
-                            "Good! You have sufficient knowledge about intercultural learning environment, but there is still room for improvement. Click back and find ways to improve your knowledge. You can also gain more info form our website: http://welearn-project.eu/"
-                    }
-                    points in 40..50 -> {
-                        message =
-                            "Very well! You reached the highest score! The test results are showing adequate know-how about neighbornes and how to work in a multicultural learning environment! If you want to learn even more, we recommend you to check the material on the app and our Website: http://welearn-project.eu/ "
+                            "Excellent! You reached the highest score! The test results are showing adequate know-how about neighbornes and how to work in a multicultural learning environment! If you want to learn even more, we recommend you to check the material on the app and our Website: http://welearn-project.eu/ "
                     }
                 }
                 showMessageDialog(
@@ -106,27 +107,42 @@ class TestActivity : BaseActivity() {
 
 
             } else {
-                var checkedId = binding?.rgAnswers?.checkedRadioButtonId
+                val checkedId = binding?.rgAnswers?.checkedRadioButtonId
+                var selectedPoint = 0
                 when {
                     binding?.rbAns1?.id == checkedId -> {
-                        arrayAnswers[currentPos] = listExamQuestions[currentPos].Points1.toInt()
+                        selectedPoint = listExamQuestions[currentPos].Points1.toInt()
+                        arrayAnswers[currentPos] = selectedPoint
                     }
                     binding?.rbAns2?.id == checkedId -> {
-                        arrayAnswers[currentPos] = listExamQuestions[currentPos].Points2.toInt()
+                        selectedPoint = listExamQuestions[currentPos].Points2.toInt()
+                        arrayAnswers[currentPos] = selectedPoint
                     }
                     binding?.rbAns3?.id == checkedId -> {
-                        arrayAnswers[currentPos] = listExamQuestions[currentPos].Points3.toInt()
+                        selectedPoint = listExamQuestions[currentPos].Points3.toInt()
+                        arrayAnswers[currentPos] = selectedPoint
                     }
                     binding?.rbAns4?.id == checkedId -> {
-                        arrayAnswers[currentPos] = listExamQuestions[currentPos].Points4.toInt()
+                        selectedPoint = listExamQuestions[currentPos].Points4.toInt()
+                        arrayAnswers[currentPos] = selectedPoint
                     }
                     binding?.rbAns5?.id == checkedId -> {
-                        arrayAnswers[currentPos] = listExamQuestions[currentPos].Points5.toInt()
+                        selectedPoint = listExamQuestions[currentPos].Points5.toInt()
+                        arrayAnswers[currentPos] = selectedPoint
                     }
                 }
 
-
-//                binding?.viewPagerQuestions?.setCurrentItem(currentPos + 1, true)
+                when(selectedPoint){
+                    1->{
+                        showToastShort("Room for improvement.")
+                    }
+                    2->{
+                        showToastShort("Good selection.")
+                    }
+                    3->{
+                        showToastShort(" Excellent option.")
+                    }
+                }
                 currentPos += 1
                 showQuestion(currentPos)
             }

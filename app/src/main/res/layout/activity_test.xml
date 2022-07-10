@@ -6,8 +6,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/color_white"
-        android:orientation="vertical"
-        android:padding="@dimen/_10sdp"
         android:paddingBottom="@dimen/_10sdp"
         tools:context=".DashboardActivity">
 
@@ -17,6 +15,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:text="@string/next"
             android:textColor="@color/color_white" />
 
@@ -32,43 +32,48 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:background="@color/color_practice"
+                android:orientation="vertical">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvRemaining"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/purple_700"
-                    android:textSize="@dimen/_20ssp"
-                    android:textStyle="bold"
-                    tools:text="3/10" />
-
-            </LinearLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvRemaining"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingLeft="@dimen/_10sdp"
+                android:textColor="@color/purple_700"
+                android:textSize="@dimen/_20ssp"
+                android:textStyle="bold"
+                tools:text="3/10" />
 
             <ProgressBar
                 android:id="@+id/progressBar"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_10sdp"
+                android:layout_height="@dimen/_20sdp"
                 android:max="10"
                 android:progressTint="@color/purple_500" />
-
+            </LinearLayout>
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:scrollbars="none"
                 android:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
+                    android:orientation="vertical"
+                    android:padding="@dimen/_10sdp">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvQuestion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_20sdp"
+                        android:justificationMode="inter_word"
                         android:textColor="@color/purple_700"
                         android:textSize="@dimen/_14ssp"
                         android:textStyle="bold"
@@ -77,14 +82,16 @@
                     <RadioGroup
                         android:id="@+id/rgAnswers"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp">
 
                         <androidx.appcompat.widget.AppCompatRadioButton
                             android:id="@+id/rbAns1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:button="@drawable/custom_btn_radio"
-                            android:drawablePadding="@dimen/_50sdp"
+                            android:background="@drawable/bg_rounded_blue_border_materials"
+                            android:button="@drawable/custom_radio_button"
+                            android:drawablePadding="@dimen/_30sdp"
                             android:padding="@dimen/_10sdp"
                             android:textSize="@dimen/_14ssp"
                             tools:text="@string/bottom_sheet_behavior" />
@@ -94,9 +101,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:button="@drawable/custom_btn_radio"
-                            android:paddingStart="@dimen/_10sdp"
-                            android:paddingLeft="@dimen/_10sdp"
+                            android:background="@drawable/bg_rounded_blue_border_materials"
+                            android:button="@drawable/custom_radio_button"
+                            android:padding="@dimen/_10sdp"
                             android:textSize="@dimen/_14ssp"
                             tools:text="@string/bottom_sheet_behavior" />
 
@@ -105,9 +112,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:button="@drawable/custom_btn_radio"
-                            android:paddingStart="@dimen/_10sdp"
-                            android:paddingLeft="@dimen/_10sdp"
+                            android:background="@drawable/bg_rounded_blue_border_materials"
+                            android:button="@drawable/custom_radio_button"
+                            android:padding="@dimen/_10sdp"
                             android:textSize="@dimen/_14ssp"
                             tools:text="@string/bottom_sheet_behavior" />
 
@@ -116,9 +123,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:button="@drawable/custom_btn_radio"
-                            android:paddingStart="@dimen/_10sdp"
-                            android:paddingLeft="@dimen/_10sdp"
+                            android:background="@drawable/bg_rounded_blue_border_materials"
+                            android:button="@drawable/custom_radio_button"
+                            android:padding="@dimen/_10sdp"
                             android:textSize="@dimen/_14ssp"
                             tools:text="@string/bottom_sheet_behavior" />
 
@@ -127,9 +134,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:button="@drawable/custom_btn_radio"
-                            android:paddingStart="@dimen/_10sdp"
-                            android:paddingLeft="@dimen/_10sdp"
+                            android:background="@drawable/bg_rounded_blue_border_materials"
+                            android:button="@drawable/custom_radio_button"
+                            android:padding="@dimen/_10sdp"
                             android:textSize="@dimen/_14ssp"
                             android:visibility="gone"
                             tools:text="@string/bottom_sheet_behavior"
