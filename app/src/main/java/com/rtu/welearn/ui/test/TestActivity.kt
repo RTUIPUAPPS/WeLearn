@@ -134,13 +134,13 @@ RTU IPU
 
                 when(selectedPoint){
                     1->{
-                        showToastShort("Room for improvement.")
+                        showToastShort("Good! - 1 point")
                     }
                     2->{
-                        showToastShort("Good selection.")
+                        showToastShort("Good! - 2 points")
                     }
                     3->{
-                        showToastShort(" Excellent option.")
+                        showToastShort(" Excellent! - 3 points")
                     }
                 }
                 currentPos += 1
