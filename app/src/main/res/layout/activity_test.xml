@@ -81,13 +81,13 @@
 
                     <RadioGroup
                         android:id="@+id/rgAnswers"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp">
 
                         <androidx.appcompat.widget.AppCompatRadioButton
                             android:id="@+id/rbAns1"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_rounded_blue_border_materials"
                             android:button="@drawable/custom_radio_button"
@@ -98,7 +98,7 @@
 
                         <RadioButton
                             android:id="@+id/rbAns2"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:background="@drawable/bg_rounded_blue_border_materials"
@@ -109,7 +109,7 @@
 
                         <RadioButton
                             android:id="@+id/rbAns3"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:background="@drawable/bg_rounded_blue_border_materials"
@@ -120,7 +120,7 @@
 
                         <RadioButton
                             android:id="@+id/rbAns4"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:background="@drawable/bg_rounded_blue_border_materials"
@@ -131,7 +131,7 @@
 
                         <RadioButton
                             android:id="@+id/rbAns5"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:background="@drawable/bg_rounded_blue_border_materials"

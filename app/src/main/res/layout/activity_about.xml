@@ -37,9 +37,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
-                    tools:text="@string/str_about"
+                    android:text="@string/str_about"
                     android:justificationMode="inter_word"
                     android:textColor="@color/color_black"
+                    android:autoLink="web"
+                    android:textColorLink="@color/purple_500"
                     android:textSize="@dimen/_14ssp" />
             </LinearLayout>
         </ScrollView>
