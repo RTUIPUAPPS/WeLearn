@@ -1,5 +1,6 @@
 package com.rtu.welearn
 
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,7 +33,7 @@ class ToolsAdapter(
         val isSelected = position == selectedItem
 
         holder.tvToolTitle?.text = listTitle[position]
-        holder.tvToolImplementation?.text = listDescription[position]
+        holder.tvToolImplementation?.text = Html.fromHtml(listDescription[position])
         holder.tvToolTitle?.isSelected = isSelected
         holder.expandableLayout?.setExpanded(isSelected, false)
         holder.tvTolsDescription?.setOnClickListener(object:View.OnClickListener{
@@ -71,8 +72,6 @@ class ToolsAdapter(
             expandableLayout?.setOnExpansionUpdateListener(this)
             tvToolTitle?.setOnClickListener(this)
 
-
-//            tvToolTitle!!.text = "$position. Tap to expand"
             tvToolTitle!!.isSelected = isSelected
             expandableLayout!!.setExpanded(isSelected, false)
 

@@ -23,6 +23,7 @@ class ToolkitsActivity : BaseActivity() {
 
         var listTools=ArrayList<String>()
         var listToolsDescription=ArrayList<String>()
+        var listToolsImplementation=ArrayList<String>()
 
         listTools.add(getString(R.string.offline_tools_title1))
         listTools.add(getString(R.string.offline_tools_title2))
@@ -34,6 +35,33 @@ class ToolkitsActivity : BaseActivity() {
         listTools.add(getString(R.string.offline_tools_title8))
         listTools.add(getString(R.string.offline_tools_title9))
         listTools.add(getString(R.string.offline_tools_title10))
+        listTools.add(getString(R.string.online_tools_title1))
+        listTools.add(getString(R.string.online_tools_title2))
+        listTools.add(getString(R.string.online_tools_title3))
+        listTools.add(getString(R.string.online_tools_title4))
+        listTools.add(getString(R.string.online_tools_title5))
+        listTools.add(getString(R.string.online_tools_title6))
+
+
+
+        listToolsImplementation.add(getString(R.string.offline_tool1_implementation))
+        listToolsImplementation.add(getString(R.string.offline_tool2_implementation))
+        listToolsImplementation.add(getString(R.string.offline_tool3_implementation))
+        listToolsImplementation.add(getString(R.string.offline_tool4_implementation))
+        listToolsImplementation.add(getString(R.string.tools_description_5))
+        listToolsImplementation.add(getString(R.string.tools_description_6))
+        listToolsImplementation.add(getString(R.string.tools_description_7))
+        listToolsImplementation.add(getString(R.string.tools_description_8))
+        listToolsImplementation.add(getString(R.string.tools_description_9))
+        listToolsImplementation.add(getString(R.string.tools_description_10))
+        listToolsImplementation.add(getString(R.string.online_tools_description_1))
+        listToolsImplementation.add(getString(R.string.online_tools_description_2))
+        listToolsImplementation.add(getString(R.string.online_tools_description_3))
+        listToolsImplementation.add(getString(R.string.online_tools_description_4))
+        listToolsImplementation.add(getString(R.string.online_tools_description_5))
+        listToolsImplementation.add(getString(R.string.online_tools_description_6))
+
+
         listToolsDescription.add(getString(R.string.tools_description_1))
         listToolsDescription.add(getString(R.string.tools_description_2))
         listToolsDescription.add(getString(R.string.tools_description_3))
@@ -44,9 +72,15 @@ class ToolkitsActivity : BaseActivity() {
         listToolsDescription.add(getString(R.string.tools_description_8))
         listToolsDescription.add(getString(R.string.tools_description_9))
         listToolsDescription.add(getString(R.string.tools_description_10))
+        listToolsDescription.add(getString(R.string.online_tools_description_1))
+        listToolsDescription.add(getString(R.string.online_tools_description_2))
+        listToolsDescription.add(getString(R.string.online_tools_description_3))
+        listToolsDescription.add(getString(R.string.online_tools_description_4))
+        listToolsDescription.add(getString(R.string.online_tools_description_5))
+        listToolsDescription.add(getString(R.string.online_tools_description_6))
 
 
-        var toolsAdapter = ToolsAdapter(listTools,listToolsDescription,object:ToolsAdapter.OnToolDescriptionClick{
+        var toolsAdapter = ToolsAdapter(listTools,listToolsImplementation,object:ToolsAdapter.OnToolDescriptionClick{
             override fun onClick(position: Int) {
                 launchActivity(ToolDescriptionActivity.getIntent(baseContext, position))
             }

@@ -62,19 +62,20 @@
         app:el_duration="300"
         android:layout_marginStart="@dimen/_5sdp"
         android:layout_marginEnd="@dimen/_5sdp"
-        android:background="@color/purple_500"
-        app:el_expanded="false">
+        app:el_expanded="true">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvToolImplementation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="@dimen/_4sdp"
-            android:padding="@dimen/_16sdp"
             android:textSize="@dimen/_12ssp"
             android:justificationMode="inter_word"
-            android:textColor="@color/color_white" />
+            android:autoLink="web"
+            android:textIsSelectable="true"
+            android:textColor="@color/color_black" />
 
     </net.cachapa.expandablelayout.ExpandableLayout>
+
 
 </LinearLayout>
