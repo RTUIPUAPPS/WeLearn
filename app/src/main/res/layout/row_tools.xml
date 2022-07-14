@@ -72,6 +72,7 @@
             android:textSize="@dimen/_12ssp"
             android:justificationMode="inter_word"
             android:autoLink="web"
+            android:text=""
             android:textIsSelectable="true"
             android:textColor="@color/color_black" />
 
