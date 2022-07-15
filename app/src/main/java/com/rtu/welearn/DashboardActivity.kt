@@ -56,8 +56,15 @@ class DashboardActivity : BaseActivity() {
                 this.showToast(getString(R.string.please_check_device_internet_connection))
             }
         }
-        binding?.cvVideo?.setOnClickListener { launchActivity(VideoPlayerActivity.getIntent(this)) }
+        binding?.cvVideo?.setOnClickListener {
+            if (isInternetAvailable(applicationContext)) {
+                launchActivity(VideoPlayerActivity.getIntent(this))
+            } else {
+                this.showToast(getString(R.string.please_check_device_internet_connection))
+            }
+             }
         binding?.ivWeLearn?.setOnClickListener {
+
             launchActivity(FirebaseMainActivity.getIntent(this))
         }
 

@@ -20,6 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WeLearn"
         android:usesCleartextTraffic="true">
+
         <activity
             android:name=".DashboardActivity"
             android:exported="true"
@@ -75,5 +76,8 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
     </application>
-
+<!--    <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">-->
+<!--        <background android:drawable="@color/ic_launcher_background" />-->
+<!--        <foreground android:drawable="@mipmap/ic_launcher_foreground" />-->
+<!--    </adaptive-icon>-->
 </manifest>

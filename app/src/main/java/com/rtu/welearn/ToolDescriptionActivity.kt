@@ -3,6 +3,7 @@ package com.rtu.welearn
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.Html
 import androidx.databinding.DataBindingUtil
 import com.rtu.welearn.databinding.ActivityToolDescriptionBinding
 import com.rtu.welearn.utils.Constants.Companion.TOOL_NUMBER
@@ -27,15 +28,15 @@ class ToolDescriptionActivity : BaseActivity() {
         when(intToolNumber){
             1->{
               binding?.tvTolsTitle?.text=getString(R.string.offline_tools_title1)
-              binding?.tvTolsDescription?.text=getString(R.string.tools_description_1)
+              binding?.tvTolsDescription?.text= Html.fromHtml(getString(R.string.tools_description_1))
             }2->{
 
             binding?.tvTolsTitle?.text=getString(R.string.offline_tools_title2)
-            binding?.tvTolsDescription?.text=getString(R.string.tools_description_2)
+            binding?.tvTolsDescription?.text=Html.fromHtml(getString(R.string.tools_description_2))
             }3->{
 
             binding?.tvTolsTitle?.text=getString(R.string.offline_tools_title3)
-            binding?.tvTolsDescription?.text=getString(R.string.tools_description_3)
+            binding?.tvTolsDescription?.text=Html.fromHtml(getString(R.string.tools_description_3))
             }4->{
             binding?.tvTolsTitle?.text=getString(R.string.offline_tools_title4)
             binding?.tvTolsDescription?.text=getString(R.string.tools_description_4)
