@@ -62,6 +62,7 @@
         app:el_duration="300"
         android:layout_marginStart="@dimen/_5sdp"
         android:layout_marginEnd="@dimen/_5sdp"
+        android:background="@color/purple_500_light"
         app:el_expanded="true">
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -69,10 +70,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="@dimen/_4sdp"
+            android:padding="@dimen/_16sdp"
             android:textSize="@dimen/_12ssp"
             android:justificationMode="inter_word"
             android:autoLink="web"
-            android:text=""
+            android:textColorLink="@color/purple_500"
+            android:text="@string/offline_tool_1_implementation"
             android:textIsSelectable="true"
             android:textColor="@color/color_black" />
 
