@@ -3,6 +3,7 @@ package com.rtu.welearn.ui.about
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -10,6 +11,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.rtu.welearn.R
 import com.rtu.welearn.BaseActivity
+import com.rtu.welearn.WeLearnApp.Companion.VideoList
 import com.rtu.welearn.WeLearnApp.Companion.mDatabase
 import com.rtu.welearn.utils.Constants.Companion.ABOUT
 import com.rtu.welearn.databinding.ActivityAboutBinding

@@ -10,6 +10,7 @@ import com.rtu.welearn.databinding.ActivityDetailsBinding
 import com.rtu.welearn.databinding.ActivityVideoPlayerBinding
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
+import com.rtu.welearn.utils.Constants
 import kotlinx.android.synthetic.main.activity_video_player.*
 
 
@@ -27,7 +28,9 @@ class VideoPlayerActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_video_player)
+        val VIDEO_ID=intent.getStringExtra(Constants.VIDEO_ID)
 
+        binding?.youtubePlayerView?.setVideoID(VIDEO_ID?:"")
 //        player = ExoPlayer.Builder(this).build()
 //        binding?.playerView?.player = player
 //        val mediaItem: MediaItem = MediaItem.Builder()

@@ -18,7 +18,7 @@ import com.rtu.welearn.ui.youtubeplayer.options.IFramePlayerOptions
 import com.rtu.welearn.ui.youtubeplayer.utils.FullScreenHelper
 import com.rtu.welearn.ui.youtubeplayer.utils.loadOrCueVideo
 
-class YouTubePlayerView(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0):
+class YouTubePlayerView(context: Context, var attrs: AttributeSet? = null, defStyleAttr: Int = 0):
         SixteenByNineFrameLayout(context, attrs, defStyleAttr), LifecycleObserver {
 
     constructor(context: Context): this(context, null, 0)
@@ -28,17 +28,21 @@ class YouTubePlayerView(context: Context, attrs: AttributeSet? = null, defStyleA
     private val fullScreenHelper = FullScreenHelper(this)
 
     // this is a publicly accessible API
-    var enableAutomaticInitialization: Boolean
-
+    var enableAutomaticInitialization: Boolean = true
+    private var videoId = "";
     init {
+     //  initData()
+    }
+
+    fun initData(){
         addView(legacyTubePlayerView, LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
 
         val typedArray = context.theme.obtainStyledAttributes(attrs, R.styleable.YouTubePlayerView, 0, 0)
 
         enableAutomaticInitialization = typedArray.getBoolean(R.styleable.YouTubePlayerView_enableAutomaticInitialization, true)
-        val autoPlay = typedArray.getBoolean(R.styleable.YouTubePlayerView_autoPlay, false)
+        val autoPlay = true//typedArray.getBoolean(R.styleable.YouTubePlayerView_autoPlay, false)
         val handleNetworkEvents = typedArray.getBoolean(R.styleable.YouTubePlayerView_handleNetworkEvents, true)
-        val videoId = typedArray.getString(R.styleable.YouTubePlayerView_videoId)
+          //videoId = typedArray.getString(R.styleable.YouTubePlayerView_videoId).toString()
 
         typedArray.recycle()
 
@@ -59,6 +63,11 @@ class YouTubePlayerView(context: Context, attrs: AttributeSet? = null, defStyleA
         if(enableAutomaticInitialization) {
             legacyTubePlayerView.initialize(youTubePlayerListener, handleNetworkEvents, IFramePlayerOptions.default)
         }
+    }
+
+    fun setVideoID(videoID:String){
+        this.videoId=videoID
+        initData()
     }
 
     /**

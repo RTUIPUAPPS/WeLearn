@@ -20,6 +20,7 @@ import com.rtu.welearn.utils.AppUtils.showToast
 import com.rtu.welearn.databinding.ActivityDashboardBinding
 import com.rtu.welearn.ui.firebase.FirebaseMainActivity
 import com.rtu.welearn.ui.test.TestActivity
+import com.rtu.welearn.ui.video_list.VideoListActivity
 
 class DashboardActivity : BaseActivity() {
     companion object {
@@ -58,7 +59,7 @@ class DashboardActivity : BaseActivity() {
         }
         binding?.cvVideo?.setOnClickListener {
             if (isInternetAvailable(applicationContext)) {
-                launchActivity(VideoPlayerActivity.getIntent(this))
+                launchActivity(VideoListActivity.getIntent(this))
             } else {
                 this.showToast(getString(R.string.please_check_device_internet_connection))
             }
