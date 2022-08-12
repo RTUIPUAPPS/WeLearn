@@ -16,7 +16,7 @@ class VideoListActivity : BaseActivity() {
 
     companion object {
         fun getIntent(mContext: Context): Intent {
-            var intent = Intent(mContext, VideoListActivity::class.java)
+            val intent = Intent(mContext, VideoListActivity::class.java)
             return intent
         }
     }
@@ -29,13 +29,11 @@ class VideoListActivity : BaseActivity() {
         binding?.rvVideoList?.layoutManager = LinearLayoutManager(mContext)
         binding?.rvVideoList?.adapter = VideoListAdapter(VideoList, object :
             VideoListAdapter.OnClickListener {
-            override fun onClick(videoID: String) {
-                var intent = VideoPlayerActivity.getIntent(mContext!!)
-                intent.putExtra(VIDEO_ID, videoID)
+            override fun onClick(videoID: String?) {
+                val intent = VideoPlayerActivity.getIntent(mContext!!)
+                intent.putExtra(VIDEO_ID, videoID?:"")
                 launchActivity(intent)
             }
         })
-
     }
-
 }

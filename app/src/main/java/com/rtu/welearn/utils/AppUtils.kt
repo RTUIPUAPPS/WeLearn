@@ -1,16 +1,14 @@
 package com.rtu.welearn.utils
 
 import android.annotation.SuppressLint
-import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.net.ConnectivityManager
-import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.Uri
+import android.os.Handler
+import android.os.Looper
 import android.widget.Toast
-import com.rtu.welearn.R
 
 
 object AppUtils {
@@ -18,15 +16,26 @@ object AppUtils {
     fun Context.showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
+
     fun Context.showToastShort(msg: String) {
-        Toast.makeText(this, msg,  Toast.LENGTH_SHORT).show()
+
+        val toast = Toast.makeText(
+            applicationContext,
+            msg,
+            Toast.LENGTH_SHORT
+        )
+        toast.show()
+        Handler(Looper.getMainLooper()).postDelayed({
+            toast.cancel()
+        }, 500)
     }
 
-    fun openUrl(mContext:Context?,url:String){
+    fun openUrl(mContext: Context?, url: String) {
         val i = Intent(Intent.ACTION_VIEW)
         i.data = Uri.parse(url)
         mContext?.startActivity(i)
     }
+
     /** check internet connectivity**/
     @SuppressLint("MissingPermission")
     fun isInternetAvailable(context: Context): Boolean {

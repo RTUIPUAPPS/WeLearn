@@ -3,30 +3,21 @@ package com.rtu.welearn.ui.test
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
-import com.google.firebase.database.*
-import com.google.gson.Gson
+import com.google.firebase.database.DatabaseReference
 import com.hitesh.weatherlogger.view.callback.ItemClickListener
 import com.rtu.welearn.BaseActivity
 import com.rtu.welearn.R
 import com.rtu.welearn.WeLearnApp
 import com.rtu.welearn.WeLearnApp.Companion._isLoadingQuestions
-import com.rtu.welearn.WeLearnApp.Companion.mDatabas
-import com.rtu.welearn.WeLearnApp.Companion.mDatabase
 import com.rtu.welearn.databinding.ActivityTestBinding
 import com.rtu.welearn.utils.AppUtils.showToastShort
-import com.rtu.welearn.utils.Constants
-import com.rtu.welearn.utils.Constants.Companion.TEST
 import com.rtu.welearn.utils.showMessageDialog
-import com.squareup.sqldelight.runtime.coroutines.asFlow
-import com.squareup.sqldelight.runtime.coroutines.mapToList
-import io.opencensus.resource.Resource
-import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.toList
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import welearndb.TestEntity
 
 class TestActivity : BaseActivity() {
@@ -46,14 +37,14 @@ class TestActivity : BaseActivity() {
     private var listExamQuestions = ArrayList<TestEntity>()
     private var currentPos = 0
     private var pointsCollected = 0
-    private val totalTestQuestions=10
+    private val totalTestQuestions = 10
     private var arrayAnswers = HashMap<Int, Int>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_test)
 
         _isLoadingQuestions.observe(this, {
-            if(it){
+            if (it) {
                 getQuestionsList()
             }
         })
@@ -63,8 +54,8 @@ class TestActivity : BaseActivity() {
     }
 
 
-    private  fun getQuestionsList(){
-        val dbList= WeLearnApp.testQueries?.getAllQuestions()?.executeAsList()
+    private fun getQuestionsList() {
+        val dbList = WeLearnApp.testQueries?.getAllQuestions()?.executeAsList()
         dbList?.let {
             listAllQuestions.addAll(it)
             listAllQuestionsTemp.addAll(it)
@@ -78,7 +69,52 @@ class TestActivity : BaseActivity() {
     private fun initClick() {
         binding?.btnFinish?.setOnClickListener {
 
-            if (currentPos == 9) {
+            val checkedId = binding?.rgAnswers?.checkedRadioButtonId
+            var selectedPoint = 0
+            var isAnswered = false
+            when {
+                binding?.rbAns1?.id == checkedId -> {
+                    selectedPoint = listExamQuestions[currentPos].Points1!!.toInt()
+                    arrayAnswers[currentPos] = selectedPoint
+                }
+                binding?.rbAns2?.id == checkedId -> {
+                    selectedPoint = listExamQuestions[currentPos].Points2!!.toInt()
+                    arrayAnswers[currentPos] = selectedPoint
+                }
+                binding?.rbAns3?.id == checkedId -> {
+                    selectedPoint = listExamQuestions[currentPos].Points3!!.toInt()
+                    arrayAnswers[currentPos] = selectedPoint
+                }
+                binding?.rbAns4?.id == checkedId -> {
+                    selectedPoint = listExamQuestions[currentPos].Points4!!.toInt()
+                    arrayAnswers[currentPos] = selectedPoint
+                }
+                binding?.rbAns5?.id == checkedId -> {
+                    selectedPoint = listExamQuestions[currentPos].Points5!!.toInt()
+                    arrayAnswers[currentPos] = selectedPoint
+                }
+                else -> {
+                    showToastShort("Please select any option.")
+                }
+            }
+            when (selectedPoint) {
+                1 -> {
+                    showToastShort("Room for improvement - 1 point")
+                    currentPos += 1
+                    isAnswered = true
+                }
+                2 -> {
+                    showToastShort("Good! - 2 points")
+                    currentPos += 1
+                    isAnswered = true
+                }
+                3 -> {
+                    showToastShort(" Excellent! - 3 points")
+                    currentPos += 1
+                    isAnswered = true
+                }
+            }
+            if (currentPos == 10 && isAnswered) {
                 var points = 0
                 arrayAnswers.forEach {
                     points += it.value
@@ -108,56 +144,8 @@ class TestActivity : BaseActivity() {
                             finish()
                         }
                     })
-
-
-            } else {
-                val checkedId = binding?.rgAnswers?.checkedRadioButtonId
-                var selectedPoint = 0
-                when {
-                    binding?.rbAns1?.id == checkedId -> {
-                        selectedPoint = listExamQuestions[currentPos].Points1!!.toInt()
-                        arrayAnswers[currentPos] = selectedPoint
-                    }
-                    binding?.rbAns2?.id == checkedId -> {
-                        selectedPoint = listExamQuestions[currentPos].Points2!!.toInt()
-                        arrayAnswers[currentPos] = selectedPoint
-                    }
-                    binding?.rbAns3?.id == checkedId -> {
-                        selectedPoint = listExamQuestions[currentPos].Points3!!.toInt()
-                        arrayAnswers[currentPos] = selectedPoint
-                    }
-                    binding?.rbAns4?.id == checkedId -> {
-                        selectedPoint = listExamQuestions[currentPos].Points4!!.toInt()
-                        arrayAnswers[currentPos] = selectedPoint
-                    }
-                    binding?.rbAns5?.id == checkedId -> {
-                        selectedPoint = listExamQuestions[currentPos].Points5!!.toInt()
-                        arrayAnswers[currentPos] = selectedPoint
-                    }
-
-                    else->{
-                        showToastShort("Please select any option.")
-
-                    }
-                }
-
-                when (selectedPoint) {
-                    1 -> {
-                        showToastShort("Room for improvement - 1 point")
-                        currentPos += 1
-                        showQuestion(currentPos)
-                    }
-                    2 -> {
-                        showToastShort("Good! - 2 points")
-                        currentPos += 1
-                        showQuestion(currentPos)
-                    }
-                    3 -> {
-                        showToastShort(" Excellent! - 3 points")
-                        currentPos += 1
-                        showQuestion(currentPos)
-                    }
-                }
+            }else{
+                showQuestion(currentPos)
             }
         }
     }
@@ -175,7 +163,6 @@ class TestActivity : BaseActivity() {
                 if (currentPos == 9) {
                     binding?.btnFinish?.text = getString(R.string.finish)
                 }
-
             }
         })
     }

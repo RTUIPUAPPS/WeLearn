@@ -1,23 +1,17 @@
 package com.rtu.welearn.ui.video_list
 
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.rtu.welearn.R
-import org.apache.commons.io.IOUtils
-import org.json.JSONObject
-import java.lang.Exception
-import java.net.URL
-import java.util.Arrays.toString
 
 
-class VideoListAdapter(private val mList: List<VideoDetails>,val listener:OnClickListener) : RecyclerView.Adapter<VideoListAdapter.ViewHolder>() {
+class VideoListAdapter(private val mList: List<VideoDetails>, val listener: OnClickListener) :
+    RecyclerView.Adapter<VideoListAdapter.ViewHolder>() {
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -34,6 +28,7 @@ class VideoListAdapter(private val mList: List<VideoDetails>,val listener:OnClic
 
         val model = mList[position]
         holder.tvVideoTitle.text = model.video_title
+        holder.tvVideoDescription.text = model.video_description
 
         holder.llRoot.setOnClickListener {
             listener.onClick(model.video_id)
@@ -49,11 +44,12 @@ class VideoListAdapter(private val mList: List<VideoDetails>,val listener:OnClic
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
         val llRoot: LinearLayout = itemView.findViewById(R.id.llRoot)
         val tvVideoTitle: TextView = itemView.findViewById(R.id.tvVideoTitle)
+        val tvVideoDescription: TextView = itemView.findViewById(R.id.tvVideoDescription)
     }
 
 
-    interface OnClickListener{
-        fun onClick(videoID:String)
+    interface OnClickListener {
+        fun onClick(videoID: String?)
     }
 
 }
