@@ -11,7 +11,6 @@ import com.rtu.welearn.databinding.ActivityVideoPlayerBinding
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.rtu.welearn.utils.Constants
-import kotlinx.android.synthetic.main.activity_video_player.*
 
 
 class VideoPlayerActivity : BaseActivity() {

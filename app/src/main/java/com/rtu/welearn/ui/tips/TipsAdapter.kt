@@ -52,7 +52,7 @@ class TipsAdapter :
         val tipsData: TipsResponse? = differ.currentList[position]
         holder.itemView.apply {
             tipsData?.let { tips ->
-                btnOnline.text = tips.name
+                 btnOnline.text = tips.name
             }
         }
     }

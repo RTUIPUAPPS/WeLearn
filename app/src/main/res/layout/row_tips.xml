@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/rlRoot"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/custom_ripple_light_blue"
-    android:clickable="true"
-    android:focusable="true"
-    android:orientation="vertical"
-    android:padding="@dimen/_5sdp">
+<layout>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnOnline"
-        style="@style/StyleButton"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/rlRoot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/color_white"
-        tools:text="Online" />
+        android:background="@drawable/custom_ripple_light_blue"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:padding="@dimen/_5sdp">
 
-</LinearLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnOnline"
+            style="@style/StyleButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_white"
+            tools:text="Online" />
+
+    </LinearLayout>
+</layout>

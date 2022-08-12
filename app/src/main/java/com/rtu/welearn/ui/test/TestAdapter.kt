@@ -7,8 +7,6 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.rtu.welearn.R
-import kotlinx.android.synthetic.main.row_test.view.*
-import kotlinx.android.synthetic.main.row_tips.view.*
 
 
 class TestAdapter( var listQuestions : ArrayList<ModelTestQuestion>) :
@@ -53,7 +51,7 @@ class TestAdapter( var listQuestions : ArrayList<ModelTestQuestion>) :
         val questionData: ModelTestQuestion = listQuestions[position]
         holder.itemView.apply {
             questionData?.let { question ->
-                tvQuestion.text = question.Question
+              //  tvQuestion.text = question.Question
 //                tvTitle.setOnClickListener {
 //                    onItemClickListener?.let { it(tipsData) }
 //                }

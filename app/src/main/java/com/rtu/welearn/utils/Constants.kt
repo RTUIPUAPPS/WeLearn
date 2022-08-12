@@ -11,5 +11,6 @@ class Constants {
         const val  ID="id"
         const val  VIDEO_ID="video_id"
         const val  VIDEO_TITLE="video_title"
+        const val  FIREBASE_DB_VERSION="database_version"
     }
 }

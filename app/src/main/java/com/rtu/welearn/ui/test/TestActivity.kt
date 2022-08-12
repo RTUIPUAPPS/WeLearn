@@ -6,21 +6,28 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.google.gson.Gson
 import com.hitesh.weatherlogger.view.callback.ItemClickListener
 import com.rtu.welearn.BaseActivity
 import com.rtu.welearn.R
+import com.rtu.welearn.WeLearnApp
+import com.rtu.welearn.WeLearnApp.Companion._isLoadingQuestions
+import com.rtu.welearn.WeLearnApp.Companion.mDatabas
 import com.rtu.welearn.WeLearnApp.Companion.mDatabase
 import com.rtu.welearn.databinding.ActivityTestBinding
-import com.rtu.welearn.utils.AppUtils.showToast
 import com.rtu.welearn.utils.AppUtils.showToastShort
+import com.rtu.welearn.utils.Constants
 import com.rtu.welearn.utils.Constants.Companion.TEST
 import com.rtu.welearn.utils.showMessageDialog
+import com.squareup.sqldelight.runtime.coroutines.asFlow
+import com.squareup.sqldelight.runtime.coroutines.mapToList
+import io.opencensus.resource.Resource
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.toList
+import welearndb.TestEntity
 
 class TestActivity : BaseActivity() {
 
@@ -34,43 +41,40 @@ class TestActivity : BaseActivity() {
     var binding: ActivityTestBinding? = null
 
     private var mCloudEndPoint: DatabaseReference? = null
-    private var listAllQuestions = ArrayList<ModelTestQuestion>()
-    private var listAllQuestionsTemp = ArrayList<ModelTestQuestion>()
-    private var listExamQuestions = ArrayList<ModelTestQuestion>()
+    private var listAllQuestions = ArrayList<TestEntity>()
+    private var listAllQuestionsTemp = ArrayList<TestEntity>()
+    private var listExamQuestions = ArrayList<TestEntity>()
     private var currentPos = 0
     private var pointsCollected = 0
+    private val totalTestQuestions=10
     private var arrayAnswers = HashMap<Int, Int>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_test)
 
-
-        mCloudEndPoint = mDatabase?.child(TEST)
-        mCloudEndPoint?.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                snapshot.children.forEach {
-                    Log.d("snapshot", "${it.key},:: ${it.value}")
-                    var model =
-                        Gson().fromJson(Gson().toJson(it.value), ModelTestQuestion::class.java)
-                    listAllQuestions.add(model)
-                    listAllQuestionsTemp.add(model)
-                }
-                selectRandomQuestions()
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-
+        _isLoadingQuestions.observe(this, {
+            if(it){
+                getQuestionsList()
             }
         })
-
         initClick()
         initViewPageChangeCallback()
 
     }
 
-    /*Domino - to prevent domestic violence
-RTU IPU
-*/
+
+    private  fun getQuestionsList(){
+        val dbList= WeLearnApp.testQueries?.getAllQuestions()?.executeAsList()
+        dbList?.let {
+            listAllQuestions.addAll(it)
+            listAllQuestionsTemp.addAll(it)
+        }
+
+        CoroutineScope(Dispatchers.Main).launch {
+            selectRandomQuestions()
+        }
+    }
+
     private fun initClick() {
         binding?.btnFinish?.setOnClickListener {
 
@@ -111,40 +115,49 @@ RTU IPU
                 var selectedPoint = 0
                 when {
                     binding?.rbAns1?.id == checkedId -> {
-                        selectedPoint = listExamQuestions[currentPos].Points1.toInt()
+                        selectedPoint = listExamQuestions[currentPos].Points1!!.toInt()
                         arrayAnswers[currentPos] = selectedPoint
                     }
                     binding?.rbAns2?.id == checkedId -> {
-                        selectedPoint = listExamQuestions[currentPos].Points2.toInt()
+                        selectedPoint = listExamQuestions[currentPos].Points2!!.toInt()
                         arrayAnswers[currentPos] = selectedPoint
                     }
                     binding?.rbAns3?.id == checkedId -> {
-                        selectedPoint = listExamQuestions[currentPos].Points3.toInt()
+                        selectedPoint = listExamQuestions[currentPos].Points3!!.toInt()
                         arrayAnswers[currentPos] = selectedPoint
                     }
                     binding?.rbAns4?.id == checkedId -> {
-                        selectedPoint = listExamQuestions[currentPos].Points4.toInt()
+                        selectedPoint = listExamQuestions[currentPos].Points4!!.toInt()
                         arrayAnswers[currentPos] = selectedPoint
                     }
                     binding?.rbAns5?.id == checkedId -> {
-                        selectedPoint = listExamQuestions[currentPos].Points5.toInt()
+                        selectedPoint = listExamQuestions[currentPos].Points5!!.toInt()
                         arrayAnswers[currentPos] = selectedPoint
+                    }
+
+                    else->{
+                        showToastShort("Please select any option.")
+
                     }
                 }
 
-                when(selectedPoint){
-                    1->{
+                when (selectedPoint) {
+                    1 -> {
                         showToastShort("Room for improvement - 1 point")
+                        currentPos += 1
+                        showQuestion(currentPos)
                     }
-                    2->{
+                    2 -> {
                         showToastShort("Good! - 2 points")
+                        currentPos += 1
+                        showQuestion(currentPos)
                     }
-                    3->{
+                    3 -> {
                         showToastShort(" Excellent! - 3 points")
+                        currentPos += 1
+                        showQuestion(currentPos)
                     }
                 }
-                currentPos += 1
-                showQuestion(currentPos)
             }
         }
     }
@@ -157,7 +170,7 @@ RTU IPU
                 super.onPageSelected(position)
                 binding?.progressBar?.progress = position + 1
                 currentPos = position
-                binding?.tvRemaining?.text = "${currentPos + 1}/10"
+                binding?.tvRemaining?.text = "${currentPos + 1}/$totalTestQuestions"
 
                 if (currentPos == 9) {
                     binding?.btnFinish?.text = getString(R.string.finish)
@@ -170,7 +183,7 @@ RTU IPU
 
     private fun selectRandomQuestions() {
 
-        for (i in 0..9) {
+        for (i in 0 until totalTestQuestions) {
             val randomIndex = kotlin.random.Random.nextInt(listAllQuestionsTemp.size)
             val randomElement = listAllQuestionsTemp[randomIndex]
             listExamQuestions.add(randomElement)
@@ -180,6 +193,7 @@ RTU IPU
         showQuestion(0)
         binding?.progressBarCircle?.visibility = View.GONE
         binding?.llTest?.visibility = View.VISIBLE
+        binding?.btnFinish?.visibility = View.VISIBLE
     }
 
 
@@ -188,26 +202,26 @@ RTU IPU
         binding?.rgAnswers?.clearCheck()
         if (listExamQuestions.size > 0) {
 
-            binding?.tvRemaining?.text = "${position + 1}/${listExamQuestions.size}"
+            binding?.tvRemaining?.text = "${position + 1}/$totalTestQuestions"
             binding?.progressBar?.progress = position + 1
             val model = listExamQuestions[position]
-            if (model.Reply4.isEmpty()) {
+            if (model.Answer4.isNullOrEmpty()) {
                 binding?.rbAns4?.visibility = View.GONE
             } else {
                 binding?.rbAns4?.visibility = View.VISIBLE
             }
 
-            if (model.Reply5.isNullOrEmpty()) {
+            if (model.Answer5.isNullOrEmpty()) {
                 binding?.rbAns5?.visibility = View.GONE
             } else {
                 binding?.rbAns5?.visibility = View.VISIBLE
             }
             binding?.tvQuestion?.text = model.Question
-            binding?.rbAns1?.text = model.Reply1
-            binding?.rbAns2?.text = model.Reply2
-            binding?.rbAns3?.text = model.Reply3
-            binding?.rbAns4?.text = model.Reply4
-            binding?.rbAns5?.text = model.Reply5
+            binding?.rbAns1?.text = model.Answer1
+            binding?.rbAns2?.text = model.Answer2
+            binding?.rbAns3?.text = model.Answer3
+            binding?.rbAns4?.text = model.Answer4
+            binding?.rbAns5?.text = model.Answer5
 
         }
     }
