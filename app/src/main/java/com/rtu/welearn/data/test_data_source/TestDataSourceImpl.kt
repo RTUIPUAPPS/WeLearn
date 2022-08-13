@@ -12,8 +12,8 @@ class TestDataSourceImpl(db: WeLearnDatabase) : TestDataSource {
 
     private val queries = db.testEntityQueries
 
-    override fun getAllQuestions(): Flow<List<TestEntity>> {
-        return queries.getAllQuestions().asFlow().mapToList()
+    override fun getAllQuestions(): List<TestEntity> {
+        return queries.getAllQuestions().executeAsList()
     }
 
     override fun deleteAllQuestions() {

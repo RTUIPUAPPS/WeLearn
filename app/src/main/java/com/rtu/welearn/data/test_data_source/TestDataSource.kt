@@ -4,7 +4,7 @@ import kotlinx.coroutines.flow.Flow
 import welearndb.TestEntity
 
 interface TestDataSource {
-    fun getAllQuestions(): Flow<List<TestEntity>>
+    fun getAllQuestions(): List<TestEntity>
     fun deleteAllQuestions()
     suspend fun insertQuestion(
         id: Long?,

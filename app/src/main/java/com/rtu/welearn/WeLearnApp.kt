@@ -50,22 +50,6 @@ class WeLearnApp : Application() {
         dbVersionImpl = DBVersionDataSourceImpl(sqlDelightDB)
 
 
-        mCloudEndPointDBVersio = mDatabase?.child(Constants.FIREBASE_DB_VERSION)
-        mCloudEndPointDBVersio?.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                dbVersionFirebase = snapshot.value.toString().toInt()
-                if (dbVersionLocal != dbVersionFirebase) {
-                    CoroutineScope(Dispatchers.IO).launch {
-                        getTestQuestions()
-                    }
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-
-            }
-        })
-
 
         //Fetching video list fromFirebase
         mCloudEndPointVideoList = mDatabase?.child(Constants.VIDEO_LIST)
@@ -90,16 +74,40 @@ class WeLearnApp : Application() {
 
     suspend fun getLocalDBVersion() {
         dbVersionImpl?.getLocalDBVersion()?.collect(FlowCollector {
-            dbVersionLocal = it.get(0).version?.toInt() ?: 0
+            if(it.isNotEmpty()){
+                dbVersionLocal = it[0].version?.toInt() ?: 0
+            }
+            getFirebaseDBVersion()
         })
     }
 
-    private suspend fun getTestQuestions() {
+    fun getFirebaseDBVersion(){
+        mCloudEndPointDBVersio = mDatabase?.child(Constants.FIREBASE_DB_VERSION)
+        mCloudEndPointDBVersio?.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                dbVersionFirebase = snapshot.value.toString().toInt()
+                if (dbVersionLocal != dbVersionFirebase) {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        getTestQuestionsFromFirebase()
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })
+    }
+
+    private suspend fun getTestQuestionsFromFirebase() {
         mCloudEndPointTestQuestions = mDatabase?.child(Constants.TEST)
         mCloudEndPointTestQuestions?.addListenerForSingleValueEvent(object :
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 testImpl?.deleteAllQuestions()
+                CoroutineScope(Dispatchers.Main).launch {
+                    _isLoadingQuestions.value = true
+                }
                 snapshot.children.forEach {
                     CoroutineScope(Dispatchers.IO).launch {
                         testImpl?.insertQuestion(
@@ -116,9 +124,6 @@ class WeLearnApp : Application() {
                             Answer5 = it.child("Reply5").value.toString(),
                             id = null
                         )
-                        CoroutineScope(Dispatchers.Main).launch {
-                            _isLoadingQuestions.value = true
-                        }
                     }
                 }
 

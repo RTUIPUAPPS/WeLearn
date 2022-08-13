@@ -16,7 +16,6 @@ import com.rtu.welearn.utils.AppUtils.showToastShort
 import com.rtu.welearn.utils.showMessageDialog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.launch
 import welearndb.TestEntity
 
@@ -39,26 +38,27 @@ class TestActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_test)
 
-        _isLoadingQuestions.observe(this, {
-            if (it) {
-                CoroutineScope(Dispatchers.IO).launch {
-                    getQuestionsList()
-
-                }
-            }
-        })
         initClick()
         initViewPageChangeCallback()
 
+        _isLoadingQuestions.observe(this, {
+            if (!it) {
+                CoroutineScope(Dispatchers.IO).launch {
+                    getQuestionsList()
+                }
+            }
+        })
     }
 
 
-    private suspend fun getQuestionsList() {
-        testImpl?.getAllQuestions()?.collect(FlowCollector {
-            listAllQuestions.addAll(it)
-            listAllQuestionsTemp.addAll(it)
+    private fun getQuestionsList() {
+        val listQuestions = testImpl?.getAllQuestions()
+        if(!listQuestions.isNullOrEmpty()){
+            listAllQuestions.addAll(listQuestions)
+            listAllQuestionsTemp.addAll(listQuestions)
             selectRandomQuestions()
-        })
+        }
+
 //        val dbList = WeLearnApp.testQueries?.getAllQuestions()?.executeAsList()
 //        dbList?.let {
 //
@@ -205,11 +205,11 @@ class TestActivity : BaseActivity() {
                 binding?.rbAns5?.visibility = View.VISIBLE
             }
             binding?.tvQuestion?.text = model.Question
-            binding?.rbAns1?.text = model.Answer1
-            binding?.rbAns2?.text = model.Answer2
-            binding?.rbAns3?.text = model.Answer3
-            binding?.rbAns4?.text = model.Answer4
-            binding?.rbAns5?.text = model.Answer5
+            binding?.rbAns1?.text = model.Answer1?:""
+            binding?.rbAns2?.text = model.Answer2?:""
+            binding?.rbAns3?.text = model.Answer3?:""
+            binding?.rbAns4?.text = model.Answer4?:""
+            binding?.rbAns5?.text = model.Answer5?:""
 
         }
     }
