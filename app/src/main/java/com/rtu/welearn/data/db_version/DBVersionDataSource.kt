@@ -1,6 +1,9 @@
 package com.rtu.welearn.data.db_version
 
+import kotlinx.coroutines.flow.Flow
+import welearndb.DbVersion
+
 interface DBVersionDataSource {
-    fun getLocalDBVersion()
-    fun setLocalDBVersion(version: Int)
+    fun getLocalDBVersion(): Flow<List<DbVersion>>?
+    suspend fun setLocalDBVersion(version: Long?)
 }

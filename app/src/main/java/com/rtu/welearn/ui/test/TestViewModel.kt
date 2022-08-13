@@ -9,25 +9,7 @@ class TestViewModel(
     private val testDataSource: TestDataSource
 ) : ViewModel() {
 
-    val testQuestions = testDataSource.getAllQuestions()
 
-    fun insertQuestionsToDB() {
-        viewModelScope.launch {
-            testDataSource.insertQuestion(
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                ""
-            )
-        }
-    }
 
     inline fun <T> safeCall(action: () -> Resource<T>): Resource<T> {
         return try {

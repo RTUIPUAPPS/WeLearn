@@ -5,18 +5,19 @@ import welearndb.TestEntity
 
 interface TestDataSource {
     fun getAllQuestions(): Flow<List<TestEntity>>
+    fun deleteAllQuestions()
     suspend fun insertQuestion(
-        question: String,
-        answer1: String,
-        answer2: String,
-        answer3: String,
-        answer4: String,
-        answer5: String,
-        point1: String,
-        point2: String,
-        point3: String,
-        point4: String,
-        point5: String,
-        id:Long?=null
+        id: Long?,
+        Point1: String,
+        Point2: String,
+        Point3: String,
+        Point4: String,
+        Point5: String,
+        Question: String,
+        Answer1: String,
+        Answer2: String,
+        Answer3: String,
+        Answer4: String,
+        Answer5: String
     )
 }

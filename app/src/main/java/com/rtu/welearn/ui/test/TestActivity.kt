@@ -6,17 +6,17 @@ import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.viewpager2.widget.ViewPager2
-import com.google.firebase.database.DatabaseReference
 import com.hitesh.weatherlogger.view.callback.ItemClickListener
 import com.rtu.welearn.BaseActivity
 import com.rtu.welearn.R
-import com.rtu.welearn.WeLearnApp
 import com.rtu.welearn.WeLearnApp.Companion._isLoadingQuestions
+import com.rtu.welearn.WeLearnApp.Companion.testImpl
 import com.rtu.welearn.databinding.ActivityTestBinding
 import com.rtu.welearn.utils.AppUtils.showToastShort
 import com.rtu.welearn.utils.showMessageDialog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.launch
 import welearndb.TestEntity
 
@@ -24,19 +24,15 @@ class TestActivity : BaseActivity() {
 
     companion object {
         fun getIntent(mContext: Context): Intent {
-            var intent = Intent(mContext, TestActivity::class.java)
-            return intent
+            return Intent(mContext, TestActivity::class.java)
         }
     }
 
     var binding: ActivityTestBinding? = null
-
-    private var mCloudEndPoint: DatabaseReference? = null
     private var listAllQuestions = ArrayList<TestEntity>()
     private var listAllQuestionsTemp = ArrayList<TestEntity>()
     private var listExamQuestions = ArrayList<TestEntity>()
     private var currentPos = 0
-    private var pointsCollected = 0
     private val totalTestQuestions = 10
     private var arrayAnswers = HashMap<Int, Int>()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,7 +41,10 @@ class TestActivity : BaseActivity() {
 
         _isLoadingQuestions.observe(this, {
             if (it) {
-                getQuestionsList()
+                CoroutineScope(Dispatchers.IO).launch {
+                    getQuestionsList()
+
+                }
             }
         })
         initClick()
@@ -54,16 +53,18 @@ class TestActivity : BaseActivity() {
     }
 
 
-    private fun getQuestionsList() {
-        val dbList = WeLearnApp.testQueries?.getAllQuestions()?.executeAsList()
-        dbList?.let {
+    private suspend fun getQuestionsList() {
+        testImpl?.getAllQuestions()?.collect(FlowCollector {
             listAllQuestions.addAll(it)
             listAllQuestionsTemp.addAll(it)
-        }
-
-        CoroutineScope(Dispatchers.Main).launch {
             selectRandomQuestions()
-        }
+        })
+//        val dbList = WeLearnApp.testQueries?.getAllQuestions()?.executeAsList()
+//        dbList?.let {
+//
+//        }
+
+
     }
 
     private fun initClick() {
@@ -144,7 +145,7 @@ class TestActivity : BaseActivity() {
                             finish()
                         }
                     })
-            }else{
+            } else {
                 showQuestion(currentPos)
             }
         }

@@ -3,10 +3,10 @@ package com.rtu.welearn
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.database.*
+import com.rtu.welearn.data.db_version.DBVersionDataSourceImpl
 import com.rtu.welearn.data.test_data_source.TestDataSourceImpl
 import com.rtu.welearn.ui.video_list.VideoDetails
 import com.rtu.welearn.utils.Constants
-import com.rtu.welearn.utils.Constants.Companion.ID
 import com.rtu.welearn.utils.Constants.Companion.VIDEO_DESCRIPTION
 import com.rtu.welearn.utils.Constants.Companion.VIDEO_ID
 import com.rtu.welearn.utils.Constants.Companion.VIDEO_TITLE
@@ -14,8 +14,8 @@ import com.squareup.sqldelight.android.AndroidSqliteDriver
 import com.squareup.sqldelight.db.SqlDriver
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.launch
-import welearndb.TestEntityQueries
 
 class WeLearnApp : Application() {
     companion object {
@@ -23,10 +23,12 @@ class WeLearnApp : Application() {
         var dbVersionLocal = 0
         var dbVersionFirebase = 0
 
-        //        var sqlDelightDB: WeLearnDatabase? = null
-        var testQueries: TestEntityQueries? = null
+        //        var testQueries: TestEntityQueries? = null
         var testImpl: TestDataSourceImpl? = null
-        var mDatabas: FirebaseDatabase? = null
+
+        //        var dbVersionQueries: DbVersionQueries? = null
+        var dbVersionImpl: DBVersionDataSourceImpl? = null
+
         var mDatabase: DatabaseReference? = null
         private var mCloudEndPointVideoList: DatabaseReference? = null
         var mCloudEndPointTestQuestions: DatabaseReference? = null
@@ -37,13 +39,16 @@ class WeLearnApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        CoroutineScope(Dispatchers.Main).launch {
+            getLocalDBVersion()
+        }
+        mDatabase = FirebaseDatabase.getInstance().reference
         driver = AndroidSqliteDriver(WeLearnDatabase.Schema, this, "welearn.db")
         val sqlDelightDB = WeLearnDatabase(driver!!)
-        testQueries = sqlDelightDB.testEntityQueries
-        testImpl = TestDataSourceImpl(sqlDelightDB)
 
-        mDatabas = FirebaseDatabase.getInstance()
-        mDatabase = FirebaseDatabase.getInstance().reference
+        testImpl = TestDataSourceImpl(sqlDelightDB)
+        dbVersionImpl = DBVersionDataSourceImpl(sqlDelightDB)
+
 
         mCloudEndPointDBVersio = mDatabase?.child(Constants.FIREBASE_DB_VERSION)
         mCloudEndPointDBVersio?.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -83,29 +88,33 @@ class WeLearnApp : Application() {
         })
     }
 
+    suspend fun getLocalDBVersion() {
+        dbVersionImpl?.getLocalDBVersion()?.collect(FlowCollector {
+            dbVersionLocal = it.get(0).version?.toInt() ?: 0
+        })
+    }
 
     private suspend fun getTestQuestions() {
         mCloudEndPointTestQuestions = mDatabase?.child(Constants.TEST)
         mCloudEndPointTestQuestions?.addListenerForSingleValueEvent(object :
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                testQueries?.deleteQuestions()
+                testImpl?.deleteAllQuestions()
                 snapshot.children.forEach {
                     CoroutineScope(Dispatchers.IO).launch {
                         testImpl?.insertQuestion(
-                            point1 = it.child("Points1").value.toString(),
-                            point2 = it.child("Points2").value.toString(),
-                            point3 = it.child("Points3").value.toString(),
-                            point4 = it.child("Points4").value.toString(),
-                            point5 = it.child("Points5").value.toString(),
-                            question = it.child("Question").value.toString(),
-                            answer1 = it.child("Reply1").value.toString(),
-                            answer2 = it.child("Reply2").value.toString(),
-                            answer3 = it.child("Reply3").value.toString(),
-                            answer4 = it.child("Reply4").value.toString(),
-                            answer5 = it.child("Reply5").value.toString(),
+                            Point1 = it.child("Points1").value.toString(),
+                            Point2 = it.child("Points2").value.toString(),
+                            Point3 = it.child("Points3").value.toString(),
+                            Point4 = it.child("Points4").value.toString(),
+                            Point5 = it.child("Points5").value.toString(),
+                            Question = it.child("Question").value.toString(),
+                            Answer1 = it.child("Reply1").value.toString(),
+                            Answer2 = it.child("Reply2").value.toString(),
+                            Answer3 = it.child("Reply3").value.toString(),
+                            Answer4 = it.child("Reply4").value.toString(),
+                            Answer5 = it.child("Reply5").value.toString(),
                             id = null
-
                         )
                         CoroutineScope(Dispatchers.Main).launch {
                             _isLoadingQuestions.value = true
@@ -114,6 +123,7 @@ class WeLearnApp : Application() {
                 }
 
                 CoroutineScope(Dispatchers.Main).launch {
+                    dbVersionImpl?.setLocalDBVersion(dbVersionFirebase.toLong())
                     _isLoadingQuestions.value = false
                 }
 

@@ -16,37 +16,39 @@ class TestDataSourceImpl(db: WeLearnDatabase) : TestDataSource {
         return queries.getAllQuestions().asFlow().mapToList()
     }
 
-    override suspend fun insertQuestion(
-        question: String,
+    override fun deleteAllQuestions() {
+       queries.deleteQuestions()
+    }
 
-        point1: String,
-        point2: String,
-        point3: String,
-        point4: String,
-        point5: String,
-        answer1: String,
-        answer2: String,
-        answer3: String,
-        answer4: String,
-        answer5: String,
-        id: Long?
+    override suspend fun insertQuestion(
+        id: Long?,
+        Point1: String,
+        Point2: String,
+        Point3: String,
+        Point4: String,
+        Point5: String,
+        Question: String,
+        Answer1: String,
+        Answer2: String,
+        Answer3: String,
+        Answer4: String,
+        Answer5: String
     ) {
 
         withContext(Dispatchers.IO){
-            queries.insertQuestion(id,
-                point1,
-                point2,
-                point3,
-                point4,
-                point5,
-                question,
-                answer1,
-                answer2,
-                answer3,
-                answer4,
-                answer5,
-
-
+            queries.insertQuestion(
+                id,
+                Point1,
+                Point2,
+                Point3,
+                Point4,
+                Point5,
+                Question,
+                Answer1,
+                Answer2,
+                Answer3,
+                Answer4,
+                Answer5,
             )
         }
     }

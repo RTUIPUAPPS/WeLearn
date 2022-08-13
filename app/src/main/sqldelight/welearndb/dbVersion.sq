@@ -1,3 +1,11 @@
 CREATE TABLE dbVersion (
 version INTEGER
 );
+
+getDBVersion:
+SELECT *
+FROM dbVersion;
+
+setdbVersion:
+INSERT INTO dbVersion
+VALUES (?);
