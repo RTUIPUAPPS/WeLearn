@@ -3,6 +3,7 @@ package com.rtu.welearn.utils
 import android.app.Dialog
 import android.content.Context
 import android.os.Handler
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.Window
 import androidx.databinding.DataBindingUtil
@@ -23,7 +24,7 @@ fun showMessageDialog(context: Context, title: String,message: String="", listen
     mDialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
     binding.tvTitle.text = title
-    binding.tvMessage.text = message
+    binding.tvMessage.text = Html.fromHtml("<i>\"$message\"</i>", Html.FROM_HTML_MODE_LEGACY)
 
 
     binding.tvDismiss.setOnClickListener {

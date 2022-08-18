@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.rtu.welearn.databinding.ActivityPracticesBinding
+import com.rtu.welearn.databinding.ActivityToolkitsBinding
 
 class ToolkitsActivity : BaseActivity() {
 
@@ -16,14 +16,14 @@ class ToolkitsActivity : BaseActivity() {
         }
     }
 
-    var binding: ActivityPracticesBinding? = null
+    var binding: ActivityToolkitsBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_practices)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_toolkits)
 
-        var listTools=ArrayList<String>()
-        var listToolsDescription=ArrayList<String>()
-        var listToolsImplementation=ArrayList<String>()
+        var listTools = ArrayList<String>()
+        var listToolsDescription = ArrayList<String>()
+        var listToolsImplementation = ArrayList<String>()
 
         listTools.add(getString(R.string.offline_tools_title1))
         listTools.add(getString(R.string.offline_tools_title2))
@@ -61,12 +61,14 @@ class ToolkitsActivity : BaseActivity() {
         listToolsImplementation.add(getString(R.string.online_tool6_implementation))
 
 
-
-        var toolsAdapter = ToolsAdapter(listTools,listToolsImplementation,object:ToolsAdapter.OnToolDescriptionClick{
-            override fun onClick(position: Int) {
-                launchActivity(ToolDescriptionActivity.getIntent(baseContext, position))
-            }
-        })
+        var toolsAdapter = ToolsAdapter(
+            listTools,
+            listToolsImplementation,
+            object : ToolsAdapter.OnToolDescriptionClick {
+                override fun onClick(position: Int) {
+                    launchActivity(ToolDescriptionActivity.getIntent(baseContext, position))
+                }
+            })
         binding?.rvTools?.layoutManager = LinearLayoutManager(this)
         binding?.rvTools?.adapter = toolsAdapter
     }
