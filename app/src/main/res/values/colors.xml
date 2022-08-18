@@ -17,6 +17,8 @@
     <color name="color_about">#CFDBE2</color>
     <color name="color_test">#FBE5D7</color>
     <color name="color_practice">#FFF2CB</color>
+    <color name="color_practice_trans">#BFFFF2CB</color>
+    <color name="color_toolbar">#FFF2CB</color>
     <color name="color_materials">#E2F0D9</color>
     <color name="color_video">#E5A8EE</color>
     <color name="color_pink_dark">#89039C</color>

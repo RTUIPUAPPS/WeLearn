@@ -28,7 +28,7 @@
             android:clickable="false"
             tools:text="@string/offline_tools_title1"
             android:textAllCaps="false"
-            android:textColor="@color/color_white"
+            android:textColor="@color/color_blue"
             android:textSize="@dimen/_14ssp" />
 
 

@@ -40,6 +40,13 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    sourceSets {
+        main {
+            assets {
+                srcDirs 'src\\main\\assets'
+            }
+        }
+    }
 
 }
 
@@ -109,6 +116,11 @@ dependencies {
     //SQL Delight
     implementation "com.squareup.sqldelight:android-driver:1.5.2"
     implementation "com.squareup.sqldelight:coroutines-extensions-jvm:1.5.2"
+
+    //PDF view
+    implementation 'com.github.ChristianSteffensen:AndroidPdfViewer:1.0.0'
+//    implementation 'com.github.barteksc:android-pdf-viewer:3.2.0-beta.1'
+
 }
 sqldelight {
     WeLearnDatabase { // This will be the name of the generated database class.

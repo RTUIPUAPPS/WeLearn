@@ -36,7 +36,7 @@
             android:text="@string/offline_tools_title1"
             android:textAllCaps="false"
             android:textColor="@color/color_white"
-            android:textSize="@dimen/_12ssp" />
+            android:textSize="@dimen/_10ssp" />
 
         <View
             android:layout_width="@dimen/_1sdp"

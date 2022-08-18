@@ -24,6 +24,7 @@
         <activity
             android:name=".DashboardActivity"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,36 +35,44 @@
         <activity
             android:name=".DetailsActivity"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
             android:name=".ui.about.AboutActivity"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
             android:name=".ui.tips.TipsActivity"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
 
         <activity
             android:name=".ui.firebase.FirebaseMainActivity"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
 
         <activity
             android:name=".ui.test.TestActivity"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
             android:name=".ui.camera.CameraActivity"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
             android:name=".ToolkitsActivity"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
             android:name=".ToolDescriptionActivity"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
             android:name=".VideoPlayerActivity"

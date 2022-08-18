@@ -88,7 +88,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_5sdp"
-                            android:text="About"
+                            android:text="@string/about"
                             android:textColor="@color/color_black"
                             android:textSize="@dimen/_14ssp" />
                     </LinearLayout>
@@ -139,7 +139,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_5sdp"
-                            android:text="Test"
+                            android:text="@string/test"
                             android:textColor="@color/color_black"
                             android:textSize="@dimen/_14ssp" />
                     </LinearLayout>
@@ -199,7 +199,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_5sdp"
-                            android:text="Toolkits"
+                            android:text="@string/toolkits"
                             android:textColor="@color/color_black"
                             android:textSize="@dimen/_14ssp" />
                     </LinearLayout>
@@ -250,7 +250,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_5sdp"
-                            android:text="Materials"
+                            android:text="@string/materials"
                             android:textColor="@color/color_black"
                             android:textSize="@dimen/_14ssp" />
                     </LinearLayout>
@@ -309,7 +309,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_5sdp"
-                            android:text="Video"
+                            android:text="@string/video"
                             android:textColor="@color/color_black"
                             android:textSize="@dimen/_14ssp" />
                     </LinearLayout>
@@ -360,7 +360,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_5sdp"
-                            android:text="Tips"
+                            android:text="@string/tips"
                             android:textColor="@color/color_black"
                             android:textSize="@dimen/_14ssp" />
                     </LinearLayout>
