@@ -1,10 +1,12 @@
 package com.rtu.welearn
 
+import android.graphics.Color
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.OvershootInterpolator
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import net.cachapa.expandablelayout.ExpandableLayout
@@ -12,7 +14,7 @@ import net.cachapa.expandablelayout.util.FastOutSlowInInterpolator
 
 
 class ToolsAdapter(
-    var listTitle: ArrayList<String>, var listDescription: ArrayList<String>,
+    var listTitle: ArrayList<String>, var listImplementation: ArrayList<String>,
     var onClickListener: OnToolDescriptionClick
 ) :
     RecyclerView.Adapter<ToolsAdapter.ViewHolder>() {
@@ -29,14 +31,21 @@ class ToolsAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val position: Int = holder.absoluteAdapterPosition
-        val isSelected = position == selectedItem
+        val absPosition: Int = holder.absoluteAdapterPosition
+        val isSelected = absPosition == selectedItem
 
-        holder.tvToolTitle?.text = listTitle[position]
-        holder.tvToolImplementation?.text = Html.fromHtml(listDescription[position])
+        if(listTitle[absPosition].contains("offline tool",true)){
+            holder.llToolTitle?.setBackgroundResource(R.drawable.bg_blue_rounded)
+            holder.tvToolImplementation?.setBackgroundResource(R.color.purple_500_light)
+        }else{
+            holder.llToolTitle?.setBackgroundResource(R.drawable.bg_blue_rounded_light)
+            holder.tvToolImplementation?.setBackgroundResource(R.color.color_steal_light)
+        }
+        holder.tvToolTitle?.text = listTitle[absPosition]
+        holder.tvToolImplementation?.text = Html.fromHtml(listImplementation[absPosition],Html.FROM_HTML_MODE_LEGACY)
         holder.tvToolTitle?.isSelected = isSelected
         holder.expandableLayout?.setExpanded(isSelected, false)
-        holder.tvTolsDescription?.setOnClickListener(object:View.OnClickListener{
+        holder.tvToolsDescription?.setOnClickListener(object:View.OnClickListener{
             override fun onClick(p0: View?) {
                 onClickListener.onClick(holder.absoluteAdapterPosition+1)
             }
@@ -54,9 +63,10 @@ class ToolsAdapter(
         private val UNSELECTED = -1
         private var selectedItem = UNSELECTED
 
+        var llToolTitle: LinearLayout? = null
         var tvToolTitle: TextView? = null
         var tvToolImplementation: TextView? = null
-        var tvTolsDescription: TextView? = null
+        var tvToolsDescription: TextView? = null
         var expandableLayout: ExpandableLayout? = null
 
 
@@ -64,17 +74,16 @@ class ToolsAdapter(
             val position = absoluteAdapterPosition
             val isSelected = position == selectedItem
 
+            llToolTitle = itemView.findViewById(R.id.llToolTitle)
             tvToolTitle = itemView.findViewById(R.id.tvToolTitle)
-            tvTolsDescription = itemView.findViewById(R.id.tvTolsDescription)
+            tvToolsDescription = itemView.findViewById(R.id.tvTolsDescription)
             tvToolImplementation = itemView.findViewById(R.id.tvToolImplementation)
             expandableLayout = itemView.findViewById(R.id.expandable_layout)
             expandableLayout?.setInterpolator(FastOutSlowInInterpolator())
             expandableLayout?.setOnExpansionUpdateListener(this)
-            tvToolTitle?.setOnClickListener(this)
-
+            llToolTitle?.setOnClickListener(this)
             tvToolTitle!!.isSelected = isSelected
             expandableLayout!!.setExpanded(isSelected, false)
-
         }
 
 

@@ -28,18 +28,19 @@
         </androidx.cardview.widget.CardView>
 
         <ScrollView
-            android:layout_below="@+id/cvToolbar"
+            android:id="@+id/svTextDescription"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cvToolbar">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvToolsDescription"
-                android:paddingTop="@dimen/_50sdp"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autoLink="web"
                 android:justificationMode="none"
                 android:paddingStart="@dimen/_10sdp"
+                android:paddingTop="@dimen/_50sdp"
                 android:paddingEnd="@dimen/_10sdp"
                 android:paddingBottom="@dimen/_10sdp"
                 android:textColor="@color/color_black"
@@ -51,19 +52,18 @@
             android:layout_below="@+id/cvToolbar"
             android:id="@+id/rlPDFView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <com.github.barteksc.pdfviewer.PDFView
                 android:id="@+id/pdfView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content" />
         </RelativeLayout>
-
         <LinearLayout
             android:layout_below="@+id/cvToolbar"
-            android:id="@+id/llTextDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:alpha="0.8"
             android:background="@color/color_practice_trans"
             android:orientation="vertical">
 
@@ -71,10 +71,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_10sdp"
-                android:text="Tool Description"
+                android:text="@string/tool_description"
                 android:textColor="@color/color_black"
                 android:textSize="@dimen/_14ssp"
                 android:textStyle="bold" />
         </LinearLayout>
+
     </RelativeLayout>
 </layout>

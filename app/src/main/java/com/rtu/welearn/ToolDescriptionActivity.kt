@@ -5,13 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Html
 import android.view.View
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.rtu.welearn.databinding.ActivityToolDescriptionBinding
 import com.rtu.welearn.utils.Constants.Companion.TOOL_NUMBER
-import java.io.IOException
-import java.util.*
-import kotlin.collections.ArrayList
 
 
 class ToolDescriptionActivity : BaseActivity() {
@@ -173,14 +169,15 @@ class ToolDescriptionActivity : BaseActivity() {
         title: String,
         description: String,
         isShowPDF: Boolean = false,
-    pdfName:String="") {
+        pdfName: String = ""
+    ) {
 
 
         binding?.tvTolsTitle?.text = title
 
         if (isShowPDF) {
-            binding?.llTextDescription?.visibility=View.GONE
-            binding?.rlPDFView?.visibility= View.VISIBLE
+            binding?.svTextDescription?.visibility = View.GONE
+            binding?.rlPDFView?.visibility = View.VISIBLE
 
             binding?.pdfView!!.fromAsset(pdfName)
 
@@ -207,34 +204,11 @@ class ToolDescriptionActivity : BaseActivity() {
                 .load()
         } else {
 
-            binding?.llTextDescription?.visibility=View.VISIBLE
-            binding?.rlPDFView?.visibility= View.GONE
+            binding?.svTextDescription?.visibility = View.VISIBLE
+            binding?.rlPDFView?.visibility = View.GONE
             binding?.tvToolsDescription?.text =
                 Html.fromHtml(description, Html.FROM_HTML_MODE_LEGACY)
 
         }
-    }
-
-
-    private fun getPDFFromAssets(): List<String>? {
-        val pdfFiles: MutableList<String> = ArrayList()
-        val assetManager = this.assets
-        try {
-            for (name in assetManager.list("")!!) {
-                // include files which end with pdf only
-                if (name.lowercase(Locale.getDefault()).endsWith("docx")) {
-                    pdfFiles.add(name)
-                }
-            }
-        } catch (ioe: IOException) {
-            val mesg = "Could not read files from assets folder"
-            Toast.makeText(
-                this,
-                mesg,
-                Toast.LENGTH_LONG
-            )
-                .show()
-        }
-        return pdfFiles
     }
 }

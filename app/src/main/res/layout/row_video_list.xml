@@ -29,7 +29,7 @@
         android:layout_marginBottom="@dimen/_2sdp"
         android:justificationMode="inter_word"
         android:singleLine="false"
-        android:textColor="@color/blue_border"
+        android:textColor="@color/color_teal_medium"
         android:textSize="@dimen/_12ssp"
         tools:text="In this first episode we introduce the WeLearn Tools Letter across the Channel and Non-linear storytelling / The introduction week for first semester students. The purpose of these videos is to show you an idea on how to implement the tools and share with you some of our learnings throughout this process." />
 

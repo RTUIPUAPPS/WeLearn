@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/llToolOne"
+        android:id="@+id/llToolTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_blue_rounded"
@@ -62,7 +62,7 @@
         app:el_duration="300"
         android:layout_marginStart="@dimen/_5sdp"
         android:layout_marginEnd="@dimen/_5sdp"
-        android:background="@color/purple_500_light"
+
         app:el_expanded="true">
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -71,6 +71,7 @@
             android:layout_height="wrap_content"
             android:elevation="@dimen/_4sdp"
             android:padding="@dimen/_16sdp"
+            android:background="@color/purple_500_light"
             android:textSize="@dimen/_12ssp"
             android:justificationMode="inter_word"
             android:autoLink="web"
