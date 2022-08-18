@@ -14,6 +14,7 @@
     <color name="color_dark_gray">#BFBFBF</color>
     <color name="color_light_dark_gray">#DDDDDD</color>
     <color name="color_teal_medium">#33607E</color>
+    <color name="color_teal_dark">#173E59</color>
     <color name="color_steal_light">#8EAFC5</color>
     <color name="color_about">#CFDBE2</color>
     <color name="color_test">#FBE5D7</color>
