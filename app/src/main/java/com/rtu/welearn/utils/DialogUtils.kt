@@ -20,7 +20,7 @@ fun showMessageDialog(context: Context, title: String,message: String="", listen
     val mDialog: Dialog? = Dialog(context)
     mDialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
     mDialog?.setContentView(binding.root)
-    mDialog?.setCanceledOnTouchOutside(false)
+    mDialog?.setCanceledOnTouchOutside(true)
     mDialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
     binding.tvTitle.text = title

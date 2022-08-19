@@ -40,11 +40,11 @@ class ToolDescriptionActivity : BaseActivity() {
         listToolsDescription.add(getString(R.string.offline_tools_description_9))
         listToolsDescription.add(getString(R.string.offline_tools_description_10))
         listToolsDescription.add(getString(R.string.online_tools_description_1))
-        listToolsDescription.add(getString(R.string.online_tool2_implementation))
-        listToolsDescription.add(getString(R.string.online_tool3_implementation))
-        listToolsDescription.add(getString(R.string.online_tool4_implementation))
-        listToolsDescription.add(getString(R.string.online_tool5_implementation))
-        listToolsDescription.add(getString(R.string.online_tool6_implementation))
+        listToolsDescription.add(getString(R.string.online_tools_description_2))
+        listToolsDescription.add(getString(R.string.online_tools_description_3))
+        listToolsDescription.add("")
+        listToolsDescription.add(getString(R.string.online_tools_description_5))
+        listToolsDescription.add("")
 
 
         when (intToolNumber) {

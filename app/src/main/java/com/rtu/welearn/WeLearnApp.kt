@@ -1,6 +1,7 @@
 package com.rtu.welearn
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.database.*
 import com.rtu.welearn.data.db_version.DBVersionDataSourceImpl
@@ -32,9 +33,15 @@ class WeLearnApp : Application() {
         var mDatabase: DatabaseReference? = null
         private var mCloudEndPointVideoList: DatabaseReference? = null
         var mCloudEndPointTestQuestions: DatabaseReference? = null
+        var mCloudEndPointTips: DatabaseReference? = null
         var mCloudEndPointDBVersio: DatabaseReference? = null
         var VideoList = arrayListOf<VideoDetails>()
         var _isLoadingQuestions = MutableLiveData<Boolean>(false)
+
+
+          var listTipsOnline = ArrayList<String>()
+          var listTipsOffline = ArrayList<String>()
+          var listTipsBoth = ArrayList<String>()
     }
 
     override fun onCreate() {
@@ -51,37 +58,23 @@ class WeLearnApp : Application() {
 
 
 
+        getVideoList()
+        getTipsFromFirebase()
+
         //Fetching video list fromFirebase
-        mCloudEndPointVideoList = mDatabase?.child(Constants.VIDEO_LIST)
-        mCloudEndPointVideoList?.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                snapshot.children.forEach {
-                    VideoList.add(
-                        VideoDetails(
-                            it.child(VIDEO_ID).value.toString(),
-                            it.child(VIDEO_TITLE).value.toString(),
-                            it.child(VIDEO_DESCRIPTION).value.toString()
-                        )
-                    )
-                }
-            }
 
-            override fun onCancelled(error: DatabaseError) {
-
-            }
-        })
     }
 
     suspend fun getLocalDBVersion() {
         dbVersionImpl?.getLocalDBVersion()?.collect(FlowCollector {
-            if(it.isNotEmpty()){
+            if (it.isNotEmpty()) {
                 dbVersionLocal = it[0].version?.toInt() ?: 0
             }
             getFirebaseDBVersion()
         })
     }
 
-    fun getFirebaseDBVersion(){
+    fun getFirebaseDBVersion() {
         mCloudEndPointDBVersio = mDatabase?.child(Constants.FIREBASE_DB_VERSION)
         mCloudEndPointDBVersio?.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -89,6 +82,7 @@ class WeLearnApp : Application() {
                 if (dbVersionLocal != dbVersionFirebase) {
                     CoroutineScope(Dispatchers.IO).launch {
                         getTestQuestionsFromFirebase()
+
                     }
                 }
             }
@@ -132,6 +126,63 @@ class WeLearnApp : Application() {
                     _isLoadingQuestions.value = false
                 }
 
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })
+    }
+
+    private fun getTipsFromFirebase() {
+        mCloudEndPointTips = mDatabase?.child(Constants.TIPS)
+        mCloudEndPointTips?.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                snapshot.children.forEach {
+                    Log.d("snapshot", "${it.key},:: ${it.value}")
+
+                    when (it.key.toString()) {
+                        "online" -> {
+                            it.children.forEach { data ->
+                                listTipsOnline.add(data.value.toString())
+                            }
+
+                        }
+                        "offline" -> {
+                            it.children.forEach { data ->
+                                listTipsOffline.add(data.value.toString())
+                            }
+                        }
+                        "both" -> {
+                            it.children.forEach { data ->
+                                listTipsBoth.add(data.value.toString())
+                            }
+                        }
+                    }
+                }
+//                ownerAdapter.differ.submitList(listTips)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })
+
+    }
+
+    private fun getVideoList() {
+        mCloudEndPointVideoList = mDatabase?.child(Constants.VIDEO_LIST)
+        mCloudEndPointVideoList?.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                snapshot.children.forEach {
+                    VideoList.add(
+                        VideoDetails(
+                            it.child(VIDEO_ID).value.toString(),
+                            it.child(VIDEO_TITLE).value.toString(),
+                            it.child(VIDEO_DESCRIPTION).value.toString()
+                        )
+                    )
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {

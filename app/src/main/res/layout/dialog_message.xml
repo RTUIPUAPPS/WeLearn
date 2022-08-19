@@ -42,7 +42,7 @@
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:gravity="center"
                 android:textColor="@color/color_teal_dark"
-                android:textSize="@dimen/_28ssp"
+                android:textSize="@dimen/_16ssp"
                 tools:text="app_name" />
 
             <LinearLayout
