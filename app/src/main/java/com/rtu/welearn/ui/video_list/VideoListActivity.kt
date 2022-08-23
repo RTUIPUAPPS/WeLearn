@@ -7,8 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rtu.welearn.BaseActivity
 import com.rtu.welearn.R
-import com.rtu.welearn.VideoPlayerActivity
-import com.rtu.welearn.WeLearnApp.Companion.VideoList
+import com.rtu.welearn.WeLearnApp.Companion.videoList
 import com.rtu.welearn.databinding.ActivityVideoListBinding
 import com.rtu.welearn.utils.Constants.Companion.VIDEO_ID
 
@@ -27,7 +26,7 @@ class VideoListActivity : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_video_list)
 
         binding?.rvVideoList?.layoutManager = LinearLayoutManager(mContext)
-        binding?.rvVideoList?.adapter = VideoListAdapter(VideoList, object :
+        binding?.rvVideoList?.adapter = VideoListAdapter(videoList, object :
             VideoListAdapter.OnClickListener {
             override fun onClick(videoID: String?) {
                 val intent = VideoPlayerActivity.getIntent(mContext!!)

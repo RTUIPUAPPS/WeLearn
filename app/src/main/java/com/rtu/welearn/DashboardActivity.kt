@@ -19,7 +19,9 @@ import com.rtu.welearn.utils.AppUtils.isInternetAvailable
 import com.rtu.welearn.utils.AppUtils.showToast
 import com.rtu.welearn.databinding.ActivityDashboardBinding
 import com.rtu.welearn.ui.firebase.FirebaseMainActivity
+import com.rtu.welearn.ui.materials.MaterialsActivity
 import com.rtu.welearn.ui.test.TestActivity
+import com.rtu.welearn.ui.toolkits.ToolkitsActivity
 import com.rtu.welearn.ui.video_list.VideoListActivity
 
 class DashboardActivity : BaseActivity() {
@@ -27,7 +29,7 @@ class DashboardActivity : BaseActivity() {
         private const val REQUEST_SIGN_IN = 1
     }
 
-    val findSheetName = "Sheet1"
+    private val findSheetName = "Sheet1"
     var binding: ActivityDashboardBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

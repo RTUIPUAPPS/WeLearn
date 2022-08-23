@@ -3,14 +3,16 @@ package com.rtu.welearn.ui.test
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.viewpager2.widget.ViewPager2
 import com.hitesh.weatherlogger.view.callback.ItemClickListener
 import com.rtu.welearn.BaseActivity
 import com.rtu.welearn.R
+import com.rtu.welearn.WeLearnApp
 import com.rtu.welearn.WeLearnApp.Companion._isLoadingQuestions
-import com.rtu.welearn.WeLearnApp.Companion.testImpl
+import com.rtu.welearn.WeLearnApp.Companion.listTestQuestions
 import com.rtu.welearn.databinding.ActivityTestBinding
 import com.rtu.welearn.utils.AppUtils.showToastShort
 import com.rtu.welearn.utils.showMessageDialog
@@ -43,28 +45,26 @@ class TestActivity : BaseActivity() {
 
         _isLoadingQuestions.observe(this, {
             if (!it) {
+                Log.d("_isLoadingQuestions", "it")
                 CoroutineScope(Dispatchers.IO).launch {
                     getQuestionsList()
+
                 }
             }
         })
+        if (_isLoadingQuestions.value == false) {
+            getQuestionsList()
+        }
     }
 
 
     private fun getQuestionsList() {
-        val listQuestions = testImpl?.getAllQuestions()
-        if(!listQuestions.isNullOrEmpty()){
-            listAllQuestions.addAll(listQuestions)
-            listAllQuestionsTemp.addAll(listQuestions)
-            selectRandomQuestions()
-        }
-
-//        val dbList = WeLearnApp.testQueries?.getAllQuestions()?.executeAsList()
-//        dbList?.let {
-//
-//        }
-
-
+        Log.d("getQuestionsList", "")
+        listAllQuestions.clear()
+        listAllQuestionsTemp.clear()
+         listAllQuestions.addAll(listTestQuestions)
+        listAllQuestionsTemp.addAll(listTestQuestions)
+        selectRandomQuestions()
     }
 
     private fun initClick() {
@@ -125,15 +125,15 @@ class TestActivity : BaseActivity() {
                 when (points) {
                     in 0..10 -> {
                         message =
-                            "Good! You know the basics but there is still a lot of room for improvement. To improve your knowledge about neighbornes, we highly recommend you to check other WeLearn app functions and to visit our website at: http://welearn-project.eu/"
+                            "Good! You know the basics but there is still a lot of room for improvement. To improve your knowledge about neighbornes, we highly recommend you to check other WeLearn app functions and to visit our website at: <br>http://welearn-project.eu/"
                     }
                     in 11..25 -> {
                         message =
-                            "Very well! You have sufficient knowledge about intercultural learning environment, but there is still room for improvement. Click back and find ways to improve your knowledge. You can also gain more info form our website: http://welearn-project.eu/"
+                            "Very well! You have sufficient knowledge about intercultural learning environment, but there is still room for improvement. Click back and find ways to improve your knowledge. You can also gain more info form our website: <br>http://welearn-project.eu/"
                     }
                     in 26..30 -> {
                         message =
-                            "Excellent! You reached the highest score! The test results are showing adequate know-how about neighbornes and how to work in a multicultural learning environment! If you want to learn even more, we recommend you to check the material on the app and our Website: http://welearn-project.eu/ "
+                            "Excellent! You reached the highest score! The test results are showing adequate know-how about neighbornes and how to work in a multicultural learning environment! If you want to learn even more, we recommend you to check the material on the app and our Website: <br> http://welearn-project.eu/ "
                     }
                 }
                 showMessageDialog(
@@ -171,17 +171,20 @@ class TestActivity : BaseActivity() {
 
     private fun selectRandomQuestions() {
 
-        for (i in 0 until totalTestQuestions) {
-            val randomIndex = kotlin.random.Random.nextInt(listAllQuestionsTemp.size)
-            val randomElement = listAllQuestionsTemp[randomIndex]
-            listExamQuestions.add(randomElement)
-            listAllQuestionsTemp.remove(randomElement)
-        }
+        if (listAllQuestionsTemp.isNotEmpty()) {
 
-        showQuestion(0)
-        binding?.progressBarCircle?.visibility = View.GONE
-        binding?.llTest?.visibility = View.VISIBLE
-        binding?.btnFinish?.visibility = View.VISIBLE
+            for (i in 0 until totalTestQuestions) {
+                val randomIndex = kotlin.random.Random.nextInt(listAllQuestionsTemp.size)
+                val randomElement = listAllQuestionsTemp[randomIndex]
+                listExamQuestions.add(randomElement)
+                listAllQuestionsTemp.remove(randomElement)
+            }
+
+            showQuestion(0)
+            binding?.progressBarCircle?.visibility = View.GONE
+            binding?.llTest?.visibility = View.VISIBLE
+            binding?.btnFinish?.visibility = View.VISIBLE
+        }
     }
 
 
@@ -205,11 +208,11 @@ class TestActivity : BaseActivity() {
                 binding?.rbAns5?.visibility = View.VISIBLE
             }
             binding?.tvQuestion?.text = model.Question
-            binding?.rbAns1?.text = model.Answer1?:""
-            binding?.rbAns2?.text = model.Answer2?:""
-            binding?.rbAns3?.text = model.Answer3?:""
-            binding?.rbAns4?.text = model.Answer4?:""
-            binding?.rbAns5?.text = model.Answer5?:""
+            binding?.rbAns1?.text = model.Answer1 ?: ""
+            binding?.rbAns2?.text = model.Answer2 ?: ""
+            binding?.rbAns3?.text = model.Answer3 ?: ""
+            binding?.rbAns4?.text = model.Answer4 ?: ""
+            binding?.rbAns5?.text = model.Answer5 ?: ""
 
         }
     }

@@ -1,15 +1,12 @@
-package com.rtu.welearn
+package com.rtu.welearn.ui.video_list
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.widget.MediaController
 import androidx.databinding.DataBindingUtil
-import com.rtu.welearn.databinding.ActivityDetailsBinding
 import com.rtu.welearn.databinding.ActivityVideoPlayerBinding
-import com.google.android.exoplayer2.ExoPlayer
-import com.google.android.exoplayer2.MediaItem
+import com.rtu.welearn.BaseActivity
+import com.rtu.welearn.R
 import com.rtu.welearn.utils.Constants
 
 

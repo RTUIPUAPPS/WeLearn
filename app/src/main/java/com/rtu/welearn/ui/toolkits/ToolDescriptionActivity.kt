@@ -1,4 +1,4 @@
-package com.rtu.welearn
+package com.rtu.welearn.ui.toolkits
 
 import android.content.Context
 import android.content.Intent
@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.text.Html
 import android.view.View
 import androidx.databinding.DataBindingUtil
+import com.rtu.welearn.BaseActivity
+import com.rtu.welearn.R
 import com.rtu.welearn.databinding.ActivityToolDescriptionBinding
 import com.rtu.welearn.utils.Constants.Companion.TOOL_NUMBER
 
@@ -179,29 +181,29 @@ class ToolDescriptionActivity : BaseActivity() {
             binding?.svTextDescription?.visibility = View.GONE
             binding?.rlPDFView?.visibility = View.VISIBLE
 
-            binding?.pdfView!!.fromAsset(pdfName)
-
-                .showMinimap(true)
-                .enableSwipe(true)
-                .swipeVertical(true)
-                .onPageChange { page, pageCount ->
-
-//                    when(page){
-//                        1->{
-//                            binding?.btnSwipeLeft?.visibility=View.GONE
-//                            binding?.btnSwipeRight?.visibility=View.VISIBLE
-//                        }
-//                        pageCount->{
-//                            binding?.btnSwipeLeft?.visibility=View.VISIBLE
-//                            binding?.btnSwipeRight?.visibility=View.GONE
-//                        }
-//                        else-> {
-//                            binding?.btnSwipeLeft?.visibility=View.VISIBLE
-//                            binding?.btnSwipeRight?.visibility=View.VISIBLE
-//                        }
-//                    }
-                }
-                .load()
+//            binding?.pdfView!!.fromAsset(pdfName)
+//
+//                .showMinimap(true)
+//                .enableSwipe(true)
+//                .swipeVertical(true)
+//                .onPageChange { page, pageCount ->
+//
+////                    when(page){
+////                        1->{
+////                            binding?.btnSwipeLeft?.visibility=View.GONE
+////                            binding?.btnSwipeRight?.visibility=View.VISIBLE
+////                        }
+////                        pageCount->{
+////                            binding?.btnSwipeLeft?.visibility=View.VISIBLE
+////                            binding?.btnSwipeRight?.visibility=View.GONE
+////                        }
+////                        else-> {
+////                            binding?.btnSwipeLeft?.visibility=View.VISIBLE
+////                            binding?.btnSwipeRight?.visibility=View.VISIBLE
+////                        }
+////                    }
+//                }
+//                .load()
         } else {
 
             binding?.svTextDescription?.visibility = View.VISIBLE

@@ -33,11 +33,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DetailsActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
-        <activity
             android:name=".ui.about.AboutActivity"
             android:exported="true"
             android:screenOrientation="portrait"
@@ -65,22 +60,22 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
-            android:name=".ToolkitsActivity"
+            android:name=".ui.toolkits.ToolkitsActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
-            android:name=".ToolDescriptionActivity"
+            android:name=".ui.toolkits.ToolDescriptionActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
-            android:name=".VideoPlayerActivity"
+            android:name=".ui.video_list.VideoPlayerActivity"
             android:exported="true"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
-            android:name=".MaterialsActivity"
+            android:name=".ui.materials.MaterialsActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />

@@ -41,6 +41,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:gravity="center"
+                android:autoLink="web"
                 android:textColor="@color/color_teal_dark"
                 android:textSize="@dimen/_16ssp"
                 tools:text="app_name" />

@@ -1,14 +1,13 @@
-package com.rtu.welearn
+package com.rtu.welearn.ui.toolkits
 
-import android.graphics.Color
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.OvershootInterpolator
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.rtu.welearn.R
 import net.cachapa.expandablelayout.ExpandableLayout
 import net.cachapa.expandablelayout.util.FastOutSlowInInterpolator
 

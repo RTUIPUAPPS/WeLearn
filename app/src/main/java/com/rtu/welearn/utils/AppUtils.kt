@@ -19,15 +19,11 @@ object AppUtils {
 
     fun Context.showToastShort(msg: String) {
 
-        val toast = Toast.makeText(
+        Toast.makeText(
             applicationContext,
             msg,
             Toast.LENGTH_SHORT
-        )
-        toast.show()
-        Handler(Looper.getMainLooper()).postDelayed({
-            toast.cancel()
-        }, 500)
+        ).show()
     }
 
     fun openUrl(mContext: Context?, url: String) {

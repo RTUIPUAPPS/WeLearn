@@ -1,4 +1,4 @@
-package com.rtu.welearn
+package com.rtu.welearn.ui.materials
 
 import android.content.Context
 import android.content.Intent
@@ -7,6 +7,8 @@ import android.text.Html
 import androidx.core.text.HtmlCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.rtu.welearn.BaseActivity
+import com.rtu.welearn.R
 import com.rtu.welearn.databinding.ActivityMaterialsBinding
 import com.rtu.welearn.utils.AppUtils.openUrl
 
