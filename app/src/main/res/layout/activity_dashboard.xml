@@ -69,7 +69,6 @@
                         android:orientation="vertical"
                         android:padding="@dimen/_2sdp">
 
-
                         <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                             xmlns:card_view="http://schemas.android.com/apk/res-auto"
                             android:id="@+id/cvAbout"
