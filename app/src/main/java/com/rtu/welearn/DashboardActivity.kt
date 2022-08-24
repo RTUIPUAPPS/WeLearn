@@ -3,6 +3,8 @@ package com.rtu.welearn
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.ViewTreeObserver
+import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -13,16 +15,16 @@ import com.google.api.client.json.jackson2.JacksonFactory
 import com.google.api.services.sheets.v4.Sheets
 import com.google.api.services.sheets.v4.SheetsScopes
 import com.google.api.services.sheets.v4.model.Sheet
-import com.rtu.welearn.ui.about.AboutActivity
-import com.rtu.welearn.ui.tips.TipsActivity
-import com.rtu.welearn.utils.AppUtils.isInternetAvailable
-import com.rtu.welearn.utils.AppUtils.showToast
 import com.rtu.welearn.databinding.ActivityDashboardBinding
+import com.rtu.welearn.ui.about.AboutActivity
 import com.rtu.welearn.ui.firebase.FirebaseMainActivity
 import com.rtu.welearn.ui.materials.MaterialsActivity
 import com.rtu.welearn.ui.test.TestActivity
+import com.rtu.welearn.ui.tips.TipsActivity
 import com.rtu.welearn.ui.toolkits.ToolkitsActivity
 import com.rtu.welearn.ui.video_list.VideoListActivity
+import com.rtu.welearn.utils.AppUtils.isInternetAvailable
+import com.rtu.welearn.utils.AppUtils.showToast
 
 class DashboardActivity : BaseActivity() {
     companion object {
@@ -34,6 +36,14 @@ class DashboardActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_dashboard)
+
+        val viewObserver=binding?.ivWeLearn?.viewTreeObserver
+        viewObserver?.addOnGlobalLayoutListener {
+            binding?.ivWeLearn?.layoutParams = LinearLayout.LayoutParams(
+                binding?.ivWeLearn?.height ?: 0,
+                binding?.ivWeLearn?.height ?: 0
+            )
+        }
 
         binding?.cvAbout?.setOnClickListener {
             if (isInternetAvailable(applicationContext)) {
@@ -65,7 +75,7 @@ class DashboardActivity : BaseActivity() {
             } else {
                 this.showToast(getString(R.string.please_check_device_internet_connection))
             }
-             }
+        }
         binding?.ivWeLearn?.setOnClickListener {
 
             launchActivity(FirebaseMainActivity.getIntent(this))
