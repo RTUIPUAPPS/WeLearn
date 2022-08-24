@@ -54,88 +54,101 @@ class ToolDescriptionActivity : BaseActivity() {
                 setText(
                     getString(R.string.offline_tools_title1),
                     listToolsDescription[0],
+                    intToolNumber
                 )
 
             }
             2 -> {
                 setText(
                     getString(R.string.offline_tools_title2),
-                    listToolsDescription[1]
+                    listToolsDescription[1],
+                    intToolNumber
                 )
             }
             3 -> {
 
                 setText(
                     getString(R.string.offline_tools_title3),
-                    listToolsDescription[2]
+                    listToolsDescription[2],
+                    intToolNumber
                 )
             }
             4 -> {
                 setText(
                     getString(R.string.offline_tools_title4),
-                    listToolsDescription[3]
+                    listToolsDescription[3],
+                    intToolNumber
                 )
 
             }
             5 -> {
                 setText(
                     getString(R.string.offline_tools_title5),
-                    listToolsDescription[4]
+                    listToolsDescription[4],
+                    intToolNumber
                 )
 
             }
             6 -> {
                 setText(
                     getString(R.string.offline_tools_title6),
-                    listToolsDescription[5]
+                    listToolsDescription[5],
+                    intToolNumber
                 )
 
             }
             7 -> {
                 setText(
                     getString(R.string.offline_tools_title7),
-                    listToolsDescription[6]
+                    listToolsDescription[6],
+                    intToolNumber
                 )
 
             }
             8 -> {
                 setText(
                     getString(R.string.offline_tools_title8),
-                    listToolsDescription[7]
+                    listToolsDescription[7],
+                    intToolNumber
                 )
 
             }
             9 -> {
                 setText(
                     getString(R.string.offline_tools_title9),
-                    listToolsDescription[8]
+                    listToolsDescription[8],
+                    intToolNumber
                 )
 
             }
             10 -> {
                 setText(
                     getString(R.string.offline_tools_title10),
-                    listToolsDescription[9]
+                    listToolsDescription[9],
+                    intToolNumber
                 )
             }
             11 -> {
                 setText(
                     getString(R.string.online_tools_title1),
-                    listToolsDescription[10]
+                    listToolsDescription[10],
+                    intToolNumber
                 )
 
             }
             12 -> {
                 setText(
                     getString(R.string.online_tools_title2),
-                    listToolsDescription[11]
+                    listToolsDescription[11],
+                    intToolNumber
                 )
 
             }
             13 -> {
                 setText(
                     getString(R.string.online_tools_title3),
-                    listToolsDescription[12]
+                    listToolsDescription[12],
+                    intToolNumber
                 )
 
             }
@@ -143,74 +156,56 @@ class ToolDescriptionActivity : BaseActivity() {
                 setText(
                     getString(R.string.online_tools_title4),
                     listToolsDescription[13],
-                    true,
-                    "online_tool_4_description.pdf"
+                    intToolNumber
                 )
 
             }
             15 -> {
                 setText(
                     getString(R.string.online_tools_title5),
-                    listToolsDescription[14]
+                    listToolsDescription[14],
+                    intToolNumber
                 )
             }
             16 -> {
                 setText(
                     getString(R.string.online_tools_title6),
                     listToolsDescription[15],
-                    true,
-                    "online_tool_6_description.pdf"
+                    intToolNumber
                 )
             }
         }
-
-
     }
 
     private fun setText(
         title: String,
         description: String,
-        isShowPDF: Boolean = false,
-        pdfName: String = ""
+        toolNumber:Int
+
     ) {
 
 
         binding?.tvTolsTitle?.text = title
 
-        if (isShowPDF) {
-            binding?.svTextDescription?.visibility = View.GONE
-            binding?.rlPDFView?.visibility = View.VISIBLE
-
-//            binding?.pdfView!!.fromAsset(pdfName)
-//
-//                .showMinimap(true)
-//                .enableSwipe(true)
-//                .swipeVertical(true)
-//                .onPageChange { page, pageCount ->
-//
-////                    when(page){
-////                        1->{
-////                            binding?.btnSwipeLeft?.visibility=View.GONE
-////                            binding?.btnSwipeRight?.visibility=View.VISIBLE
-////                        }
-////                        pageCount->{
-////                            binding?.btnSwipeLeft?.visibility=View.VISIBLE
-////                            binding?.btnSwipeRight?.visibility=View.GONE
-////                        }
-////                        else-> {
-////                            binding?.btnSwipeLeft?.visibility=View.VISIBLE
-////                            binding?.btnSwipeRight?.visibility=View.VISIBLE
-////                        }
-////                    }
-//                }
-//                .load()
-        } else {
-
-            binding?.svTextDescription?.visibility = View.VISIBLE
-            binding?.rlPDFView?.visibility = View.GONE
-            binding?.tvToolsDescription?.text =
-                Html.fromHtml(description, Html.FROM_HTML_MODE_LEGACY)
-
+        when(toolNumber){
+            14->{
+                binding?.tvToolsDescription?.visibility = View.GONE
+                binding?.rlTool14?.visibility = View.VISIBLE
+                binding?.rlTool16?.visibility = View.GONE
+            }
+            16->{
+                binding?.tvToolsDescription?.visibility = View.GONE
+                binding?.rlTool14?.visibility = View.GONE
+                binding?.rlTool16?.visibility = View.VISIBLE
+            }
+            else->{
+                binding?.tvToolsDescription?.visibility = View.VISIBLE
+                binding?.rlTool14?.visibility = View.GONE
+                binding?.rlTool16?.visibility = View.GONE
+                binding?.tvToolsDescription?.text =
+                    Html.fromHtml(description, Html.FROM_HTML_MODE_LEGACY)
+            }
         }
+
     }
 }

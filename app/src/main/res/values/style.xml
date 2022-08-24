@@ -13,4 +13,17 @@
          <item name="android:textColor">@color/color_white</item>
         <item name="android:textSize">@dimen/_12ssp</item>
     </style>
+    <style name="ThemeToolDescriptionText">
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textColor">@color/color_black</item>
+        <item name="android:autoLink">web</item>
+
+    </style>
+
+    <style name="ThemeToolDescriptionTable">
+        <item name="android:textSize">@dimen/_9ssp</item>
+        <item name="android:textColor">@color/color_black</item>
+        <item name="android:autoLink">web</item>
+
+    </style>
 </resources>

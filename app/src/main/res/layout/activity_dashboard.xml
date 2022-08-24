@@ -39,7 +39,6 @@
                 android:src="@drawable/ic_welearn" />
         </LinearLayout>
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -160,7 +159,6 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_15sdp"
-
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -178,7 +176,6 @@
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="@dimen/_2sdp">
-
 
                         <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                             xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -381,6 +378,5 @@
             android:background="@color/color_tips"
             android:scaleType="fitXY"
             android:src="@drawable/eu_flag_co_funded_pos_rgb_right" />
-
     </LinearLayout>
 </layout>

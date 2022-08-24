@@ -15,24 +15,41 @@
             android:layout_height="wrap_content"
             app:cardElevation="@dimen/_5sdp">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvTolsTitle"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 android:background="@color/color_practice"
-                android:padding="@dimen/_10sdp"
-                android:textColor="@color/purple_green"
-                android:textSize="@dimen/_14ssp"
-                android:textStyle="bold"
-                tools:text="@string/offline_tools_title1" />
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvTolsTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_10sdp"
+                    android:textColor="@color/purple_green"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold"
+                    tools:text="@string/offline_tools_title1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:text="@string/tool_description"
+                    android:textColor="@color/color_black"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
         </androidx.cardview.widget.CardView>
 
         <ScrollView
             android:id="@+id/svTextDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/cvToolbar"
-            android:visibility="gone">
+            android:layout_below="@+id/cvToolbar">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -46,52 +63,552 @@
                     android:autoLink="web"
                     android:justificationMode="none"
                     android:paddingStart="@dimen/_10sdp"
-                    android:paddingTop="@dimen/_50sdp"
+                    android:paddingTop="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_10sdp"
                     android:paddingBottom="@dimen/_10sdp"
-                    android:text=" "
                     android:textColor="@color/color_black"
                     android:textSize="@dimen/_12ssp" />
 
                 <LinearLayout
+                    android:id="@+id/rlTool14"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingTop="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_10sdp">
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ThemeToolDescriptionText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="There are few activities which indicate a person’s subjectivity more transparently than story-telling. The way someone tells a story is shaped by their individual personality, itself is a product of a culture and personal psychology. Collaboratively creating a story is therefore, at least on a subconscious level, a way of revealing individual  traits and perceptions, even across cultures.
+\n\nTOOL 4.1: Neighborness Storytelling Workshop - Storytelling Gamified
+\n\nThis tool introduces storytelling workshops targeting subjectivity. The Neighborness Storytelling Workshop is slightly more complex than for instance the “How to be a______?” ,but also offers more engaging and creative activities. The goal of the workshop is to give the students a chance to experiment with the process of creating a story, to observe and reflect on the way each member of their group handles the story and importantly, to have some fun doing it.
+\n\nThis workshop is relevant for students in all phases of their student life. However, the tool may be particularly useful in early semesters since it involves intensive creative teamwork, which doesn’t require participants to know each other. The tool's playful aspect tends to work well as an ice-breaker and by the end of the session members tend to have become more familiar with each other. The workshop is, due to its creative nature, more easily applied to students of degrees related to the arts, creative writing or humanities in general. However, the tool should also be tried with students from other fields.
+\n\nTeachers should be acquainted with the ‘Fiasco’ storytelling game,ideally having played a few sessions themselves. The better the teacher understands the game mechanics, the better they will be able to adapt it to their context. A presentation to introduce the rules should be made beforehand. If the teacher wishes to design a storyworld for their game, they should take the time to develop it. Otherwise, the simpler settings on Fiasco computer work well.
+\n\nThe workshop works better over two sessions. The first could be around 4-5 hours, focused on introducing the participants to each other and to the game and then actually playing it. Between sessions the teams should write a synopsis based on the story they developed during the game. The second session should then take place a few days later and focus on the teams presenting their stories to the larger group, followed by a larger debrief session on the experience. This session varies in length depending on how many teams participated in the workshop.
+\n\nThe shortest version of the workshop possible would take around 4 hours. A potential structure for this quite intensive 4-hour workshop could be as follows:
+\n\n1.	Introduction of the workshop, the game goals, group distribution (30 Min);
+\n2.	Fiasco Setup (30 Min)
+\n3.	Short Break
+\n4.	Act 1 (1h)
+\n5.	Short Break
+\n6.	Act 2 (1h)
+\n7.	Debrief about experience (30 Min).
+\n\nThe workshop uses a simplified version of the acclaimed table-top storytelling game “Fiasco”, developed by Bully-Pulpit Games. Participants use the website Fiascomputer to pick a Playset, which should have been shortlisted or personally created by the moderator. The playset (see Figure 9) can be described as a story world, with a location,such as a ship, a small town or a hotel,and basic relationship categories and details. Playsets that involve a closed space tend to be easier to play, since the characters inevitably bump into each other. Examples of these would be “Transatlantic”, “The Zoo”, “The Manna Hotel.” Playsets are easily customisable and a teacher can potentially create their own, based for example on their university campus." />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_150sdp"
+                        android:src="@drawable/ic_fiascomputer" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ThemeToolDescriptionText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Figure 9: Fiascomputer. See: https://fiasco.tabletopsoftware.net/
+\n\nParticipants create their characters through the relationships they have with each other inside of the Storyworld. Instead of creating a character from the inside out, they create from the outside in (see Figures 10 and 11).
+\n\n1.	In the first round, each player picks a category for the relationship their character will have with the next player (e.g.: Friendship).
+\n\n2.	In the second round, Each player adds a detail to this relationship (e.g.: Went to High School together).
+\n\n3.	In the third round, players pick a detail category: need, location or object. In a game of 4 players, it is suggested to have 2 needs, 1 location and 1 object (e.g.: Need - To get the truth).
+\n\n4.	In the final round, players pick a subcategory to their relationship detail (e.g.: … About who you really are).
+" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_150sdp"
+                        android:src="@drawable/ic_blank_setup" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ThemeToolDescriptionText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Figure 10: Blank Setup" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_150sdp"
+                        android:src="@drawable/ic_finished_setup" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ThemeToolDescriptionText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Figure 11 Finished Setup" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ThemeToolDescriptionText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Participants should be encouraged to talk through each decision. Their characters should organically start to take shape, and a feel for the potential conflicts of the story will appear.
+\n\nOnce this setup is done, a screenshot is taken of the board and the groups move to an online whiteboard such as Mural or Miro, where they can keep track of the scenes as they create them. Players take turns initiating a scene (see Figure 12) by stating what is the goal of their character and which other characters are also present. " />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_150sdp"
+                        android:src="@drawable/ic_scene_desc" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ThemeToolDescriptionText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Figure 12: Example of a scene description" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ThemeToolDescriptionText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Then the group decides how the scene plays out. Each player normally gets two scenes in the “spotlight” per act and the whole game takes place over 2 acts.  In a group of four players, a game will include 16 scenes. A basic structure should be offered by the teacher to help the participants keep track of each scene. An example of a whiteboard with the setup and scene descriptions is illustrated in Figure 13. " />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_150sdp"
+                        android:src="@drawable/ic_finished_bord" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ThemeToolDescriptionText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Figure 13: Finished Board" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ThemeToolDescriptionText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="If the workshop has only one session, then the teacher can cut one of the acts or limit the discussion after the game to a debrief of the experience. If more time is available, this discussion could be expanded, and the workshop generally yields much better results if more than one session is possible. This is because a second session may then be used exclusively to reflect upon the intercultural experience. The experience of condensing a story written collectively ‘after the dust settles’ is a very productive way of reflecting on the process so far.
+\n\nTOOL 4.2: Neighborness Storytelling Workshop - A Letter From Across The Channel
+\n\nStories have been a way of bringing people together for thousands of years and most know the experience of watching sharing a laugh or a scare with an audience in a movie theater. But stories can build bridges between not only audiences, but the storytellers themselves. Particularly collective artforms, like film and music, require an intensive amount of teamwork, precise communication and open ears. With this in mind, FBKW has  developed a few different tool concepts that use the act of collective storytelling in the form of audiovisual media production to promote intercultural encounters and develop neighborness competences. The form of these storytelling workshops is very flexible and should be adapted according to the context.
+\n\nRegarding this particular workshop: transnational Cinema is a concept within film studies that aims to analyze film from the perspective of postnationalism and postcolonialism, tackling subjects like displacement, the effect of language and cultural barriers, as well as, on a meta-level, the production context of particular films. This workshop aims to introduce students to transnational cinema in a practical fashion and, consequently, get them to confront these topics with a similarly transnational group of peers.
+\n\nTo function properly, this storytelling workshop requires two separate groups. It is theoretically possible to do it within one learning institution by separating two groups according to their cultural background, but the workshop was designed for two partner universities from different countries.
+
+\n\nEssentially, this workshop addresses transnational collective storytelling - students from one institution start a story to be finished by students from the partner institution. The first version of this workshop, entitled “A Letter from Across the Channel”, was successfully conducted with a focus on film, since it is the medium of choice for both partners. This film version will be used here to describe the tool, but note that the medium can be chosen according to the interests of the institutions, and may range from text and podcasts to photography and film. However, media that is normally created in a group activity (such as film and podcasts, rather than the more solitary literature) is ideal, as it automatically requires cooperation.
+\n\nTheoretical Input:
+\nOn the first day of the workshop, before the students begin to create their films, it is a good idea to give them theoretical input regarding transnational storytelling. In the case of ALFATC, professor Samantha Iwowo from the University of Bournemouth, a specialist in transnational filmmaking, gave a short lecture introducing the students to relevant works in the genre, as well as identifying common threads between the films, such as themes of displacement, discrimination and language barriers. It is helpful to provide a short selection of introductory literature, in case students are interested in further preparation for the project.
+
+\n\nKick-off:
+\n\nOnce the theoretical input is done and enough time for discussion has been given, students should be assigned to their groups. Groups should be as diverse as possible and, depending on the amount of students participating in each institution, they can be created in different ways. Essentially, it is necessary to have one team create an ‘artistic provocation’ (the Letter referred to in the film title) to which another team will react artistically. In the case of “A Letter from Across the Channel”, the class in Bournemouth was much larger than the one in Potsdam, so a decision was to be made to film most of the material in Bournemouth, while still making the activity creatively satisfying for all involved. Aiming at this, five groups were created:
+
+\n\n-	Letter group, up to 4 students from each university
+\n-	FU Team with support from 2-4 BU students
+\n-	BU Team A with support from 2 FU students
+\n-	BU Team B with support from 2 FU students
+\n-	BU Team C with support from 2 FU students
+
+\n\nThe Letter group had an equal number of students from each institution, as both parties were interested in designing the creative trigger for the partners. The Film University team would be responsible for shooting the film that represents the letter in audiovisual form and the three teams in Bournemouth scripted and filmed the ‘artistic reactions’ to the letter.
+
+\n\nThe timetable conducted during the workshop was as follows:
+" />
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:stretchColumns="1,2,3,4,5,6">
+
+                        <TableRow>
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/ThemeToolDescriptionTable"
+                                android:layout_width="0dp"
+                                android:layout_column="1"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text=" " />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/ThemeToolDescriptionTable"
+                                android:layout_width="0dp"
+                                android:layout_column="2"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Monday"
+                                android:textStyle="bold" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/ThemeToolDescriptionTable"
+                                android:layout_width="0dp"
+                                android:layout_column="3"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Tuesday"
+                                android:textStyle="bold" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/ThemeToolDescriptionTable"
+                                android:layout_width="0dp"
+                                android:layout_column="4"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Wednesday"
+                                android:textStyle="bold" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/ThemeToolDescriptionTable"
+                                android:layout_width="0dp"
+                                android:layout_column="5"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Thursday"
+                                android:textStyle="bold" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/ThemeToolDescriptionTable"
+                                android:layout_width="0dp"
+                                android:layout_column="6"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Friday"
+                                android:textStyle="bold" />
+                        </TableRow>
+
+                        <TableRow android:layout_marginTop="@dimen/_10sdp">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/ThemeToolDescriptionTable"
+                                android:layout_width="0dp"
+                                android:layout_column="1"
+                                android:layout_weight="1"
+                                android:text="Morning"
+                                android:textStyle="bold" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/ThemeToolDescriptionTable"
+                                android:layout_width="0dp"
+                                android:layout_column="2"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Theory \nIntroduction" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/ThemeToolDescriptionTable"
+                                android:layout_width="0dp"
+                                android:layout_column="3"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Screenwriting\n/Pre \nProduction" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/ThemeToolDescriptionTable"
+                                android:layout_width="0dp"
+                                android:layout_column="4"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Shoot" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/ThemeToolDescriptionTable"
+                                android:layout_width="0dp"
+                                android:layout_column="5"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Feedback \nto \nedit" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/ThemeToolDescriptionTable"
+                                android:layout_width="0dp"
+                                android:layout_column="6"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Final \ntouches" />
+                        </TableRow>
+
+                        <TableRow android:layout_marginTop="@dimen/_10sdp">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/ThemeToolDescriptionTable"
+                                android:layout_width="0dp"
+                                android:layout_column="1"
+                                android:layout_weight="1"
+                                android:text="Afternoon"
+                                android:textStyle="bold" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/ThemeToolDescriptionTable"
+                                android:layout_width="0dp"
+                                android:layout_column="2"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Letter \nDevelopment" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/ThemeToolDescriptionTable"
+                                android:layout_width="0dp"
+                                android:layout_column="3"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Screenwr\niting / Pre \nProduction" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/ThemeToolDescriptionTable"
+                                android:layout_width="0dp"
+                                android:layout_column="4"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Shoot\n/Edit" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/ThemeToolDescriptionTable"
+                                android:layout_width="0dp"
+                                android:layout_column="5"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Picture \nLock" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/ThemeToolDescriptionTable"
+                                android:layout_width="0dp"
+                                android:layout_column="6"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Screening" />
+                        </TableRow>
+
+                        <TableRow android:layout_marginTop="@dimen/_10sdp">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/ThemeToolDescriptionTable"
+                                android:layout_width="0dp"
+                                android:layout_column="1"
+                                android:layout_weight="1"
+                                android:text="Evening"
+                                android:textStyle="bold" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/ThemeToolDescriptionTable"
+                                android:layout_width="0dp"
+                                android:layout_column="2"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Sending \ntext of Letter" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/ThemeToolDescriptionTable"
+                                android:layout_width="0dp"
+                                android:layout_column="3"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Shoot" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/ThemeToolDescriptionTable"
+                                android:layout_width="0dp"
+                                android:layout_column="4"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Edit" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/ThemeToolDescriptionTable"
+                                android:layout_width="0dp"
+                                android:layout_column="5"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Final Touches" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/ThemeToolDescriptionTable"
+                                android:layout_width="0dp"
+                                android:layout_column="6"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Online Get-together" />
+                        </TableRow>
+
+
+                    </TableLayout>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ThemeToolDescriptionText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Considering that a short film production can take anywhere from a few months to a few years, this was a very fast-paced sprint. In the evening of the first day, the content of the letter was sent to every group so that they could start writing their scripts on Tuesday morning. Deadlines were seldom achieved and most deliveries took place sometime later, but all films were delivered in time for the final screening, which was the most important goal.
+\n\nIt is important to take time on the first day of the workshop to make clear for the students that the quality of the films is secondary to the experience of collaborating on a transnational project. The goal is to connect students with different backgrounds who also live and study in different places by working together on a project that somehow creates a dialogue with their own personal, transnational experiences.
+
+\n\nIt is advisable to centralise communication with the students. In the case of ALFATC, this was done through a Slack Workspace, with a ‘General’ channel dedicated to general organizational reminders and questions, as well as channels dedicated to each student group, where they could converse with each other and teachers could supervise. Although a few groups used Slack as their main communication channel to organise themselves, others decided on using chat applications like WhatsApp and Telegram.
+
+\n\nFor the final screening, the teachers from both institutions booked large rooms with screening capabilities. The sessions began with the screening of each film, which was followed by an in-depth discussion with each group about their work progress, as well as reactions from other participants who saw their colleagues’ films for the first time. The discussion was organic and lively, with students excited to show their work and earnestly praising their colleagues from across the Channel.
+
+\n\nMany students expressed interest in participating in further similar workshops. They felt that they got to better know people from other cultures during the workshop week and gained insights about alternative perspectives. Many wished to create further projects in the realm of transnational cinema, inspired by the workshop.
+" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_150sdp"
+                        android:src="@drawable/ic_boc" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_150sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:src="@drawable/ic_from_short_film" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ThemeToolDescriptionText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Figures 14,15: Stills from Short Films made during “A Letter from Across the Channel” 
+an application of the Transnational Storytelling Workshop" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rlTool16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingTop="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ThemeToolDescriptionText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="When writing texts or making films, people communicate to a group of as-yet unknown readers and listeners – our audience. Who are they? Where are they? And what are they doing? The online tool Audience Exploration is designed as a game which allows the students to connect with their anticipated audience. It is the collaborative discovery, discussion and concretisation of unique personas, communities and groups who might (or might not) engage with a certain story. The goal of the workshop is to initiate a discussion among the students about how to negotiate their story with an anticipated audience and in that way make them question (and possibly overcome) their own stereotypical and/or insufficiently complex assumptions about those they speak to. It is about embracing difference and diversity. Ideally, the students appreciate that engaging with a diverse group of people can be an enriching and fun experience that teaches them new things about others – and themselves (see Table 12 for tool’s basics).
+\n\nThis workshop is designed as a continuation of a story-development workshop (like the “Fiasco” workshop), as it builds on the idea of the negotiation of an existing story with an anticipated audience. However, it could be used also as an initial workshop for inter-disciplinary groups and teams. Since it has a game-mechanic, it is fun to play, delivers concrete outcomes immediately and is potentially a satisfying experience for participants of all ages. Teachers should be acquainted with the MIRO board template of the Audience Exploration Workshop and know how to use MIRO. Presentation slides for the introduction sessions are provided.
+\n\nSince Audience Exploration takes an existing story as a starting point, each team should decide beforehand  which story they intend to work with during the workshop and provide a short synopsis (half a page) and working title (WT). The workshop lasts around 4 hours with breaks included.
+\n\nThe workshop lasts 4h (incl. breaks):
+\n0 – 5’ 	Introduction to the workshop: Audience Exploration
+\n5’ – 25’	Story Pitches (4 x 5 min.)
+\n25’ – 35’	Break
+\n\nFirst part of the workshop: WHO / WHAT / WHERE
+\n35’ – 40’ 	Introduction to the first part of the workshop
+\n40’ – 55’ 	Audience Exploration: WHO?
+\n55’ – 70’ 	Audience Exploration: WHAT?
+\n70’– 95’	Audience Exploration: WHERE?
+\n95’ – 110’	Break
+\n\nSecond part of the workshop: PERSONAS / COMMUNITIES / GROUPS
+\n110’ – 120’	Introduction to to the second part of the workshop
+\n120’ – 135’ 	(NON-) AUDIENCE PERSONAS
+\n135’ – 150’	(NON-) AUDIENCE COMMUNITIES
+\n150’ – 165’	(NON-) AUDIENCE GROUPS
+\n165’ – 180’	Break
+\n\nThird part of the workshop: Negotiation of story and audience
+\n180’ – 190’	Introduction to the third part of the workshop
+\n190’ – 210’	Negotiation of story and audience
+\n210’ – 230’	Team presentations (4 x 5 min.)
+\n230’ – 240’ 	Debrief
+\n\nFirst part of the workshop: WHO / WHAT / WHERE
+\n\nAfter an introduction to the first part of the workshop by the facilitator (also in technical terms), the teams are sent to their breakout rooms, where they discuss whether their everyday activities and the spaces they hang out would relate to their respective story (or not). For each category (WHO / WHAT / WHERE), a set of context cards is provided (displayed on the teams’ MIRO board), which consists of different motifs regarding each category (e.g. different “everyday activities” of the anticipated audience and non-audience). The context cards are provided as inspiration for the discussion, but do not represent all possible motifs. Therefore participants are always invited to add more possibly better-fitting motifs to each category.
+\n\nWHO are the people relating (and not relating) to our story?
+\n\nThe teams can choose from a stack of provided context cards in the WHO category, which consist of different personas from ANIMAL RIGHTS ACTIVIST to WRITER.
+\n\nNow they identify the people who relate to their story (and those who do not not relate by moving the respective cards to the designated area on the MIRO board:
+" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_100sdp"
+                        android:src="@drawable/ic_possible_image" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ThemeToolDescriptionText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Figure 17: Possible images from the first part of the workshop" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ThemeToolDescriptionText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="WHAT are the people doing who relate (and not) to our story?
+The teams can choose from a stack of provided context cards in the WHAT category, which consist of different everyday activities from (BEACH) VOLLEYBALL to YOGA.  Now the teams discuss the activities of the audience by moving the respective cards to the designated area on the MIRO board:
+" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_100sdp"
+                        android:src="@drawable/ic_more_image" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ThemeToolDescriptionText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Figure 18: More images from the first part of the workshop (1)" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ThemeToolDescriptionText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="\nWHERE does the audience  hang out (on- and offline)?
+\n\nThe teams can choose from a stack of provided context cards in the WHERE category, which consist of different spaces (on- and offline) from AIRPORT to YOUTUBE:
+\n\nThe teams indicate where the audience hangs out  by moving the respective cards to the designated area on the MIRO board:
+" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_100sdp"
+                        android:src="@drawable/ic_more_image_2" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ThemeToolDescriptionText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Figure 19: More images from the first part of the workshop (2)" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ThemeToolDescriptionText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Second part of the workshop: PERSONAS / COMMUNITIES / GROUPS
+\n\nAfter an introduction to the second part of the workshop by the facilitator in the main Zoom space, each team is sent to their respective breakout rooms, where they find templates for the individual writing of different personas, groups and communities.
+" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_300sdp"
+                        android:src="@drawable/ic_audience_persona" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ThemeToolDescriptionText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Figure 20: Audience Persona Description Example" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ThemeToolDescriptionText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="\n\nNow, each team member should collage and write different personas/groups/communities by using the previously defined audience motifs from the WHO / WHERE / WHAT categories:
+\n\nEach participant is supposed to write 2-3 such audience personas/communities/groups for the anticipated audience and non-audience, which are then collected and displayed on the MIRO board.
+\n\nThird part of the workshop: NEGOTIATING STORY AND AUDIENCE
+\n\nIn the third part of the workshop, the teams discuss in which ways their respective story and audience are negotiated:
+\n\n●	AUDIENCE TALK: How would the respective personas, communities and groups talk about the story?
+\n\n●	STORY TALK: How would you tell the story to the respective personas, communities and groups?
+\n\nAlso for this part of the workshop, templates on the teams’ MIRO boards are provided." />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_100sdp"
+                        android:src="@drawable/ic_audience_community" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ThemeToolDescriptionText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Figure 21: Audience Community Description Template" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ThemeToolDescriptionText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="In a final short pitch (5 min.), each team presents the most engaging results of their work. The workshop ends with a debrief/feedback round. How was this experience for the different participants? How did their view on the story and its anticipated audiences changed? Furthermore, the next steps for the project are agreed in the group - who is taking which result from the workshop to develop it further? What are the goals for the next months and for the story development phase in general?" />
 
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
-
-        <RelativeLayout
-            android:id="@+id/rlPDFView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/cvToolbar">
-
-<!--            <com.github.barteksc.pdfviewer.PDFView-->
-<!--                android:id="@+id/pdfView"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content" />-->
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/cvToolbar"
-            android:alpha="0.8"
-            android:background="@color/color_practice_trans"
-            android:orientation="vertical">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
-                android:text="@string/tool_description"
-                android:textColor="@color/color_black"
-                android:textSize="@dimen/_14ssp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
     </RelativeLayout>
 </layout>
