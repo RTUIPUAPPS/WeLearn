@@ -6,11 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.databinding.DataBindingUtil
-import androidx.viewpager2.widget.ViewPager2
 import com.hitesh.weatherlogger.view.callback.ItemClickListener
 import com.rtu.welearn.BaseActivity
 import com.rtu.welearn.R
-import com.rtu.welearn.WeLearnApp
 import com.rtu.welearn.WeLearnApp.Companion._isLoadingQuestions
 import com.rtu.welearn.WeLearnApp.Companion.listTestQuestions
 import com.rtu.welearn.databinding.ActivityTestBinding
@@ -41,29 +39,32 @@ class TestActivity : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_test)
 
         initClick()
-        initViewPageChangeCallback()
 
         _isLoadingQuestions.observe(this, {
             if (!it) {
-                Log.d("_isLoadingQuestions", "it")
+                Log.e("_isLoadingQuestions", "$it")
                 CoroutineScope(Dispatchers.IO).launch {
                     getQuestionsList()
-
                 }
             }
         })
-        if (_isLoadingQuestions.value == false) {
+
+        if(_isLoadingQuestions.value==false){
+            Log.e("_isLoadingQuestions", "No loading ${_isLoadingQuestions.value}")
             getQuestionsList()
         }
+
     }
 
 
     private fun getQuestionsList() {
-        Log.d("getQuestionsList", "")
+        Log.e("getQuestionsList", "")
         listAllQuestions.clear()
         listAllQuestionsTemp.clear()
-         listAllQuestions.addAll(listTestQuestions)
         listAllQuestionsTemp.addAll(listTestQuestions)
+        listAllQuestions.addAll(listTestQuestions)
+
+        Log.e("_isLoadingQuestions", " listAllQuestionsTemp : ${listAllQuestionsTemp.size}")
         selectRandomQuestions()
     }
 
@@ -138,6 +139,7 @@ class TestActivity : BaseActivity() {
                 }
                 showMessageDialog(
                     this,
+                    false,
                     getString(R.string.test_result),
                     "$points Points : $message",
                     object : ItemClickListener {
@@ -151,30 +153,15 @@ class TestActivity : BaseActivity() {
         }
     }
 
-    private fun initViewPageChangeCallback() {
-        binding?.viewPagerQuestions?.registerOnPageChangeCallback(object :
-            ViewPager2.OnPageChangeCallback() {
-
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                binding?.progressBar?.progress = position + 1
-                currentPos = position
-                binding?.tvRemaining?.text = "${currentPos + 1}/$totalTestQuestions"
-
-                if (currentPos == 9) {
-                    binding?.btnFinish?.text = getString(R.string.finish)
-                }
-            }
-        })
-    }
-
 
     private fun selectRandomQuestions() {
 
         if (listAllQuestionsTemp.isNotEmpty()) {
 
+            Log.e("listAllQuestionsTemp","${listAllQuestionsTemp.size}")
+            Log.e("listAllQuestionsTemp","${listAllQuestionsTemp.toArray().toString()}")
             for (i in 0 until totalTestQuestions) {
-                val randomIndex = kotlin.random.Random.nextInt(listAllQuestionsTemp.size)
+                val randomIndex = kotlin.random.Random.nextInt(0,listAllQuestionsTemp.size-1)
                 val randomElement = listAllQuestionsTemp[randomIndex]
                 listExamQuestions.add(randomElement)
                 listAllQuestionsTemp.remove(randomElement)

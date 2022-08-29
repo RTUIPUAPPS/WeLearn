@@ -5,10 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <uses-permission android:name="android.permission.CAMERA" />
-
-    <uses-feature android:name="android.hardware.camera" />
-    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:name=".WeLearnApp"
@@ -54,11 +50,7 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
-        <activity
-            android:name=".ui.camera.CameraActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+
         <activity
             android:name=".ui.toolkits.ToolkitsActivity"
             android:exported="true"
@@ -85,8 +77,4 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
     </application>
-<!--    <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">-->
-<!--        <background android:drawable="@color/ic_launcher_background" />-->
-<!--        <foreground android:drawable="@mipmap/ic_launcher_foreground" />-->
-<!--    </adaptive-icon>-->
 </manifest>

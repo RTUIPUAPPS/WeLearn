@@ -72,11 +72,6 @@
                 android:textAllCaps="true"
                 android:textColor="@color/color_white" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvTips"
-                android:layout_width="match_parent"
-                android:visibility="gone"
-                android:layout_height="wrap_content" />
         </LinearLayout>
 
     </RelativeLayout>

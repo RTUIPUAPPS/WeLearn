@@ -154,11 +154,11 @@
                 </LinearLayout>
             </ScrollView>
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewPagerQuestions"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="gone" />
+<!--            <androidx.viewpager2.widget.ViewPager2-->
+<!--                android:id="@+id/viewPagerQuestions"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:visibility="gone" />-->
             <!--                <androidx.appcompat.widget.AppCompatTextView-->
             <!--                    android:id="@+id/tvQuestion"-->
             <!--                    android:layout_width="match_parent"-->

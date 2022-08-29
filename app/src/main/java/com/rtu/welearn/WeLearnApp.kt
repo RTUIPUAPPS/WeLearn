@@ -8,6 +8,9 @@ import com.rtu.welearn.data.db_version.DBVersionDataSourceImpl
 import com.rtu.welearn.data.test_data_source.TestDataSourceImpl
 import com.rtu.welearn.data.video_list.VideoListDataSourceImpl
 import com.rtu.welearn.utils.Constants
+import com.rtu.welearn.utils.Constants.Companion.TIPS_BOTH
+import com.rtu.welearn.utils.Constants.Companion.TIPS_OFFLINE
+import com.rtu.welearn.utils.Constants.Companion.TIPS_ONLINE
 import com.rtu.welearn.utils.Constants.Companion.VIDEO_DESCRIPTION
 import com.rtu.welearn.utils.Constants.Companion.VIDEO_ID
 import com.rtu.welearn.utils.Constants.Companion.VIDEO_TITLE
@@ -33,13 +36,9 @@ class WeLearnApp : Application() {
         var mDatabase: DatabaseReference? = null
         private var mCloudEndPointVideoList: DatabaseReference? = null
 
-        //        var mCloudEndPointTestQuestions: DatabaseReference? = null
-//        var mCloudEndPointTips: DatabaseReference? = null
-//        var mCloudEndPointDBVersio: DatabaseReference? = null
         var videoList = listOf<VideoListEntity>()
         var listTestQuestions = listOf<TestEntity>()
-        var _isLoadingQuestions = MutableLiveData<Boolean>(false)
-
+        var _isLoadingQuestions = MutableLiveData<Boolean>(true)
 
         var listTipsOnline = ArrayList<String>()
         var listTipsOffline = ArrayList<String>()
@@ -48,9 +47,7 @@ class WeLearnApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-
         mDatabase = FirebaseDatabase.getInstance().reference
-
         CoroutineScope(Dispatchers.Main).launch {
             getLocalDBVersion()
         }
@@ -60,13 +57,7 @@ class WeLearnApp : Application() {
         testImpl = TestDataSourceImpl(sqlDelightDB)
         dbVersionImpl = DBVersionDataSourceImpl(sqlDelightDB)
         videoListImpl = VideoListDataSourceImpl(sqlDelightDB)
-
-
-
-
         getTipsFromFirebase()
-
-
     }
 
     private suspend fun getLocalDBVersion() {
@@ -93,8 +84,7 @@ class WeLearnApp : Application() {
                         /**set value from local db*/
                         listTestQuestions = testImpl?.getAllQuestions() ?: listOf()
                         videoList = videoListImpl?.getVideoList() ?: listOf()
-
-                        Log.d("getting value from", "local db")
+                        _isLoadingQuestions.value = false
                     }
                 }
 
@@ -105,7 +95,6 @@ class WeLearnApp : Application() {
     }
 
     private suspend fun getTestQuestionsFromFirebase() {
-        Log.d("getTestQuestionsFromFirebase", "started")
         mDatabase
             ?.child(Constants.TEST)
             ?.addListenerForSingleValueEvent(object :
@@ -136,11 +125,10 @@ class WeLearnApp : Application() {
                     }
 
                     CoroutineScope(Dispatchers.Main).launch {
-
-                        listTestQuestions = testImpl?.getAllQuestions() ?: listOf()
-                        _isLoadingQuestions.value = false
+                         listTestQuestions = testImpl?.getAllQuestions() ?: listOf()
+                         _isLoadingQuestions.value = false
                     }
-                    Log.d("getting value from", "Firebase test questions")
+
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -149,33 +137,31 @@ class WeLearnApp : Application() {
             })
     }
 
-    private fun getTipsFromFirebase() {
+    private  fun getTipsFromFirebase() {
         mDatabase?.child(Constants.TIPS)
             ?.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     snapshot.children.forEach {
-                        Log.d("snapshot", "${it.key},:: ${it.value}")
 
                         when (it.key.toString()) {
-                            "online" -> {
+                            TIPS_ONLINE -> {
                                 it.children.forEach { data ->
                                     listTipsOnline.add(data.value.toString())
                                 }
 
                             }
-                            "offline" -> {
+                            TIPS_OFFLINE -> {
                                 it.children.forEach { data ->
                                     listTipsOffline.add(data.value.toString())
                                 }
                             }
-                            "both" -> {
+                            TIPS_BOTH -> {
                                 it.children.forEach { data ->
                                     listTipsBoth.add(data.value.toString())
                                 }
                             }
                         }
                     }
-//                ownerAdapter.differ.submitList(listTips)
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -203,12 +189,13 @@ class WeLearnApp : Application() {
                 CoroutineScope(Dispatchers.Main).launch {
                     dbVersionImpl?.setLocalDBVersion(dbVersionFirebase.toLong())
                 }
-                Log.d("getting value from", "Firebase video list")
-            }
+              }
 
             override fun onCancelled(error: DatabaseError) {
 
             }
         })
     }
+
+
 }
