@@ -5,5 +5,10 @@ import welearndb.DbVersion
 
 interface DBVersionDataSource {
     fun getLocalDBVersion(): Flow<List<DbVersion>>?
-    suspend fun setLocalDBVersion(version: Long?)
+    suspend fun setLocalDBVersion(testVersion: Long,
+                                  tipsVersion: Long,
+                                  videoVersion: Long)
+    suspend fun updateVideoVersion(
+        videoVersion: Long
+    )
 }

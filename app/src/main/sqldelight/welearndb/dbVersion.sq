@@ -1,11 +1,33 @@
 CREATE TABLE dbVersion (
-version INTEGER
+testVersion INTEGER ,
+tipsVersion INTEGER ,
+videoVersion INTEGER
 );
 
 getDBVersion:
 SELECT *
 FROM dbVersion;
 
+getTipsVersion:
+SELECT tipsVersion
+FROM dbVersion;
+
+getVideoVersion:
+SELECT videoVersion
+FROM dbVersion;
+
 setdbVersion:
 INSERT INTO dbVersion
-VALUES (?);
+VALUES (?,?,?);
+
+updateTestVerison:
+UPDATE dbVersion
+SET testVersion=?;
+
+updateTipsVerison:
+UPDATE dbVersion
+SET tipsVersion=?;
+
+updateVideoVerison:
+UPDATE dbVersion
+SET videoVersion=?;

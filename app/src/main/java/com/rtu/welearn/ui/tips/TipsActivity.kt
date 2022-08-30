@@ -35,7 +35,7 @@ class TipsActivity : BaseActivity() {
                 this,
                 true,
                 getString(R.string.tips_online),
-                listTipsOnline[randomIndex],
+                listTipsOnline[randomIndex].tip.toString(),
                 object : ItemClickListener {
                     override fun onClick(status: Boolean) {
 
@@ -48,7 +48,7 @@ class TipsActivity : BaseActivity() {
             showMessageDialog(
                 this,true,
                 getString(R.string.tips_offline),
-                listTipsOffline[randomIndex],
+                listTipsOffline[randomIndex].tip.toString(),
                 object : ItemClickListener {
                     override fun onClick(status: Boolean) {
 
@@ -61,7 +61,7 @@ class TipsActivity : BaseActivity() {
             showMessageDialog(
                 this,true,
                 getString(R.string.tips_online_offline),
-                listTipsBoth[randomIndex],
+                listTipsBoth[randomIndex].tip.toString(),
                 object : ItemClickListener {
                     override fun onClick(status: Boolean) {
 

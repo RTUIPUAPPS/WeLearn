@@ -3,9 +3,9 @@ package com.rtu.welearn
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.ViewTreeObserver
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.Scope
@@ -25,6 +25,10 @@ import com.rtu.welearn.ui.toolkits.ToolkitsActivity
 import com.rtu.welearn.ui.video_list.VideoListActivity
 import com.rtu.welearn.utils.AppUtils.isInternetAvailable
 import com.rtu.welearn.utils.AppUtils.showToast
+import com.rtu.welearn.utils.ConnectivityObserver
+import com.rtu.welearn.utils.NetworkConnectivityObserver
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 class DashboardActivity : BaseActivity() {
     companion object {
@@ -37,7 +41,18 @@ class DashboardActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_dashboard)
 
-        val viewObserver=binding?.ivWeLearn?.viewTreeObserver
+        val connectivityObserver: ConnectivityObserver = NetworkConnectivityObserver(this)
+        connectivityObserver.observe().onEach {
+
+            if(it==ConnectivityObserver.Status.Available){
+                Log.e("###Network State", "$it")
+
+            }else if(it==ConnectivityObserver.Status.Lost){
+                Log.e("###Network State", "$it")
+            }
+
+        }.launchIn(lifecycleScope)
+        val viewObserver = binding?.ivWeLearn?.viewTreeObserver
         viewObserver?.addOnGlobalLayoutListener {
             binding?.ivWeLearn?.layoutParams = LinearLayout.LayoutParams(
                 binding?.ivWeLearn?.height ?: 0,

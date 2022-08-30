@@ -16,5 +16,6 @@ class Constants {
         const val  TIPS_ONLINE="online"
         const val  TIPS_OFFLINE="offline"
         const val  TIPS_BOTH="both"
+        const val  TOOL_VIDEO="video"
     }
 }
