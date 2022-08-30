@@ -45,6 +45,7 @@ class VideoListActivity : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_video_list)
 
         videoListImpl = VideoListDataSourceImpl(sqlDelightDB)
+
         if (videoListVersionLocalDB == videoListVersionFirebase) {
             videoList =
                 (videoListImpl?.getVideoList() ?: arrayListOf()) as ArrayList<VideoListEntity>

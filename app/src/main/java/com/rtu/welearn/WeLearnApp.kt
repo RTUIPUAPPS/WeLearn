@@ -40,7 +40,6 @@ class WeLearnApp : Application() {
         var mDatabase: DatabaseReference? = null
 
         var listTestQuestions = listOf<TestEntity>()
-        var _isLoadingQuestions = MutableLiveData<Boolean>(true)
 
         var listTipsOnline = ArrayList<TipsEntity>()
         var listTipsOffline = ArrayList<TipsEntity>()
@@ -110,48 +109,7 @@ class WeLearnApp : Application() {
             })
     }
 
-    private suspend fun getTestQuestionsFromFirebase() {
-        mDatabase
-            ?.child(Constants.TEST)
-            ?.addListenerForSingleValueEvent(object :
-                ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    testImpl?.deleteAllQuestions()
-                    CoroutineScope(Dispatchers.Main).launch {
-                        _isLoadingQuestions.value = true
 
-                    }
-                    snapshot.children.forEach {
-                        CoroutineScope(Dispatchers.IO).launch {
-                            testImpl?.insertQuestion(
-                                Point1 = it.child("Points1").value.toString(),
-                                Point2 = it.child("Points2").value.toString(),
-                                Point3 = it.child("Points3").value.toString(),
-                                Point4 = it.child("Points4").value.toString(),
-                                Point5 = it.child("Points5").value.toString(),
-                                Question = it.child("Question").value.toString(),
-                                Answer1 = it.child("Reply1").value.toString(),
-                                Answer2 = it.child("Reply2").value.toString(),
-                                Answer3 = it.child("Reply3").value.toString(),
-                                Answer4 = it.child("Reply4").value.toString(),
-                                Answer5 = it.child("Reply5").value.toString(),
-                                id = null
-                            )
-                        }
-                    }
-
-                    CoroutineScope(Dispatchers.Main).launch {
-                        listTestQuestions = testImpl?.getAllQuestions() ?: listOf()
-                        _isLoadingQuestions.value = false
-                    }
-
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-
-                }
-            })
-    }
 
     private suspend fun getTipsFromFirebase() {
         mDatabase?.child(Constants.TIPS)

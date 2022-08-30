@@ -12,12 +12,12 @@ class TestDataSourceImpl(db: WeLearnDatabase) : TestDataSource {
 
     private val queries = db.testEntityQueries
 
-    override fun getAllQuestions(): List<TestEntity> {
-        return queries.getAllQuestions().executeAsList()
+    override suspend fun getAllQuestions(): Flow<List<TestEntity>> {
+        return queries.getAllQuestions().asFlow().mapToList()
     }
 
     override fun deleteAllQuestions() {
-       queries.deleteQuestions()
+        queries.deleteQuestions()
     }
 
     override suspend fun insertQuestion(
@@ -35,7 +35,7 @@ class TestDataSourceImpl(db: WeLearnDatabase) : TestDataSource {
         Answer5: String
     ) {
 
-        withContext(Dispatchers.IO){
+        withContext(Dispatchers.IO) {
             queries.insertQuestion(
                 id,
                 Point1,

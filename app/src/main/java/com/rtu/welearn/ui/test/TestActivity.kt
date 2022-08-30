@@ -6,13 +6,21 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import com.hitesh.weatherlogger.view.callback.ItemClickListener
 import com.rtu.welearn.BaseActivity
 import com.rtu.welearn.R
-import com.rtu.welearn.WeLearnApp.Companion._isLoadingQuestions
+import com.rtu.welearn.WeLearnApp
 import com.rtu.welearn.WeLearnApp.Companion.listTestQuestions
+import com.rtu.welearn.WeLearnApp.Companion.testImpl
+import com.rtu.welearn.WeLearnApp.Companion.testVersionFirebase
+import com.rtu.welearn.WeLearnApp.Companion.testVersionLocalDB
 import com.rtu.welearn.databinding.ActivityTestBinding
 import com.rtu.welearn.utils.AppUtils.showToastShort
+import com.rtu.welearn.utils.Constants
 import com.rtu.welearn.utils.showMessageDialog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -40,32 +48,28 @@ class TestActivity : BaseActivity() {
 
         initClick()
 
-        _isLoadingQuestions.observe(this, {
-            if (!it) {
-                Log.e("_isLoadingQuestions", "$it")
-                CoroutineScope(Dispatchers.IO).launch {
-                    getQuestionsList()
-                }
-            }
-        })
-
-        if(_isLoadingQuestions.value==false){
-            Log.e("_isLoadingQuestions", "No loading ${_isLoadingQuestions.value}")
+        if (testVersionLocalDB == testVersionFirebase) {
             getQuestionsList()
+        } else {
+            lifecycleScope.launch {
+                getTestQuestionsFromFirebase()
+            }
         }
-
     }
 
 
     private fun getQuestionsList() {
-        Log.e("getQuestionsList", "")
-        listAllQuestions.clear()
-        listAllQuestionsTemp.clear()
-        listAllQuestionsTemp.addAll(listTestQuestions)
-        listAllQuestions.addAll(listTestQuestions)
 
-        Log.e("_isLoadingQuestions", " listAllQuestionsTemp : ${listAllQuestionsTemp.size}")
-        selectRandomQuestions()
+        lifecycleScope.launch {
+            testImpl?.getAllQuestions()?.collect {
+                listTestQuestions = it
+                listAllQuestions.clear()
+                listAllQuestionsTemp.clear()
+                listAllQuestionsTemp.addAll(listTestQuestions)
+                listAllQuestions.addAll(listTestQuestions)
+                selectRandomQuestions()
+            }
+        }
     }
 
     private fun initClick() {
@@ -153,15 +157,56 @@ class TestActivity : BaseActivity() {
         }
     }
 
+    private suspend fun getTestQuestionsFromFirebase() {
+        WeLearnApp.mDatabase
+            ?.child(Constants.TEST)
+            ?.addListenerForSingleValueEvent(object :
+                ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    testImpl?.deleteAllQuestions()
+
+                    snapshot.children.forEach {
+                        CoroutineScope(Dispatchers.IO).launch {
+                            testImpl?.insertQuestion(
+                                Point1 = it.child("Points1").value.toString(),
+                                Point2 = it.child("Points2").value.toString(),
+                                Point3 = it.child("Points3").value.toString(),
+                                Point4 = it.child("Points4").value.toString(),
+                                Point5 = it.child("Points5").value.toString(),
+                                Question = it.child("Question").value.toString(),
+                                Answer1 = it.child("Reply1").value.toString(),
+                                Answer2 = it.child("Reply2").value.toString(),
+                                Answer3 = it.child("Reply3").value.toString(),
+                                Answer4 = it.child("Reply4").value.toString(),
+                                Answer5 = it.child("Reply5").value.toString(),
+                                id = null
+                            )
+                        }
+                    }
+
+                    lifecycleScope.launch {
+                        WeLearnApp.dbVersionImpl?.updateTestQuestionsVersion(
+                           testVersionFirebase.toLong()
+                        )
+                    }
+
+                    getQuestionsList()
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+            })
+    }
 
     private fun selectRandomQuestions() {
 
         if (listAllQuestionsTemp.isNotEmpty()) {
 
-            Log.e("listAllQuestionsTemp","${listAllQuestionsTemp.size}")
-            Log.e("listAllQuestionsTemp","${listAllQuestionsTemp.toArray().toString()}")
+            Log.e("listAllQuestionsTemp", "${listAllQuestionsTemp.size}")
+            Log.e("listAllQuestionsTemp", "${listAllQuestionsTemp.toArray()}")
             for (i in 0 until totalTestQuestions) {
-                val randomIndex = kotlin.random.Random.nextInt(0,listAllQuestionsTemp.size-1)
+                val randomIndex = kotlin.random.Random.nextInt(0, listAllQuestionsTemp.size - 1)
                 val randomElement = listAllQuestionsTemp[randomIndex]
                 listExamQuestions.add(randomElement)
                 listAllQuestionsTemp.remove(randomElement)

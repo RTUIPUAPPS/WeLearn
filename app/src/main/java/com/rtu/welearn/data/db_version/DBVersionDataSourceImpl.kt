@@ -23,9 +23,11 @@ class DBVersionDataSourceImpl(db: WeLearnDatabase) : DBVersionDataSource {
         queries.setdbVersion(testVersion, tipsVersion, videoVersion)
     }
 
-    override suspend fun updateVideoVersion(
-        videoVersion: Long
-    ) {
-        queries.updateVideoVerison(videoVersion)
+    override suspend fun updateVideoVersion(version: Long) {
+        queries.updateVideoVerison(version)
+    }
+
+    override suspend fun updateTestQuestionsVersion(version: Long) {
+        queries.updateTestVerison(version)
     }
 }
