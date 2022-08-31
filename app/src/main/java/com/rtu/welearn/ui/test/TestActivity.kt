@@ -134,7 +134,7 @@ class TestActivity : BaseActivity() {
                 when (points) {
                     in 0..10 -> {
                         message =
-                            "Good! You know the basics but there is still a lot of room for improvement. To improve your knowledge about neighbornes, we highly recommend you to check other WeLearn app functions and to visit our website at: <br>http://welearn-project.eu/"
+                            "Good! You know the basics but there is still a lot of room for improvement. To improve your knowledge about neighbourness, we highly recommend you to check other WeLearn app functions and to visit our website at: <br>http://welearn-project.eu/"
                     }
                     in 11..25 -> {
                         message =
@@ -142,7 +142,7 @@ class TestActivity : BaseActivity() {
                     }
                     in 26..30 -> {
                         message =
-                            "Excellent! You reached the highest score! The test results are showing adequate know-how about neighbornes and how to work in a multicultural learning environment! If you want to learn even more, we recommend you to check the material on the app and our Website: <br> http://welearn-project.eu/ "
+                            "Excellent! You reached the highest score! The test results are showing adequate know-how about neighbourness and how to work in a multicultural learning environment! If you want to learn even more, we recommend you to check the material on the app and our Website: <br> http://welearn-project.eu/ "
                     }
                 }
                 showMessageDialog(
