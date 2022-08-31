@@ -14,4 +14,5 @@ interface DBVersionDataSource {
     suspend fun updateVideoVersion(version: Long)
 
     suspend fun updateTestQuestionsVersion(version: Long)
+    suspend fun updateTipsVersion(version: Long)
 }

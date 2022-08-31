@@ -14,10 +14,9 @@ import com.hitesh.weatherlogger.view.callback.ItemClickListener
 import com.rtu.welearn.BaseActivity
 import com.rtu.welearn.R
 import com.rtu.welearn.WeLearnApp
-import com.rtu.welearn.WeLearnApp.Companion.listTestQuestions
-import com.rtu.welearn.WeLearnApp.Companion.testImpl
 import com.rtu.welearn.WeLearnApp.Companion.testVersionFirebase
 import com.rtu.welearn.WeLearnApp.Companion.testVersionLocalDB
+import com.rtu.welearn.data.test_data_source.TestDataSourceImpl
 import com.rtu.welearn.databinding.ActivityTestBinding
 import com.rtu.welearn.utils.AppUtils.showToastShort
 import com.rtu.welearn.utils.Constants
@@ -36,17 +35,19 @@ class TestActivity : BaseActivity() {
     }
 
     var binding: ActivityTestBinding? = null
+    private var listTestQuestions = listOf<TestEntity>()
     private var listAllQuestions = ArrayList<TestEntity>()
     private var listAllQuestionsTemp = ArrayList<TestEntity>()
     private var listExamQuestions = ArrayList<TestEntity>()
     private var currentPos = 0
     private val totalTestQuestions = 10
     private var arrayAnswers = HashMap<Int, Int>()
+    var testImpl: TestDataSourceImpl? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_test)
-
-        initClick()
+        testImpl = TestDataSourceImpl(WeLearnApp.sqlDelightDB)
 
         if (testVersionLocalDB == testVersionFirebase) {
             getQuestionsList()
@@ -55,6 +56,9 @@ class TestActivity : BaseActivity() {
                 getTestQuestionsFromFirebase()
             }
         }
+
+        initClick()
+
     }
 
 
@@ -186,7 +190,7 @@ class TestActivity : BaseActivity() {
 
                     lifecycleScope.launch {
                         WeLearnApp.dbVersionImpl?.updateTestQuestionsVersion(
-                           testVersionFirebase.toLong()
+                            testVersionFirebase.toLong()
                         )
                     }
 

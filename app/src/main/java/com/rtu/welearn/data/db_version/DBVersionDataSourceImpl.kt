@@ -30,4 +30,8 @@ class DBVersionDataSourceImpl(db: WeLearnDatabase) : DBVersionDataSource {
     override suspend fun updateTestQuestionsVersion(version: Long) {
         queries.updateTestVerison(version)
     }
+
+    override suspend fun updateTipsVersion(version: Long) {
+        queries.updateTipsVerison(version)
+    }
 }

@@ -74,5 +74,14 @@
 
         </LinearLayout>
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_20sdp"
+            android:max="10"
+            android:layout_centerInParent="true"
+            android:progressTint="@color/purple_500" />
+
+
     </RelativeLayout>
 </layout>
