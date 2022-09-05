@@ -1,24 +1,16 @@
 package com.rtu.welearn
 
 import android.app.Application
-import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import com.google.firebase.database.*
 import com.rtu.welearn.data.db_version.DBVersionDataSourceImpl
-import com.rtu.welearn.data.test_data_source.TestDataSourceImpl
-import com.rtu.welearn.data.tips.TipsDataImpl
+import com.rtu.welearn.data.room.AppDatabase
+import com.rtu.welearn.data.room.db_version.DBVersionData
 import com.rtu.welearn.utils.Constants
-import com.rtu.welearn.utils.Constants.Companion.TIPS_BOTH
-import com.rtu.welearn.utils.Constants.Companion.TIPS_OFFLINE
-import com.rtu.welearn.utils.Constants.Companion.TIPS_ONLINE
 import com.squareup.sqldelight.android.AndroidSqliteDriver
 import com.squareup.sqldelight.db.SqlDriver
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.launch
-import welearndb.TestEntity
-import welearndb.TipsEntity
 
 class WeLearnApp : Application() {
     companion object {
@@ -34,11 +26,14 @@ class WeLearnApp : Application() {
         var testVersionFirebase = 0
         var tipsVersionFirebase = 0
         var videoListVersionFirebase = 0
+        lateinit var roomDB: AppDatabase
+        var dbVersionData: DBVersionData? = null
     }
 
     override fun onCreate() {
         super.onCreate()
 
+        roomDB = AppDatabase.getDatabase(this)
         mDatabase = FirebaseDatabase.getInstance().reference
         driver = AndroidSqliteDriver(WeLearnDatabase.Schema, this, "welearn.db")
         sqlDelightDB = WeLearnDatabase(driver!!)
@@ -46,18 +41,32 @@ class WeLearnApp : Application() {
         getFirebaseDBVersion()
     }
 
-     suspend fun getLocalDBVersion() {
-        dbVersionImpl?.getLocalDBVersion()?.collect(FlowCollector {
-             if (it.isNotEmpty()) {
-                testVersionLocalDB = it[0].testVersion?.toInt() ?: 0
-                tipsVersionLocalDB = it[0].tipsVersion?.toInt() ?: 0
-                videoListVersionLocalDB = it[0].videoVersion?.toInt() ?: 0
-
-            }else{
-                dbVersionImpl?.setLocalDBVersion(0,0,0)
-                getLocalDBVersion()
-            }
-        })
+    suspend fun getLocalDBVersion() {
+        val listDBVersions = roomDB.dbVersionDao().getVersion()
+        if (listDBVersions?.isNullOrEmpty() == true) {
+            dbVersionData = DBVersionData(
+                0, 0, 0, 0
+            )
+            roomDB.dbVersionDao().insertVersion(
+                dbVersionData!!
+            )
+        } else {
+            dbVersionData = listDBVersions[0]
+            testVersionLocalDB = dbVersionData?.version_test ?: 0
+            tipsVersionLocalDB = dbVersionData?.version_tips ?: 0
+            videoListVersionLocalDB = dbVersionData?.version_video ?: 0
+        }
+//        dbVersionImpl?.getLocalDBVersion()?.collect(FlowCollector {
+//            if (it.isNotEmpty()) {
+//                testVersionLocalDB = it[0].testVersion?.toInt() ?: 0
+//                tipsVersionLocalDB = it[0].tipsVersion?.toInt() ?: 0
+//                videoListVersionLocalDB = it[0].videoVersion?.toInt() ?: 0
+//
+//            } else {
+//                dbVersionImpl?.setLocalDBVersion(0, 0, 0)
+//                getLocalDBVersion()
+//            }
+//        })
     }
 
     private fun getFirebaseDBVersion() {

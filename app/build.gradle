@@ -14,8 +14,8 @@ android {
         applicationId "com.rtu.welearn"
         minSdk 26
         targetSdk 31
-        versionCode 7
-        versionName "7.0"
+        versionCode 9
+        versionName "9.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -116,6 +116,14 @@ dependencies {
     //SQL Delight
     implementation "com.squareup.sqldelight:android-driver:1.5.2"
     implementation "com.squareup.sqldelight:coroutines-extensions-jvm:1.5.2"
+
+    // Room Database
+    def room_version = "2.4.3"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    //implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.0-alpha01'
 
     //PDF view
     //implementation 'com.github.ChristianSteffensen:AndroidPdfViewer:1.0.0'

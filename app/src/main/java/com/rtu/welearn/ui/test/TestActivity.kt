@@ -134,15 +134,15 @@ class TestActivity : BaseActivity() {
                 when (points) {
                     in 0..10 -> {
                         message =
-                            "Good! You know the basics but there is still a lot of room for improvement. To improve your knowledge about neighbourness, we highly recommend you to check other WeLearn app functions and to visit our website at: <br>http://welearn-project.eu/"
+                            "Good! You know the basics but there is still a lot of room for improvement. To improve your knowledge of Neighbourness, we highly recommend you that check out other WeLearn app functionalities and visit our website at: <br>http://welearn-project.eu/"
                     }
                     in 11..25 -> {
                         message =
-                            "Very well! You have sufficient knowledge about intercultural learning environment, but there is still room for improvement. Click back and find ways to improve your knowledge. You can also gain more info form our website: <br>http://welearn-project.eu/"
+                            "Well done! You have impressive knowledge of intercultural learning environment, but there is still room for improvement. Find more information on our website:<br> http://welearn-project.eu/"
                     }
                     in 26..30 -> {
                         message =
-                            "Excellent! You reached the highest score! The test results are showing adequate know-how about neighbourness and how to work in a multicultural learning environment! If you want to learn even more, we recommend you to check the material on the app and our Website: <br> http://welearn-project.eu/ "
+                            "You got a very high score! Your test results show excellent know-how of Neighbourness and of working in a multicultural learning environment! If you want to learn still more, please check out other WeLearn app functionalities  and visit our website:  <br>http://welearn-project.eu/ "
                     }
                 }
                 showMessageDialog(
