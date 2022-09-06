@@ -13,19 +13,14 @@ import com.google.firebase.database.ValueEventListener
 import com.rtu.welearn.BaseActivity
 import com.rtu.welearn.R
 import com.rtu.welearn.WeLearnApp
-import com.rtu.welearn.WeLearnApp.Companion.dbVersionImpl
-import com.rtu.welearn.WeLearnApp.Companion.sqlDelightDB
+import com.rtu.welearn.WeLearnApp.Companion.dbVersionData
+import com.rtu.welearn.WeLearnApp.Companion.roomDB
 import com.rtu.welearn.WeLearnApp.Companion.videoListVersionFirebase
-import com.rtu.welearn.WeLearnApp.Companion.videoListVersionLocalDB
-import com.rtu.welearn.data.video_list.VideoListDataSourceImpl
+import com.rtu.welearn.data.room.videolist.VideoListData
 import com.rtu.welearn.databinding.ActivityVideoListBinding
 import com.rtu.welearn.utils.Constants
-import com.rtu.welearn.utils.Constants.Companion.TOOL_VIDEO
 import com.rtu.welearn.utils.Constants.Companion.VIDEO_ID
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import welearndb.VideoListEntity
 
 class VideoListActivity : BaseActivity() {
 
@@ -37,21 +32,27 @@ class VideoListActivity : BaseActivity() {
     }
 
     private var binding: ActivityVideoListBinding? = null
-    private var videoList = listOf<VideoListEntity>()
+    private var videoList = listOf<VideoListData>()
 
-    private var videoListImpl: VideoListDataSourceImpl? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_video_list)
 
-        videoListImpl = VideoListDataSourceImpl(sqlDelightDB)
 
-        if (videoListVersionLocalDB == videoListVersionFirebase) {
-            videoList =
-                (videoListImpl?.getVideoList() ?: arrayListOf()) as ArrayList<VideoListEntity>
-            initRecyclerView()
+        if (dbVersionData.version_video == videoListVersionFirebase) {
+            getVideoListFromLocalStorage()
+
         } else {
             getVideoListFromFirebase()
+        }
+    }
+
+    private fun getVideoListFromLocalStorage() {
+        lifecycleScope.launch {
+            roomDB.VideoListDao().getVideoList().collect {
+                videoList = it
+                initRecyclerView()
+            }
         }
     }
 
@@ -62,30 +63,29 @@ class VideoListActivity : BaseActivity() {
         mCloudEndPointVideoList?.addListenerForSingleValueEvent(object :
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                videoListImpl?.deleteVideoList()
+                lifecycleScope.launch {
+                    roomDB.VideoListDao().deleteVideoList()
+                }
 
                 snapshot.children.forEach {
                     lifecycleScope.launch {
-                        videoListImpl?.insertVideoDetails(
-                            null,
-                            it.child(VIDEO_ID).value.toString(),
-                            it.child(Constants.VIDEO_TITLE).value.toString(),
-                            it.child(Constants.VIDEO_DESCRIPTION).value.toString()
-
+                        roomDB.VideoListDao().insertVideoData(
+                            VideoListData(
+                                null,
+                                it.child(VIDEO_ID).value.toString(),
+                                it.child(Constants.VIDEO_TITLE).value.toString(),
+                                it.child(Constants.VIDEO_DESCRIPTION).value.toString()
+                            )
                         )
+
                     }
                 }
 
                 lifecycleScope.launch {
-                    dbVersionImpl?.updateVideoVersion(
-                        videoListVersionFirebase.toLong()
-                    )
+                    dbVersionData.version_video = videoListVersionFirebase
+                    roomDB.dbVersionDao().updateVersion(dbVersionData)
                 }
-
-                videoListVersionLocalDB=videoListVersionFirebase
-
-                videoList = videoListImpl?.getVideoList() ?: listOf()
-                initRecyclerView()
+                getVideoListFromLocalStorage()
             }
 
             override fun onCancelled(error: DatabaseError) {

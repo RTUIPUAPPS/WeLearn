@@ -15,13 +15,9 @@ import com.rtu.welearn.BaseActivity
 import com.rtu.welearn.R
 import com.rtu.welearn.WeLearnApp
 import com.rtu.welearn.WeLearnApp.Companion.dbVersionData
-import com.rtu.welearn.WeLearnApp.Companion.dbVersionImpl
 import com.rtu.welearn.WeLearnApp.Companion.roomDB
 import com.rtu.welearn.WeLearnApp.Companion.tipsVersionFirebase
-import com.rtu.welearn.WeLearnApp.Companion.tipsVersionLocalDB
-import com.rtu.welearn.data.room.AppDatabase
 import com.rtu.welearn.data.room.tips.TipsData
-import com.rtu.welearn.data.tips.TipsDataImpl
 import com.rtu.welearn.databinding.ActivityTipsBinding
 import com.rtu.welearn.utils.Constants
 import com.rtu.welearn.utils.showMessageDialog
@@ -42,22 +38,20 @@ class TipsActivity : BaseActivity() {
     private var listTipsOnline = ArrayList<TipsData>()
     private var listTipsOffline = ArrayList<TipsData>()
     private var listTipsBoth = ArrayList<TipsData>()
-    private lateinit var tipsImpl: TipsDataImpl
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_tips)
-        tipsImpl = TipsDataImpl(WeLearnApp.sqlDelightDB)
 
-        if (dbVersionData?.version_tips == tipsVersionFirebase) {
+        if (dbVersionData.version_tips == tipsVersionFirebase) {
             getTipsFromLocalDB()
-            Log.e("#TIPS","getTipsFromLocalDB()")
+            Log.e("#TIPS", "getTipsFromLocalDB()")
 
         } else {
             lifecycleScope.launch {
                 getTipsFromFirebase()
-                Log.e("#TIPS","getTipsFromFirebase()")
+                Log.e("#TIPS", "getTipsFromFirebase()")
             }
         }
 
@@ -114,14 +108,14 @@ class TipsActivity : BaseActivity() {
             listTipsOnline.addAll(
                 roomDB.tipsDao().getAllTips(Constants.TIPS_ONLINE) as ArrayList<TipsData>
             )
-            Log.e("#TIPS","listTipsOnline ${listTipsOnline.size}")
+            Log.e("#TIPS", "listTipsOnline ${listTipsOnline.size}")
         }
         lifecycleScope.launch {
             listTipsOffline.addAll(
                 roomDB.tipsDao().getAllTips(Constants.TIPS_OFFLINE) as ArrayList<TipsData>
             )
 
-            Log.e("#TIPS","listTipsOffline ${listTipsOffline.size}")
+            Log.e("#TIPS", "listTipsOffline ${listTipsOffline.size}")
         }
         lifecycleScope.launch {
 
@@ -129,7 +123,7 @@ class TipsActivity : BaseActivity() {
                 roomDB.tipsDao().getAllTips(Constants.TIPS_BOTH) as ArrayList<TipsData>
             )
 
-            Log.e("#TIPS","listTipsBoth ${listTipsBoth.size}")
+            Log.e("#TIPS", "listTipsBoth ${listTipsBoth.size}")
             binding?.progressBar?.visibility = View.GONE
         }
 
@@ -176,17 +170,15 @@ class TipsActivity : BaseActivity() {
                         }
                     }
 
-                    dbVersionData?.version_tips=tipsVersionFirebase.toInt()
+                    dbVersionData.version_tips = tipsVersionFirebase
                     lifecycleScope.launch {
-                        roomDB.dbVersionDao().updateVersion(dbVersionData!!)
-                        Log.e("#TIPS","updateVersion $tipsVersionFirebase")
+                        roomDB.dbVersionDao().updateVersion(dbVersionData)
+                        Log.e("#TIPS", "updateVersion $tipsVersionFirebase")
 //                        dbVersionImpl?.updateTipsVersion(
 //                            tipsVersionFirebase.toLong()
 //                        )
                         getTipsFromLocalDB()
                     }
-
-
                 }
 
                 override fun onCancelled(error: DatabaseError) {

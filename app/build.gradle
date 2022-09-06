@@ -113,9 +113,9 @@ dependencies {
     // For control over item selection of both touch and mouse driven selection
     implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
 
-    //SQL Delight
-    implementation "com.squareup.sqldelight:android-driver:1.5.2"
-    implementation "com.squareup.sqldelight:coroutines-extensions-jvm:1.5.2"
+//    //SQL Delight
+//    implementation "com.squareup.sqldelight:android-driver:1.5.2"
+//    implementation "com.squareup.sqldelight:coroutines-extensions-jvm:1.5.2"
 
     // Room Database
     def room_version = "2.4.3"
@@ -129,8 +129,8 @@ dependencies {
     //implementation 'com.github.ChristianSteffensen:AndroidPdfViewer:1.0.0'
 
 }
-sqldelight {
-    WeLearnDatabase { // This will be the name of the generated database class.
-        packageName = "com.rtu.welearn"
-    }
-}
+//sqldelight {
+//    WeLearnDatabase { // This will be the name of the generated database class.
+//        packageName = "com.rtu.welearn"
+//    }
+//}

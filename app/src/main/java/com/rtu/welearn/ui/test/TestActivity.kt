@@ -14,17 +14,16 @@ import com.hitesh.weatherlogger.view.callback.ItemClickListener
 import com.rtu.welearn.BaseActivity
 import com.rtu.welearn.R
 import com.rtu.welearn.WeLearnApp
+import com.rtu.welearn.WeLearnApp.Companion.dbVersionData
+import com.rtu.welearn.WeLearnApp.Companion.listAllQuestions
+import com.rtu.welearn.WeLearnApp.Companion.roomDB
 import com.rtu.welearn.WeLearnApp.Companion.testVersionFirebase
-import com.rtu.welearn.WeLearnApp.Companion.testVersionLocalDB
-import com.rtu.welearn.data.test_data_source.TestDataSourceImpl
+import com.rtu.welearn.data.room.test.TestData
 import com.rtu.welearn.databinding.ActivityTestBinding
 import com.rtu.welearn.utils.AppUtils.showToastShort
 import com.rtu.welearn.utils.Constants
 import com.rtu.welearn.utils.showMessageDialog
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import welearndb.TestEntity
 
 class TestActivity : BaseActivity() {
 
@@ -35,26 +34,29 @@ class TestActivity : BaseActivity() {
     }
 
     var binding: ActivityTestBinding? = null
-    private var listTestQuestions = listOf<TestEntity>()
-    private var listAllQuestions = ArrayList<TestEntity>()
-    private var listAllQuestionsTemp = ArrayList<TestEntity>()
-    private var listExamQuestions = ArrayList<TestEntity>()
+
+    //    private var listTestQuestions = ArrayList<TestData>()
+    private var listAllQuestionsTemp = ArrayList<TestData>()
+    private var listExamQuestions = ArrayList<TestData>()
     private var currentPos = 0
     private val totalTestQuestions = 10
     private var arrayAnswers = HashMap<Int, Int>()
-    var testImpl: TestDataSourceImpl? = null
+//    var testImpl: TestDataSourceImpl? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_test)
-        testImpl = TestDataSourceImpl(WeLearnApp.sqlDelightDB)
 
-        if (testVersionLocalDB == testVersionFirebase) {
-            getQuestionsList()
-        } else {
-            lifecycleScope.launch {
-                getTestQuestionsFromFirebase()
+        if (listAllQuestions.isEmpty()) {
+            if (dbVersionData.version_test == testVersionFirebase) {
+                getQuestionsList()
+            } else {
+                lifecycleScope.launch {
+                    getTestQuestionsFromFirebase()
+                }
             }
+        } else {
+            getQuestionsList()
         }
 
         initClick()
@@ -63,18 +65,30 @@ class TestActivity : BaseActivity() {
 
 
     private fun getQuestionsList() {
+        listAllQuestions.clear()
+        listAllQuestionsTemp.clear()
 
         lifecycleScope.launch {
-            testImpl?.getAllQuestions()?.collect {
-                listTestQuestions = it
-                listAllQuestions.clear()
+
+            roomDB.TestDao().getTestData().collect {
                 listAllQuestionsTemp.clear()
-                listAllQuestionsTemp.addAll(listTestQuestions)
-                listAllQuestions.addAll(listTestQuestions)
-                selectRandomQuestions()
+                listAllQuestions.clear()
+                listAllQuestionsTemp.addAll(it)
+                listAllQuestions.addAll(it)
+                Log.e("#Random Total", "${listAllQuestionsTemp.size}")
+                if (listAllQuestionsTemp.size > totalTestQuestions) {
+                    selectRandomQuestions()
+                }
             }
         }
     }
+
+//    private fun getTestQuestions(): Flow<List<TestData>> = callbackFlow {
+//        roomDB.TestDao().getTestData().collect {
+//            trySend(it)
+//        }
+//        awaitClose { }
+//    }
 
     private fun initClick() {
         binding?.btnFinish?.setOnClickListener {
@@ -84,23 +98,23 @@ class TestActivity : BaseActivity() {
             var isAnswered = false
             when {
                 binding?.rbAns1?.id == checkedId -> {
-                    selectedPoint = listExamQuestions[currentPos].Points1!!.toInt()
+                    selectedPoint = listExamQuestions[currentPos].Points1.toInt()
                     arrayAnswers[currentPos] = selectedPoint
                 }
                 binding?.rbAns2?.id == checkedId -> {
-                    selectedPoint = listExamQuestions[currentPos].Points2!!.toInt()
+                    selectedPoint = listExamQuestions[currentPos].Points2.toInt()
                     arrayAnswers[currentPos] = selectedPoint
                 }
                 binding?.rbAns3?.id == checkedId -> {
-                    selectedPoint = listExamQuestions[currentPos].Points3!!.toInt()
+                    selectedPoint = listExamQuestions[currentPos].Points3.toInt()
                     arrayAnswers[currentPos] = selectedPoint
                 }
                 binding?.rbAns4?.id == checkedId -> {
-                    selectedPoint = listExamQuestions[currentPos].Points4!!.toInt()
+                    selectedPoint = listExamQuestions[currentPos].Points4.toInt()
                     arrayAnswers[currentPos] = selectedPoint
                 }
                 binding?.rbAns5?.id == checkedId -> {
-                    selectedPoint = listExamQuestions[currentPos].Points5!!.toInt()
+                    selectedPoint = listExamQuestions[currentPos].Points5.toInt()
                     arrayAnswers[currentPos] = selectedPoint
                 }
                 else -> {
@@ -167,31 +181,35 @@ class TestActivity : BaseActivity() {
             ?.addListenerForSingleValueEvent(object :
                 ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    testImpl?.deleteAllQuestions()
+                    lifecycleScope.launch {
+                        roomDB.TestDao().deleteTestQuestions()
+                    }
 
                     snapshot.children.forEach {
-                        CoroutineScope(Dispatchers.IO).launch {
-                            testImpl?.insertQuestion(
-                                Point1 = it.child("Points1").value.toString(),
-                                Point2 = it.child("Points2").value.toString(),
-                                Point3 = it.child("Points3").value.toString(),
-                                Point4 = it.child("Points4").value.toString(),
-                                Point5 = it.child("Points5").value.toString(),
-                                Question = it.child("Question").value.toString(),
-                                Answer1 = it.child("Reply1").value.toString(),
-                                Answer2 = it.child("Reply2").value.toString(),
-                                Answer3 = it.child("Reply3").value.toString(),
-                                Answer4 = it.child("Reply4").value.toString(),
-                                Answer5 = it.child("Reply5").value.toString(),
-                                id = null
+                        lifecycleScope.launch {
+                            roomDB.TestDao().insertTestData(
+                                TestData(
+                                    Points1 = it.child("Points1").value.toString(),
+                                    Points2 = it.child("Points2").value.toString(),
+                                    Points3 = it.child("Points3").value.toString(),
+                                    Points4 = it.child("Points4").value.toString(),
+                                    Points5 = it.child("Points5").value.toString(),
+                                    Question = it.child("Question").value.toString(),
+                                    Answer1 = it.child("Reply1").value.toString(),
+                                    Answer2 = it.child("Reply2").value.toString(),
+                                    Answer3 = it.child("Reply3").value.toString(),
+                                    Answer4 = it.child("Reply4").value.toString(),
+                                    Answer5 = it.child("Reply5").value.toString(),
+                                    id = null
+                                )
                             )
                         }
+
                     }
 
                     lifecycleScope.launch {
-                        WeLearnApp.dbVersionImpl?.updateTestQuestionsVersion(
-                            testVersionFirebase.toLong()
-                        )
+                        dbVersionData.version_test = testVersionFirebase
+                        roomDB.dbVersionDao().updateVersion(dbVersionData)
                     }
 
                     getQuestionsList()
@@ -207,10 +225,8 @@ class TestActivity : BaseActivity() {
 
         if (listAllQuestionsTemp.isNotEmpty()) {
 
-            Log.e("listAllQuestionsTemp", "${listAllQuestionsTemp.size}")
-            Log.e("listAllQuestionsTemp", "${listAllQuestionsTemp.toArray()}")
             for (i in 0 until totalTestQuestions) {
-                val randomIndex = kotlin.random.Random.nextInt(0, listAllQuestionsTemp.size - 1)
+                val randomIndex = kotlin.random.Random.nextInt(listAllQuestionsTemp.size - 1)
                 val randomElement = listAllQuestionsTemp[randomIndex]
                 listExamQuestions.add(randomElement)
                 listAllQuestionsTemp.remove(randomElement)
@@ -244,12 +260,13 @@ class TestActivity : BaseActivity() {
                 binding?.rbAns5?.visibility = View.VISIBLE
             }
             binding?.tvQuestion?.text = model.Question
-            binding?.rbAns1?.text = model.Answer1 ?: ""
-            binding?.rbAns2?.text = model.Answer2 ?: ""
-            binding?.rbAns3?.text = model.Answer3 ?: ""
-            binding?.rbAns4?.text = model.Answer4 ?: ""
-            binding?.rbAns5?.text = model.Answer5 ?: ""
+            binding?.rbAns1?.text = model.Answer1
+            binding?.rbAns2?.text = model.Answer2
+            binding?.rbAns3?.text = model.Answer3
+            binding?.rbAns4?.text = model.Answer4
+            binding?.rbAns5?.text = model.Answer5
 
         }
     }
 }
+

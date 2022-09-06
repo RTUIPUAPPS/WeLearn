@@ -8,10 +8,10 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.rtu.welearn.R
-import welearndb.VideoListEntity
+import com.rtu.welearn.data.room.videolist.VideoListData
 
 
-class VideoListAdapter(private val mList: List<VideoListEntity>, val listener: OnClickListener) :
+class VideoListAdapter(private val mList: List<VideoListData>, val listener: OnClickListener) :
     RecyclerView.Adapter<VideoListAdapter.ViewHolder>() {
 
     // create new views
@@ -28,11 +28,11 @@ class VideoListAdapter(private val mList: List<VideoListEntity>, val listener: O
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val model = mList[position]
-        holder.tvVideoTitle.text = model.VIDEO_TITLE
-        holder.tvVideoDescription.text = model.VIDEO_DESCRIPTION
+        holder.tvVideoTitle.text = model.videoTitle
+        holder.tvVideoDescription.text = model.videoDescription
 
         holder.llRoot.setOnClickListener {
-            listener.onClick(model.VIDEO_ID)
+            listener.onClick(model.videoID)
         }
     }
 

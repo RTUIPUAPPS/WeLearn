@@ -2,11 +2,10 @@ package com.rtu.welearn
 
 import android.app.Application
 import com.google.firebase.database.*
-import com.rtu.welearn.data.db_version.DBVersionDataSourceImpl
 import com.rtu.welearn.data.room.AppDatabase
 import com.rtu.welearn.data.room.db_version.DBVersionData
+import com.rtu.welearn.data.room.test.TestData
 import com.rtu.welearn.utils.Constants
-import com.squareup.sqldelight.android.AndroidSqliteDriver
 import com.squareup.sqldelight.db.SqlDriver
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -15,19 +14,15 @@ import kotlinx.coroutines.launch
 class WeLearnApp : Application() {
     companion object {
         var driver: SqlDriver? = null
-        var dbVersionImpl: DBVersionDataSourceImpl? = null
         var mDatabase: DatabaseReference? = null
-        lateinit var sqlDelightDB: WeLearnDatabase
-
-        var testVersionLocalDB = 0
-        var tipsVersionLocalDB = 0
-        var videoListVersionLocalDB = 0
 
         var testVersionFirebase = 0
         var tipsVersionFirebase = 0
         var videoListVersionFirebase = 0
         lateinit var roomDB: AppDatabase
-        var dbVersionData: DBVersionData? = null
+        lateinit var dbVersionData: DBVersionData
+
+        var listAllQuestions = ArrayList<TestData>()
     }
 
     override fun onCreate() {
@@ -35,9 +30,6 @@ class WeLearnApp : Application() {
 
         roomDB = AppDatabase.getDatabase(this)
         mDatabase = FirebaseDatabase.getInstance().reference
-        driver = AndroidSqliteDriver(WeLearnDatabase.Schema, this, "welearn.db")
-        sqlDelightDB = WeLearnDatabase(driver!!)
-        dbVersionImpl = DBVersionDataSourceImpl(sqlDelightDB)
         getFirebaseDBVersion()
     }
 
@@ -48,13 +40,10 @@ class WeLearnApp : Application() {
                 0, 0, 0, 0
             )
             roomDB.dbVersionDao().insertVersion(
-                dbVersionData!!
+                dbVersionData
             )
         } else {
-            dbVersionData = listDBVersions[0]
-            testVersionLocalDB = dbVersionData?.version_test ?: 0
-            tipsVersionLocalDB = dbVersionData?.version_tips ?: 0
-            videoListVersionLocalDB = dbVersionData?.version_video ?: 0
+            dbVersionData = listDBVersions[0]!!
         }
 //        dbVersionImpl?.getLocalDBVersion()?.collect(FlowCollector {
 //            if (it.isNotEmpty()) {
