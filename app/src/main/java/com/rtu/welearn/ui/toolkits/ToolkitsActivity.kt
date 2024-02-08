@@ -13,8 +13,7 @@ class ToolkitsActivity : BaseActivity() {
 
     companion object {
         fun getIntent(mContext: Context): Intent {
-            var intent = Intent(mContext, ToolkitsActivity::class.java)
-            return intent
+            return Intent(mContext, ToolkitsActivity::class.java)
         }
     }
 
@@ -23,9 +22,8 @@ class ToolkitsActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_toolkits)
 
-        var listTools = ArrayList<String>()
-        var listToolsDescription = ArrayList<String>()
-        var listToolsImplementation = ArrayList<String>()
+        val listTools = ArrayList<String>()
+        val listToolsImplementation = ArrayList<String>()
 
         listTools.add(getString(R.string.offline_tools_title1))
         listTools.add(getString(R.string.offline_tools_title2))
@@ -63,7 +61,7 @@ class ToolkitsActivity : BaseActivity() {
         listToolsImplementation.add(getString(R.string.online_tool6_implementation))
 
 
-        var toolsAdapter = ToolsAdapter(
+        val toolsAdapter = ToolsAdapter(
             listTools,
             listToolsImplementation,
             object : ToolsAdapter.OnToolDescriptionClick {

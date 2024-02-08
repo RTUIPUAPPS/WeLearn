@@ -16,7 +16,7 @@ class ToolDescriptionActivity : BaseActivity() {
 
     companion object {
         fun getIntent(mContext: Context, toolNumber: Int): Intent {
-            var intent = Intent(mContext, ToolDescriptionActivity::class.java)
+            val intent = Intent(mContext, ToolDescriptionActivity::class.java)
             intent.putExtra(TOOL_NUMBER, toolNumber)
             return intent
         }
@@ -52,75 +52,61 @@ class ToolDescriptionActivity : BaseActivity() {
         when (intToolNumber) {
             1 -> {
                 setText(
-                    getString(R.string.offline_tools_title1),
-                    listToolsDescription[0],
-                    intToolNumber
+                    getString(R.string.offline_tools_title1), listToolsDescription[0], intToolNumber
                 )
-
             }
+
             2 -> {
                 setText(
-                    getString(R.string.offline_tools_title2),
-                    listToolsDescription[1],
-                    intToolNumber
+                    getString(R.string.offline_tools_title2), listToolsDescription[1], intToolNumber
                 )
             }
-            3 -> {
 
+            3 -> {
                 setText(
-                    getString(R.string.offline_tools_title3),
-                    listToolsDescription[2],
-                    intToolNumber
+                    getString(R.string.offline_tools_title3), listToolsDescription[2], intToolNumber
                 )
             }
+
             4 -> {
                 setText(
-                    getString(R.string.offline_tools_title4),
-                    listToolsDescription[3],
-                    intToolNumber
+                    getString(R.string.offline_tools_title4), listToolsDescription[3], intToolNumber
                 )
 
             }
+
             5 -> {
                 setText(
-                    getString(R.string.offline_tools_title5),
-                    listToolsDescription[4],
-                    intToolNumber
+                    getString(R.string.offline_tools_title5), listToolsDescription[4], intToolNumber
                 )
 
             }
+
             6 -> {
                 setText(
-                    getString(R.string.offline_tools_title6),
-                    listToolsDescription[5],
-                    intToolNumber
+                    getString(R.string.offline_tools_title6), listToolsDescription[5], intToolNumber
                 )
 
             }
+
             7 -> {
                 setText(
-                    getString(R.string.offline_tools_title7),
-                    listToolsDescription[6],
-                    intToolNumber
+                    getString(R.string.offline_tools_title7), listToolsDescription[6], intToolNumber
                 )
-
             }
+
             8 -> {
                 setText(
-                    getString(R.string.offline_tools_title8),
-                    listToolsDescription[7],
-                    intToolNumber
+                    getString(R.string.offline_tools_title8), listToolsDescription[7], intToolNumber
                 )
-
             }
+
             9 -> {
                 setText(
-                    getString(R.string.offline_tools_title9),
-                    listToolsDescription[8],
-                    intToolNumber
+                    getString(R.string.offline_tools_title9), listToolsDescription[8], intToolNumber
                 )
-
             }
+
             10 -> {
                 setText(
                     getString(R.string.offline_tools_title10),
@@ -128,77 +114,66 @@ class ToolDescriptionActivity : BaseActivity() {
                     intToolNumber
                 )
             }
+
             11 -> {
                 setText(
-                    getString(R.string.online_tools_title1),
-                    listToolsDescription[10],
-                    intToolNumber
+                    getString(R.string.online_tools_title1), listToolsDescription[10], intToolNumber
                 )
-
             }
+
             12 -> {
                 setText(
-                    getString(R.string.online_tools_title2),
-                    listToolsDescription[11],
-                    intToolNumber
+                    getString(R.string.online_tools_title2), listToolsDescription[11], intToolNumber
                 )
-
             }
+
             13 -> {
                 setText(
-                    getString(R.string.online_tools_title3),
-                    listToolsDescription[12],
-                    intToolNumber
+                    getString(R.string.online_tools_title3), listToolsDescription[12], intToolNumber
                 )
-
             }
+
             14 -> {
                 setText(
-                    getString(R.string.online_tools_title4),
-                    listToolsDescription[13],
-                    intToolNumber
+                    getString(R.string.online_tools_title4), listToolsDescription[13], intToolNumber
                 )
-
             }
+
             15 -> {
                 setText(
-                    getString(R.string.online_tools_title5),
-                    listToolsDescription[14],
-                    intToolNumber
+                    getString(R.string.online_tools_title5), listToolsDescription[14], intToolNumber
                 )
             }
+
             16 -> {
                 setText(
-                    getString(R.string.online_tools_title6),
-                    listToolsDescription[15],
-                    intToolNumber
+                    getString(R.string.online_tools_title6), listToolsDescription[15], intToolNumber
                 )
             }
         }
     }
 
     private fun setText(
-        title: String,
-        description: String,
-        toolNumber:Int
+        title: String, description: String, toolNumber: Int
 
     ) {
 
-
         binding?.tvTolsTitle?.text = title
 
-        when(toolNumber){
-            14->{
+        when (toolNumber) {
+            14 -> {
                 binding?.tvToolsDescription?.visibility = View.GONE
                 binding?.rlTool14?.visibility = View.VISIBLE
                 binding?.rlTool16?.visibility = View.GONE
             }
-            16->{
+
+            16 -> {
                 binding?.tvToolsDescription?.visibility = View.GONE
                 binding?.rlTool14?.visibility = View.GONE
                 binding?.rlTool16?.visibility = View.VISIBLE
             }
-            else->{
+
+            else -> {
                 binding?.tvToolsDescription?.visibility = View.VISIBLE
                 binding?.rlTool14?.visibility = View.GONE
                 binding?.rlTool16?.visibility = View.GONE
@@ -206,6 +181,5 @@ class ToolDescriptionActivity : BaseActivity() {
                     Html.fromHtml(description, Html.FROM_HTML_MODE_LEGACY)
             }
         }
-
     }
 }

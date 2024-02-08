@@ -10,7 +10,6 @@ import androidx.lifecycle.lifecycleScope
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import com.hitesh.weatherlogger.view.callback.ItemClickListener
 import com.rtu.welearn.BaseActivity
 import com.rtu.welearn.R
 import com.rtu.welearn.WeLearnApp
@@ -28,17 +27,14 @@ class TipsActivity : BaseActivity() {
     companion object {
         var pos = 0
         fun getIntent(mContext: Context): Intent {
-            var intent = Intent(mContext, TipsActivity::class.java)
-            return intent
+            return Intent(mContext, TipsActivity::class.java)
         }
     }
 
     private var binding: ActivityTipsBinding? = null
-
     private var listTipsOnline = ArrayList<TipsData>()
     private var listTipsOffline = ArrayList<TipsData>()
     private var listTipsBoth = ArrayList<TipsData>()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,12 +42,10 @@ class TipsActivity : BaseActivity() {
 
         if (dbVersionData.version_tips == tipsVersionFirebase) {
             getTipsFromLocalDB()
-            Log.e("#TIPS", "getTipsFromLocalDB()")
 
         } else {
             lifecycleScope.launch {
                 getTipsFromFirebase()
-                Log.e("#TIPS", "getTipsFromFirebase()")
             }
         }
 
@@ -62,12 +56,8 @@ class TipsActivity : BaseActivity() {
                     this,
                     true,
                     getString(R.string.tips_online),
-                    listTipsOnline[randomIndex].tip.toString(),
-                    object : ItemClickListener {
-                        override fun onClick(status: Boolean) {
-
-                        }
-                    })
+                    listTipsOnline[randomIndex].tip
+                )
             }
         }
         binding?.btnOffline?.setOnClickListener {
@@ -77,12 +67,8 @@ class TipsActivity : BaseActivity() {
                 showMessageDialog(
                     this, true,
                     getString(R.string.tips_offline),
-                    listTipsOffline[randomIndex].tip.toString(),
-                    object : ItemClickListener {
-                        override fun onClick(status: Boolean) {
-
-                        }
-                    })
+                    listTipsOffline[randomIndex].tip
+                )
             }
         }
         binding?.btnBoth?.setOnClickListener {
@@ -91,12 +77,8 @@ class TipsActivity : BaseActivity() {
                 showMessageDialog(
                     this, true,
                     getString(R.string.tips_online_offline),
-                    listTipsBoth[randomIndex].tip.toString(),
-                    object : ItemClickListener {
-                        override fun onClick(status: Boolean) {
-
-                        }
-                    })
+                    listTipsBoth[randomIndex].tip
+                )
             }
         }
 
@@ -105,47 +87,18 @@ class TipsActivity : BaseActivity() {
     private fun getTipsFromLocalDB() {
 
         lifecycleScope.launch {
-            listTipsOnline.addAll(
+            listTipsOnline =
                 roomDB.tipsDao().getAllTips(Constants.TIPS_ONLINE) as ArrayList<TipsData>
-            )
-            Log.e("#TIPS", "listTipsOnline ${listTipsOnline.size}")
         }
         lifecycleScope.launch {
-            listTipsOffline.addAll(
+            listTipsOffline =
                 roomDB.tipsDao().getAllTips(Constants.TIPS_OFFLINE) as ArrayList<TipsData>
-            )
-
-            Log.e("#TIPS", "listTipsOffline ${listTipsOffline.size}")
         }
+
         lifecycleScope.launch {
-
-            listTipsBoth.addAll(
-                roomDB.tipsDao().getAllTips(Constants.TIPS_BOTH) as ArrayList<TipsData>
-            )
-
-            Log.e("#TIPS", "listTipsBoth ${listTipsBoth.size}")
-            binding?.progressBar?.visibility = View.GONE
+            listTipsBoth = roomDB.tipsDao().getAllTips(Constants.TIPS_BOTH) as ArrayList<TipsData>
         }
-
-//        lifecycleScope.launch {
-//            tipsImpl.getTipsByType(Constants.TIPS_ONLINE).collect {
-//                listTipsOnline.addAll(it)
-//            }
-//        }
-//        lifecycleScope.launch {
-//
-//            tipsImpl.getTipsByType(Constants.TIPS_OFFLINE).collect {
-//                listTipsOffline.addAll(it)
-//            }
-//        }
-//        lifecycleScope.launch {
-//
-//            tipsImpl.getTipsByType(Constants.TIPS_BOTH).collect {
-//                listTipsBoth.addAll(it)
-//                binding?.progressBar?.visibility = View.GONE
-//            }
-//
-//        }
+        binding?.progressBar?.visibility = View.GONE
     }
 
     private suspend fun getTipsFromFirebase() {
@@ -165,7 +118,6 @@ class TipsActivity : BaseActivity() {
                                         tip = data.value.toString()
                                     )
                                 )
-
                             }
                         }
                     }
@@ -173,10 +125,6 @@ class TipsActivity : BaseActivity() {
                     dbVersionData.version_tips = tipsVersionFirebase
                     lifecycleScope.launch {
                         roomDB.dbVersionDao().updateVersion(dbVersionData)
-                        Log.e("#TIPS", "updateVersion $tipsVersionFirebase")
-//                        dbVersionImpl?.updateTipsVersion(
-//                            tipsVersionFirebase.toLong()
-//                        )
                         getTipsFromLocalDB()
                     }
                 }

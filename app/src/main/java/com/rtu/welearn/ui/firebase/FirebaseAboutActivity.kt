@@ -12,15 +12,13 @@ import com.rtu.welearn.R
 import com.rtu.welearn.BaseActivity
 import com.rtu.welearn.WeLearnApp.Companion.mDatabase
 import com.rtu.welearn.utils.Constants.Companion.ABOUT
-import com.rtu.welearn.databinding.ActivityAboutBinding
 import com.rtu.welearn.databinding.ActivityFirebaseAboutBinding
 
 class FirebaseAboutActivity : BaseActivity() {
 
     companion object {
         fun getIntent(mContext: Context): Intent {
-            var intent = Intent(mContext, FirebaseAboutActivity::class.java)
-            return intent
+            return Intent(mContext, FirebaseAboutActivity::class.java)
         }
     }
 
@@ -29,7 +27,6 @@ class FirebaseAboutActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_firebase_about)
-
 
         mCloudEndPoint =  mDatabase?.child(ABOUT)
         mCloudEndPoint?.addListenerForSingleValueEvent(object : ValueEventListener {

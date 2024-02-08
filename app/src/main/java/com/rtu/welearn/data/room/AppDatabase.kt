@@ -20,28 +20,23 @@ import com.rtu.welearn.data.room.videolist.VideoListData
 )
 abstract class AppDatabase : RoomDatabase() {
     companion object {
-
         fun getDatabase(context: Context): AppDatabase {
-            var database: AppDatabase? = null
-            val dbName = context.getString(R.string.app_name) + ".db"
-            if (database == null) {
+            val database: AppDatabase by lazy {
+                val dbName = context.getString(R.string.app_name) + ".db"
                 synchronized(AppDatabase::class) {
-                    if (database == null) {
-                        database = Room.databaseBuilder(
-                            context,
-                            AppDatabase::class.java, dbName
-                        ).allowMainThreadQueries().addCallback(object : RoomDatabase.Callback() {
-
-                        }).build()
-                    }
+                    Room.databaseBuilder(
+                        context,
+                        AppDatabase::class.java, dbName
+                    ).allowMainThreadQueries().build()
                 }
             }
-            return database!!
+
+            return database
         }
     }
 
-    abstract fun tipsDao(): TipsDao
-    abstract fun dbVersionDao(): DBVersionDao
-    abstract fun TestDao(): TestDao
-    abstract fun VideoListDao(): VideoListDao
+abstract fun tipsDao(): TipsDao
+abstract fun dbVersionDao(): DBVersionDao
+abstract fun TestDao(): TestDao
+abstract fun VideoListDao(): VideoListDao
 }

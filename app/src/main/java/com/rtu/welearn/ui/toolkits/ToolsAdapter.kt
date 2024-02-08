@@ -11,7 +11,6 @@ import com.rtu.welearn.R
 import net.cachapa.expandablelayout.ExpandableLayout
 import net.cachapa.expandablelayout.util.FastOutSlowInInterpolator
 
-
 class ToolsAdapter(
     var listTitle: ArrayList<String>, var listImplementation: ArrayList<String>,
     var onClickListener: OnToolDescriptionClick
@@ -19,7 +18,6 @@ class ToolsAdapter(
     RecyclerView.Adapter<ToolsAdapter.ViewHolder>() {
 
     private val UNSELECTED = -1
-
     private val selectedItem = UNSELECTED
 
 
@@ -68,7 +66,6 @@ class ToolsAdapter(
         var tvToolsDescription: TextView? = null
         var expandableLayout: ExpandableLayout? = null
 
-
         init {
             val position = absoluteAdapterPosition
             val isSelected = position == selectedItem
@@ -85,12 +82,9 @@ class ToolsAdapter(
             expandableLayout!!.setExpanded(isSelected, false)
         }
 
-
         override fun onClick(p0: View?) {
-//              if (holder != null) {
             tvToolTitle?.isSelected = false
             expandableLayout?.collapse()
-//            }
 
             val position = absoluteAdapterPosition
             if (position == selectedItem) {
@@ -101,7 +95,6 @@ class ToolsAdapter(
                 selectedItem = position
             }
         }
-
 
         override fun onExpansionUpdate(expansionFraction: Float, state: Int) {
 

@@ -10,7 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import com.hitesh.weatherlogger.view.callback.ItemClickListener
+import com.rtu.welearn.utils.ItemClickListener
 import com.rtu.welearn.BaseActivity
 import com.rtu.welearn.R
 import com.rtu.welearn.WeLearnApp
@@ -34,14 +34,11 @@ class TestActivity : BaseActivity() {
     }
 
     var binding: ActivityTestBinding? = null
-
-    //    private var listTestQuestions = ArrayList<TestData>()
     private var listAllQuestionsTemp = ArrayList<TestData>()
     private var listExamQuestions = ArrayList<TestData>()
     private var currentPos = 0
     private val totalTestQuestions = 10
     private var arrayAnswers = HashMap<Int, Int>()
-//    var testImpl: TestDataSourceImpl? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,11 +55,8 @@ class TestActivity : BaseActivity() {
         } else {
             getQuestionsList()
         }
-
         initClick()
-
     }
-
 
     private fun getQuestionsList() {
         listAllQuestions.clear()
@@ -82,13 +76,6 @@ class TestActivity : BaseActivity() {
             }
         }
     }
-
-//    private fun getTestQuestions(): Flow<List<TestData>> = callbackFlow {
-//        roomDB.TestDao().getTestData().collect {
-//            trySend(it)
-//        }
-//        awaitClose { }
-//    }
 
     private fun initClick() {
         binding?.btnFinish?.setOnClickListener {
@@ -211,7 +198,6 @@ class TestActivity : BaseActivity() {
                         dbVersionData.version_test = testVersionFirebase
                         roomDB.dbVersionDao().updateVersion(dbVersionData)
                     }
-
                     getQuestionsList()
                 }
 
@@ -222,7 +208,6 @@ class TestActivity : BaseActivity() {
     }
 
     private fun selectRandomQuestions() {
-
         if (listAllQuestionsTemp.isNotEmpty()) {
 
             for (i in 0 until totalTestQuestions) {
@@ -248,13 +233,13 @@ class TestActivity : BaseActivity() {
             binding?.tvRemaining?.text = "${position + 1}/$totalTestQuestions"
             binding?.progressBar?.progress = position + 1
             val model = listExamQuestions[position]
-            if (model.Answer4.isNullOrEmpty()) {
+            if (model.Answer4.isEmpty()) {
                 binding?.rbAns4?.visibility = View.GONE
             } else {
                 binding?.rbAns4?.visibility = View.VISIBLE
             }
 
-            if (model.Answer5.isNullOrEmpty()) {
+            if (model.Answer5.isEmpty()) {
                 binding?.rbAns5?.visibility = View.GONE
             } else {
                 binding?.rbAns5?.visibility = View.VISIBLE
@@ -265,7 +250,6 @@ class TestActivity : BaseActivity() {
             binding?.rbAns3?.text = model.Answer3
             binding?.rbAns4?.text = model.Answer4
             binding?.rbAns5?.text = model.Answer5
-
         }
     }
 }

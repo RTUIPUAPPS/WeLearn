@@ -6,15 +6,16 @@ import android.text.Html
 import android.view.LayoutInflater
 import android.view.Window
 import androidx.databinding.DataBindingUtil
-import com.hitesh.weatherlogger.view.callback.ItemClickListener
 import com.rtu.welearn.R
 import com.rtu.welearn.databinding.DialogMessageBinding
 
-fun showMessageDialog(context: Context,
-                      isCancelable:Boolean,
-                      title: String,
-                      message: String="",
-                      listener: ItemClickListener): Dialog {
+fun showMessageDialog(
+    context: Context,
+    isCancelable: Boolean,
+    title: String,
+    message: String = "",
+    listener: ItemClickListener? = null
+): Dialog {
 
     val inflater = LayoutInflater.from(context)
     val binding: DialogMessageBinding =
@@ -30,7 +31,7 @@ fun showMessageDialog(context: Context,
     binding.tvMessage.text = Html.fromHtml("<i>\"$message\"</i>", Html.FROM_HTML_MODE_LEGACY)
 
     binding.tvDismiss.setOnClickListener {
-        listener.onClick(true)
+        listener?.onClick(true)
         mDialog.dismiss()
     }
 

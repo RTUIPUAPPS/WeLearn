@@ -26,8 +26,7 @@ class VideoListActivity : BaseActivity() {
 
     companion object {
         fun getIntent(mContext: Context): Intent {
-            val intent = Intent(mContext, VideoListActivity::class.java)
-            return intent
+            return Intent(mContext, VideoListActivity::class.java)
         }
     }
 
@@ -37,7 +36,6 @@ class VideoListActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_video_list)
-
 
         if (dbVersionData.version_video == videoListVersionFirebase) {
             getVideoListFromLocalStorage()
@@ -77,7 +75,6 @@ class VideoListActivity : BaseActivity() {
                                 it.child(Constants.VIDEO_DESCRIPTION).value.toString()
                             )
                         )
-
                     }
                 }
 

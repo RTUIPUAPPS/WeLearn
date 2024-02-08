@@ -6,11 +6,7 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.Uri
-import android.os.Handler
-import android.os.Looper
 import android.widget.Toast
-import com.rtu.welearn.utils.AppUtils.showToastShort
-import kotlinx.coroutines.flow.flow
 
 
 object AppUtils {
@@ -28,19 +24,6 @@ object AppUtils {
         ).show()
     }
 
-    fun Context.showToast100(msg:String){
-
-        val toast = Toast.makeText(
-            applicationContext,
-            msg,
-            Toast.LENGTH_SHORT
-        )
-        toast.show()
-        Handler(Looper.getMainLooper()).postDelayed({
-            toast.cancel()
-        }, 300)
-
-    }
     fun openUrl(mContext: Context?, url: String) {
         val i = Intent(Intent.ACTION_VIEW)
         i.data = Uri.parse(url)
@@ -72,19 +55,4 @@ object AppUtils {
             else -> false
         }
     }
-
-//    fun showTipsDialog(strMessage:String,context:Context?){
-//        var builder: AlertDialog.Builder = AlertDialog.Builder(context)
-//        builder.setMessage(strMessage)
-//        builder.setCancelable(false)
-//        builder  .setPositiveButton("Dismiss"
-//        ) { dialog, p1 ->    dialog.cancel();   }
-//
-//        val alert = builder.create()
-//        //Setting the title manually
-//        //Setting the title manually
-//
-//        alert.show()
-//    }
-
 }

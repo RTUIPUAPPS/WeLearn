@@ -1,7 +1,6 @@
 package com.rtu.welearn.ui.materials
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -21,14 +20,9 @@ class MaterialsAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val position: Int = holder.absoluteAdapterPosition
-
-        holder.tvTitle?.text = listTitle[position]
-        holder.tvTitle?.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(p0: View?) {
-                onClickListener.onClick(holder.absoluteAdapterPosition)
-            }
-        })
+        val absolutePos: Int = holder.absoluteAdapterPosition
+        holder.tvTitle?.text = listTitle[absolutePos]
+        holder.tvTitle?.setOnClickListener { onClickListener.onClick(holder.absoluteAdapterPosition) }
     }
 
     override fun getItemCount(): Int = listTitle.size
@@ -38,6 +32,7 @@ class MaterialsAdapter(
         RecyclerView.ViewHolder(inflater.inflate(R.layout.row_materials, parent, false)) {
 
         var tvTitle: TextView? = null
+
         init {
             tvTitle = itemView.findViewById(R.id.tvTitle)
         }

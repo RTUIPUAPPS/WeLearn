@@ -1,4 +1,4 @@
-package com.hitesh.weatherlogger.view.callback
+package com.rtu.welearn.utils
 
 interface ItemClickListener {
     fun onClick(status: Boolean)

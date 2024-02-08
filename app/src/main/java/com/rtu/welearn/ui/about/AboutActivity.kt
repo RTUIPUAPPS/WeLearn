@@ -12,28 +12,13 @@ class AboutActivity : BaseActivity() {
 
     companion object {
         fun getIntent(mContext: Context): Intent {
-            var intent = Intent(mContext, AboutActivity::class.java)
-            return intent
+            return Intent(mContext, AboutActivity::class.java)
         }
     }
 
     var binding: ActivityAboutBinding? = null
-   // private var mCloudEndPoint: DatabaseReference? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_about)
-
-
-//        mCloudEndPoint =  mDatabase?.child(ABOUT)
-//        mCloudEndPoint?.addListenerForSingleValueEvent(object : ValueEventListener {
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                binding?.tvAbout?.text = snapshot.value.toString()
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//
-//            }
-//        })
     }
-
 }
